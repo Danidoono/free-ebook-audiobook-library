@@ -192,6 +192,26 @@ main{
 .card.wealth{border-top:5px solid var(--gold)}
 .card.business{border-top:5px solid var(--green)}
 
+.movers-bar{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px 24px;
+  font-weight:700;
+  line-height:1.6;
+  box-shadow:0 12px 28px rgba(20,40,30,.07);
+  overflow-x:auto;
+  white-space:nowrap;
+}
+
+.up{
+  color:#2f9e44;
+}
+
+.down{
+  color:#c92a2a;
+}
+
 .buttons{
   display:flex;
   gap:10px;
@@ -293,6 +313,7 @@ footer{
     <a href="#hot-new">Hot & New</a>
     <a href="#business-tools">Business Tools</a>
     <a href="#reading">Reading</a>
+    <a href="#market-movers">Market Movers</a>
     <a href="free-resource-vault.html">Free Vault</a>
   </nav>
 </header>
@@ -316,6 +337,17 @@ footer{
   <div class="stat"><strong>Business</strong> Taxes, bookkeeping and operations</div>
   <div class="stat"><strong>Markets</strong> Trading, stocks, futures and crypto</div>
   <div class="stat"><strong>Growth</strong> Books, guides and personal development</div>
+</section>
+
+<section id="market-movers">
+
+  <div class="section-head">
+    <h2>Daily Market Movers</h2>
+    <p>Stocks showing notable daily movement</p>
+  </div>
+
+  <div id="moverGrid"></div>
+
 </section>
 
 <section id="assistant">
@@ -605,6 +637,9 @@ footer{
   </div>
 </section>
 
+
+
+
 </main>
 
 <footer>
@@ -638,6 +673,36 @@ function askAssistant(){
 
   a.innerHTML=response;
 }
+
+const movers = [
+  { ticker:"NVDA", move:"+4.8%", type:"up" },
+  { ticker:"TSLA", move:"-3.6%", type:"down" },
+  { ticker:"AAPL", move:"+2.1%", type:"up" },
+  { ticker:"AMZN", move:"-2.4%", type:"down" },
+  { ticker:"META", move:"+3.2%", type:"up" },
+  { ticker:"MSFT", move:"+1.8%", type:"up" }
+];
+
+function loadMarketMovers(){
+
+  const grid = document.getElementById("moverGrid");
+
+  if(!grid) return;
+
+  grid.innerHTML = `
+    <div class="movers-bar">
+      ${movers.map(stock =>
+        `<span class="${stock.type}">
+          ${stock.ticker} ${stock.move}
+        </span>`
+      ).join(" • ")}
+      — Daily market movers. Sample values only; verify current market data before investing.
+    </div>
+  `;
+}
+
+loadMarketMovers();
+
 </script>
 
 </body>
