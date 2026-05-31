@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Hustle Hub</title>
+<title>AI Hustle Hub - AI Side Hustle Tools</title>
+<meta name="description" content="Discover the best AI tools for creators, freelancers, students, and entrepreneurs to make money online.">
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -12,6 +13,7 @@
   --bg:#050505;
   --card:#111111;
   --yellow:#FFD60A;
+  --gold:#FFB703;
   --muted:#bdbdbd;
 }
 
@@ -25,28 +27,31 @@ body{
 
 header{
   text-align:center;
-  padding:100px 20px;
+  padding:90px 20px;
+  background:radial-gradient(circle at top,#3a2f00,#050505 55%);
 }
 
 .badge{
   display:inline-block;
   background:rgba(255,214,10,.12);
   color:var(--yellow);
-  border:1px solid rgba(255,214,10,.2);
+  border:1px solid rgba(255,214,10,.25);
   padding:8px 14px;
   border-radius:999px;
-  margin-bottom:15px;
+  margin-bottom:18px;
 }
 
 h1{
   font-size:4rem;
   color:var(--yellow);
+  text-shadow:0 0 25px rgba(255,214,10,.35);
 }
 
 header p{
   color:var(--muted);
-  max-width:700px;
+  max-width:720px;
   margin:20px auto;
+  font-size:1.15rem;
 }
 
 .hero-btn,.visit-btn{
@@ -57,12 +62,24 @@ header p{
   color:black;
   font-weight:700;
   text-decoration:none;
+  transition:.25s;
+}
+
+.hero-btn:hover,.visit-btn:hover{
+  background:var(--gold);
+  transform:translateY(-2px);
 }
 
 .container{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
-  padding:30px;
+  padding:35px 20px;
+}
+
+.section-title{
+  color:var(--yellow);
+  margin:35px 0 18px;
+  font-size:2rem;
 }
 
 .grid{
@@ -73,9 +90,16 @@ header p{
 
 .card{
   background:var(--card);
-  border:1px solid rgba(255,214,10,.2);
+  border:1px solid rgba(255,214,10,.18);
   border-radius:20px;
-  padding:25px;
+  padding:24px;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--yellow);
+  box-shadow:0 0 25px rgba(255,214,10,.16);
 }
 
 .card h3{
@@ -85,13 +109,20 @@ header p{
 
 .card p{
   color:var(--muted);
-  margin-bottom:20px;
+  margin-bottom:18px;
+  line-height:1.5;
 }
 
 footer{
   text-align:center;
-  padding:40px;
+  padding:45px 20px;
   color:#999;
+  border-top:1px solid rgba(255,214,10,.12);
+  margin-top:50px;
+}
+
+@media(max-width:600px){
+  h1{font-size:2.7rem;}
 }
 </style>
 </head>
@@ -101,42 +132,204 @@ footer{
 <header>
   <div class="badge">🔥 AI Side Hustle Tools</div>
   <h1>AI Hustle Hub</h1>
-  <p>Find AI tools that help creators, freelancers, and entrepreneurs make money online.</p>
+  <p>Find AI tools that help creators, freelancers, students, and entrepreneurs make money online.</p>
   <a href="#tools" class="hero-btn">Explore Tools</a>
 </header>
 
 <main class="container" id="tools">
-  <h2>Popular AI Tools</h2><br>
 
-  <div class="grid">
-    <div class="card">
-      <h3>🤖 ChatGPT</h3>
-      <p>Create content, business ideas, scripts, emails, and side hustle plans.</p>
-      <a class="visit-btn" href="https://chatgpt.com" target="_blank">Visit Tool</a>
-    </div>
+<h2 class="section-title">🤖 AI Writing & Research</h2>
+<div class="grid">
 
-    <div class="card">
-      <h3>🧠 Claude</h3>
-      <p>Great for writing, research, coding, and long-form content creation.</p>
-      <a class="visit-btn" href="https://claude.ai" target="_blank">Visit Tool</a>
-    </div>
+<div class="card">
+<h3>ChatGPT</h3>
+<p>Create content, business ideas, scripts, emails, and side hustle plans.</p>
+<a class="visit-btn" href="https://chatgpt.com" target="_blank">Visit Tool</a>
+</div>
 
-    <div class="card">
-      <h3>🎬 Runway</h3>
-      <p>Create AI videos for TikTok, YouTube Shorts, ads, and social content.</p>
-      <a class="visit-btn" href="https://runwayml.com" target="_blank">Visit Tool</a>
-    </div>
+<div class="card">
+<h3>Claude</h3>
+<p>Great for long-form writing, research, coding, and business planning.</p>
+<a class="visit-btn" href="https://claude.ai" target="_blank">Visit Tool</a>
+</div>
 
-    <div class="card">
-      <h3>🎙️ ElevenLabs</h3>
-      <p>Generate realistic voiceovers for faceless videos, podcasts, and ads.</p>
-      <a class="visit-btn" href="https://elevenlabs.io" target="_blank">Visit Tool</a>
-    </div>
-  </div>
+<div class="card">
+<h3>Gemini</h3>
+<p>Google AI assistant for writing, planning, summaries, and productivity.</p>
+<a class="visit-btn" href="https://gemini.google.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Perplexity</h3>
+<p>Research markets, competitors, content ideas, and business topics quickly.</p>
+<a class="visit-btn" href="https://www.perplexity.ai" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Jasper</h3>
+<p>AI copywriting platform for ads, blogs, emails, and marketing content.</p>
+<a class="visit-btn" href="https://www.jasper.ai" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Copy.ai</h3>
+<p>Create product descriptions, sales copy, emails, and social captions.</p>
+<a class="visit-btn" href="https://www.copy.ai" target="_blank">Visit Tool</a>
+</div>
+
+</div>
+
+<h2 class="section-title">🎬 AI Video Tools</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Runway</h3>
+<p>Create AI videos for TikTok, YouTube Shorts, ads, and creative projects.</p>
+<a class="visit-btn" href="https://runwayml.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Pika</h3>
+<p>Generate short AI videos from text prompts and images.</p>
+<a class="visit-btn" href="https://pika.art" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>OpusClip</h3>
+<p>Turn long videos into viral short clips for TikTok, Reels, and Shorts.</p>
+<a class="visit-btn" href="https://www.opus.pro" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Descript</h3>
+<p>Edit videos, podcasts, captions, voiceovers, and clips using AI.</p>
+<a class="visit-btn" href="https://www.descript.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>CapCut</h3>
+<p>Popular video editor with AI features for short-form creators.</p>
+<a class="visit-btn" href="https://www.capcut.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>VEED</h3>
+<p>Online video editor for subtitles, clips, AI avatars, and social videos.</p>
+<a class="visit-btn" href="https://www.veed.io" target="_blank">Visit Tool</a>
+</div>
+
+</div>
+
+<h2 class="section-title">🎨 AI Image & Design</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Midjourney</h3>
+<p>Create premium AI images for branding, thumbnails, and digital products.</p>
+<a class="visit-btn" href="https://www.midjourney.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Leonardo AI</h3>
+<p>Create AI art, product mockups, game assets, and marketing visuals.</p>
+<a class="visit-btn" href="https://leonardo.ai" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Canva AI</h3>
+<p>Create posts, thumbnails, presentations, logos, and business graphics.</p>
+<a class="visit-btn" href="https://www.canva.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Ideogram</h3>
+<p>Generate AI images with strong text design for posters and thumbnails.</p>
+<a class="visit-btn" href="https://ideogram.ai" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Recraft</h3>
+<p>Create vector graphics, icons, brand assets, and design images with AI.</p>
+<a class="visit-btn" href="https://www.recraft.ai" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Adobe Firefly</h3>
+<p>Generate images, text effects, and design assets using Adobe AI.</p>
+<a class="visit-btn" href="https://firefly.adobe.com" target="_blank">Visit Tool</a>
+</div>
+
+</div>
+
+<h2 class="section-title">🎙️ AI Voice & Audio</h2>
+<div class="grid">
+
+<div class="card">
+<h3>ElevenLabs</h3>
+<p>Create realistic AI voiceovers for faceless videos, podcasts, and ads.</p>
+<a class="visit-btn" href="https://elevenlabs.io" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>PlayHT</h3>
+<p>AI voice generator for narration, audiobooks, and content creation.</p>
+<a class="visit-btn" href="https://play.ht" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Murf AI</h3>
+<p>Create professional voiceovers for videos, courses, and presentations.</p>
+<a class="visit-btn" href="https://murf.ai" target="_blank">Visit Tool</a>
+</div>
+
+</div>
+
+<h2 class="section-title">⚡ Automation & Business</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Zapier</h3>
+<p>Automate side hustle workflows and connect apps without coding.</p>
+<a class="visit-btn" href="https://zapier.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Make</h3>
+<p>Build powerful automations for business, content, and marketing workflows.</p>
+<a class="visit-btn" href="https://www.make.com" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>n8n</h3>
+<p>Open-source automation tool for advanced workflows and AI agents.</p>
+<a class="visit-btn" href="https://n8n.io" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Shopify Magic</h3>
+<p>AI ecommerce tools for product descriptions, stores, and online selling.</p>
+<a class="visit-btn" href="https://www.shopify.com/magic" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>AdCreative.ai</h3>
+<p>Create AI ad creatives for ecommerce, social media, and marketing campaigns.</p>
+<a class="visit-btn" href="https://www.adcreative.ai" target="_blank">Visit Tool</a>
+</div>
+
+<div class="card">
+<h3>Gamma</h3>
+<p>Create AI presentations, pitch decks, guides, and business documents.</p>
+<a class="visit-btn" href="https://gamma.app" target="_blank">Visit Tool</a>
+</div>
+
+</div>
+
 </main>
 
 <footer>
-  © 2026 AI Hustle Hub
+  <p>© 2026 AI Hustle Hub</p>
+  <p>Discover AI tools. Build smarter side hustles.</p>
 </footer>
 
 </body>
