@@ -548,17 +548,180 @@ footer{
   }
 }
 
+
+/* Conversion-focused affiliate sections */
+.conversion-section{
+  margin:22px 0;
+}
+
+.search-box{
+  background:linear-gradient(135deg,#fffdf8,#f1eadb);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+.search-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.search-row input{
+  flex:1;
+  margin-top:0;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--green-soft);
+  color:var(--green-dark);
+  border:1px solid #c9e1d6;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:.78rem;
+  font-weight:900;
+  margin:5px 5px 5px 0;
+}
+
+.top-pick{
+  position:relative;
+  overflow:hidden;
+}
+
+.top-pick::before{
+  content:"TOP PICK";
+  position:absolute;
+  top:14px;
+  right:-34px;
+  transform:rotate(38deg);
+  background:var(--gold);
+  color:#13271f;
+  padding:6px 34px;
+  font-size:.65rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.start-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+  margin:14px 0;
+}
+
+.choice-btn{
+  width:100%;
+  background:var(--paper);
+  color:var(--green-dark);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(21,48,38,.05);
+}
+
+.choice-btn:hover{
+  border-color:var(--gold);
+  transform:translateY(-1px);
+}
+
+.featured-banner{
+  background:linear-gradient(135deg,var(--green-dark),var(--green));
+  color:white;
+  border-radius:26px;
+  padding:26px;
+  box-shadow:var(--shadow);
+}
+
+.featured-banner p{
+  color:#f5ead3;
+}
+
+.featured-banner .btn.secondary{
+  background:white;
+}
+
+.email-capture{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+.email-row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.email-row input{
+  margin-top:0;
+}
+
+.mini-proof{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+}
+
+.proof-item{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  font-weight:900;
+  color:var(--green-dark);
+}
+
+.comparison-table{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:var(--shadow);
+  overflow:auto;
+}
+
+.quick-resource{
+  display:none;
+  margin-top:12px;
+}
+
+.quick-resource.active{
+  display:block;
+}
+
+@media(max-width:720px){
+  .search-row,
+  .email-row{
+    flex-direction:column;
+  }
+
+  .search-row .btn,
+  .email-row .btn{
+    width:100%;
+  }
+}
+
 </style>
 </head>
 <body>
 <header>
 <div class="logo">Capital Library</div>
-<nav><a href="#market-movers">Movers</a>
+<nav>
+    <a href="#market-movers">Movers</a>
+    <a href="#start-here">Start Here</a>
+    <a href="#popular">Top Picks</a>
+    <a href="#tradingview">Free Pine</a>
     <a href="#trading-tools">Tools</a>
-    <a href="#tradingview">Pine Script</a>
-    <a href="#resources">Resources</a>
-    <a href="#reading">Reading</a>
-    </nav>
+    <a href="resources.html">Resources Page</a>
+  </nav>
 </header>
 <section class="hero">
 <div class="kicker">Financial Tools • Trading • Business • Wealth</div>
@@ -571,6 +734,137 @@ footer{
 </div>
 </section>
 <main><div class="category-jump"><a href="#market-movers">Movers</a><a href="#tool-menu">Menu</a><a href="#tradingview">Pine</a><a href="#trading-tools">Trading</a><a href="#real-estate-tools">Real Estate</a><a href="#business-tools">Business</a><a href="#wealth-tools">Wealth</a><a href="#resource-tools">Resource Tools</a><a href="#resources">Resources</a><a href="#reading">Reading</a><a href="#self-development">Self Dev</a></div>
+
+<section id="search" class="conversion-section search-box">
+  <div class="kicker">Find Faster</div>
+  <h2>Search Capital Library</h2>
+  <p>Type what you need: trading, taxes, real estate, bookkeeping, Pine Script, investing, or books.</p>
+  <div class="search-row">
+    <input id="siteSearch" placeholder="Search resources..." oninput="siteSearchResources()" />
+    <a class="btn secondary" href="resources.html">Open Full Resources Page</a>
+  </div>
+  <div class="result" id="siteSearchResult">Start typing to find matching tools and resources.</div>
+</section>
+
+<section id="popular" class="conversion-section">
+  <div class="section-head">
+    <h2>Most Popular This Week</h2>
+    <p>Fast access to the highest-intent resources</p>
+  </div>
+  <div class="grid">
+    <div class="card trading top-pick">
+      <div class="kicker">Free Download</div>
+      <h3>TradingView Pine Script Strategy Package</h3>
+      <p>Free Pine Script v6 package with strategy modes, alerts, ATR exits, market structure, liquidity concepts, FVGs, and dashboard.</p>
+      <span class="badge">★★★★★ Free Tool</span>
+      <span class="badge">Best For Traders</span>
+      <div class="buttons">
+        <a class="btn" href="capital-library-tradingview-strategy-package-github.pine" download>Download Free</a>
+      </div>
+    </div>
+
+    <div class="card trading top-pick">
+      <div class="kicker">Stock Education</div>
+      <h3>CNC Academy Membership</h3>
+      <p>Monthly stock-market learning membership for traders and investors.</p>
+      <span class="badge">★★★★★ Beginner Friendly</span>
+      <span class="badge">Trading Education</span>
+      <div class="buttons">
+        <a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">Access Membership</a>
+      </div>
+    </div>
+
+    <div class="card business top-pick">
+      <div class="kicker">Business & Taxes</div>
+      <h3>The Taxes, Accounting, Bookkeeping Bible</h3>
+      <p>Small-business guide covering taxes, bookkeeping, accounting, savings tips, and IRS penalty avoidance.</p>
+      <span class="badge">★★★★★ Business Owners</span>
+      <span class="badge">Best Value</span>
+      <div class="buttons">
+        <a class="btn" href="https://amzn.to/4ecDZu6" target="_blank">Access Now</a>
+      </div>
+    </div>
+
+    <div class="card realestate top-pick">
+      <div class="kicker">Real Estate</div>
+      <h3>Real Estate Investment Starter Guide</h3>
+      <p>Learn rental property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
+      <span class="badge">★★★★★ New Investors</span>
+      <span class="badge">Rental Analysis</span>
+      <div class="buttons">
+        <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start-here" class="conversion-section">
+  <div class="section-head">
+    <h2>Start Here</h2>
+    <p>Choose your goal and get matched to the right tools</p>
+  </div>
+  <div class="card">
+    <div class="start-grid">
+      <button class="choice-btn" onclick="showPath('trading')">Trading</button>
+      <button class="choice-btn" onclick="showPath('business')">Business</button>
+      <button class="choice-btn" onclick="showPath('realestate')">Real Estate</button>
+      <button class="choice-btn" onclick="showPath('wealth')">Build Wealth</button>
+      <button class="choice-btn" onclick="showPath('taxes')">Taxes</button>
+      <button class="choice-btn" onclick="showPath('books')">Books</button>
+    </div>
+    <div class="result" id="pathResult">Pick a category to see the best next step.</div>
+  </div>
+</section>
+
+<section class="conversion-section featured-banner">
+  <div class="kicker">Featured Resource</div>
+  <h2>Free TradingView Strategy Package</h2>
+  <p>Includes EMA Trend, Supertrend, VWAP Mean Reversion, Opening Range Breakout, Market Structure, alerts, ATR exits, and backtest tools.</p>
+  <div class="buttons">
+    <a class="btn" href="capital-library-tradingview-strategy-package-github.pine" download>Download Pine Script</a>
+    <a class="btn secondary" href="#pine-generator">Create Pine Script Request</a>
+  </div>
+</section>
+
+<section class="conversion-section email-capture">
+  <div class="kicker">Free Updates</div>
+  <h2>Get Weekly Market & Business Tools</h2>
+  <p>Use this as a placeholder signup form. For GitHub Pages, connect it later to Formspree, ConvertKit, Mailchimp, or Beehiiv.</p>
+  <div class="email-row">
+    <input id="emailInput" type="email" placeholder="Enter your email" />
+    <button class="btn" onclick="fakeEmailSignup()">Get Access</button>
+  </div>
+  <div class="result" id="emailResult">No backend connected yet. This preview shows the design.</div>
+</section>
+
+<details class="accordion" id="compare-resources">
+  <summary>Compare Popular Resources</summary>
+  <div class="accordion-body">
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr><th>Resource</th><th>Best For</th><th>Skill Level</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>TradingView Pine Script Package</td><td>Backtesting strategies</td><td>Beginner-Intermediate</td><td><a class="btn small" href="capital-library-tradingview-strategy-package-github.pine" download>Download</a></td></tr>
+          <tr><td>CNC Academy</td><td>Stock-market education</td><td>Beginner</td><td><a class="btn small" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">Access</a></td></tr>
+          <tr><td>Wave Runner</td><td>Futures trading workflows</td><td>Intermediate</td><td><a class="btn small" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank">Access</a></td></tr>
+          <tr><td>Bookkeeping Bible</td><td>Small-business taxes</td><td>Beginner</td><td><a class="btn small" href="https://amzn.to/4ecDZu6" target="_blank">Access</a></td></tr>
+          <tr><td>Real Estate Starter Guide</td><td>Rental property analysis</td><td>Beginner</td><td><a class="btn small" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</details>
+
+<section class="conversion-section mini-proof">
+  <div class="proof-item">✓ Find trading tools faster</div>
+  <div class="proof-item">✓ Compare resources before clicking</div>
+  <div class="proof-item">✓ Use free calculators first</div>
+  <div class="proof-item">✓ Download free Pine Script</div>
+</section>
+
+
 <details class="accordion" id="market-movers" open=""><summary>Daily Market Movers</summary><div class="accordion-body">
 <div class="movers-wrap">
 
@@ -1257,6 +1551,63 @@ renderTrades();
 renderDeductions();
 updateSessions();
 setInterval(updateSessions, 1000);
+
+const capitalResourceSearchItems = [
+  {name:"TradingView Pine Script Strategy Package", type:"Free Tool", link:"capital-library-tradingview-strategy-package-github.pine"},
+  {name:"Position Size Calculator", type:"Trading Tool", link:"#position-size"},
+  {name:"Risk / Reward Calculator", type:"Trading Tool", link:"#risk-reward"},
+  {name:"Compound Interest Calculator", type:"Wealth Tool", link:"#compound"},
+  {name:"Trade Journal", type:"Trading Tool", link:"#journal"},
+  {name:"Market Session Clock", type:"Trading Tool", link:"#sessions"},
+  {name:"Rental Property Calculator", type:"Real Estate Tool", link:"#rental"},
+  {name:"BRRRR Calculator", type:"Real Estate Tool", link:"#brrrr"},
+  {name:"Startup Cost Calculator", type:"Business Tool", link:"#startup"},
+  {name:"Tax Deduction Tracker", type:"Business Tool", link:"#tax-tracker"},
+  {name:"Net Worth Calculator", type:"Wealth Tool", link:"#net-worth"},
+  {name:"FIRE Calculator", type:"Wealth Tool", link:"#fire"},
+  {name:"CNC Academy Membership", type:"Affiliate Resource", link:"https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299"},
+  {name:"Real Estate Investment Starter Guide", type:"Affiliate Resource", link:"https://danidoono.gumroad.com/l/rfhxr"},
+  {name:"The Taxes, Accounting, Bookkeeping Bible", type:"Affiliate Resource", link:"https://amzn.to/4ecDZu6"},
+  {name:"Bookkeeping All-in-One For Dummies", type:"Affiliate Resource", link:"https://amzn.to/4wVM65T"}
+];
+
+function siteSearchResources(){
+  const q = document.getElementById("siteSearch").value.trim().toLowerCase();
+  const result = document.getElementById("siteSearchResult");
+  if(!q){
+    result.innerHTML = "Start typing to find matching tools and resources.";
+    return;
+  }
+
+  const matches = capitalResourceSearchItems.filter(item =>
+    item.name.toLowerCase().includes(q) || item.type.toLowerCase().includes(q)
+  );
+
+  result.innerHTML = matches.length
+    ? matches.map(item => `<a class="btn small secondary" href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank"' : ""}>${item.name} — ${item.type}</a>`).join(" ")
+    : "No match found. Try trading, tax, real estate, business, Pine Script, or wealth.";
+}
+
+function showPath(path){
+  const paths = {
+    trading: `Start with the <a href="capital-library-tradingview-strategy-package-github.pine" download>Pine Script Package</a>, then use the <a href="#position-size">Position Size Calculator</a>, <a href="#risk-reward">Risk / Reward Calculator</a>, and <a href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">CNC Academy</a>.`,
+    business: `Start with the <a href="#startup">Startup Cost Calculator</a>, then review <a href="https://amzn.to/4ecDZu6" target="_blank">The Taxes, Accounting, Bookkeeping Bible</a> and <a href="#business-resources">Business Resources</a>.`,
+    realestate: `Start with the <a href="#rental">Rental Property Calculator</a>, then use the <a href="#brrrr">BRRRR Calculator</a> and <a href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Real Estate Investment Starter Guide</a>.`,
+    wealth: `Start with the <a href="#compound">Compound Interest Calculator</a>, <a href="#net-worth">Net Worth Calculator</a>, <a href="#fire">FIRE Calculator</a>, and <a href="#reading">Finance Reading</a>.`,
+    taxes: `Start with the <a href="#tax-tracker">Tax Deduction Tracker</a>, then review <a href="https://amzn.to/4ecDZu6" target="_blank">The Taxes, Accounting, Bookkeeping Bible</a> and <a href="https://amzn.to/3RAB59T" target="_blank">Deductions and Tax Breaks 2026</a>.`,
+    books: `Start with <a href="#reading">Recommended Finance Reading</a>, then explore business classics and wealth-building resources.`
+  };
+
+  document.getElementById("pathResult").innerHTML = paths[path] || "Pick a category to see the best next step.";
+}
+
+function fakeEmailSignup(){
+  const email = document.getElementById("emailInput").value.trim();
+  document.getElementById("emailResult").innerHTML = email
+    ? `Preview saved for: ${email}. Connect this form to an email service before publishing.`
+    : "Enter an email to preview the signup message.";
+}
+
 </script>
 </body>
 </html>
