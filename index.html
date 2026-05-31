@@ -16,7 +16,6 @@
   --paper:#fffaf1;
   --gold:#c2a15b;
   --silver:#bfc5c1;
-  --blue:#8ba7a0;
   --text:#17231d;
   --muted:#66736b;
   --line:#ded3bd;
@@ -200,6 +199,7 @@ main{
 .silver{border-top:5px solid var(--silver)}
 .media{border-top:5px solid #8c78a8}
 .wealth{border-top:5px solid var(--gold)}
+.business{border-top:5px solid #2f7a5f}
 
 .product-buttons{
   display:flex;
@@ -247,6 +247,35 @@ button{
   border-radius:16px;
   line-height:1.7;
   border-left:4px solid var(--gold);
+}
+
+.preview{
+  height:165px;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top right,rgba(255,255,255,.35),transparent 35%),
+    linear-gradient(135deg,var(--green),var(--green3));
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:22px;
+  margin-bottom:18px;
+}
+
+.preview .small{
+  text-transform:uppercase;
+  letter-spacing:1.8px;
+  font-size:.7rem;
+  color:#f2dfb4;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.preview .big{
+  font-family:"Libre Baskerville",serif;
+  font-size:1.35rem;
+  line-height:1.25;
 }
 
 .cover{
@@ -365,22 +394,22 @@ footer{
   <nav>
     <a href="#assistant">Assistant</a>
     <a href="#hot-new">Hot & New</a>
+    <a href="#business-tools">Business Tools</a>
     <a href="#resources">Resources</a>
     <a href="#books">Books</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="kicker">Wealth • Investing • Real Estate • Trading • Personal Growth</div>
-  <h1>A real library for building knowledge and better decisions.</h1>
+  <div class="kicker">Wealth • Investing • Real Estate • Business Tools</div>
+  <h1>Curated intelligence for wealth builders.</h1>
   <p>
-    Capital Library brings together books, free public-domain reading,
-    practical resources, market tools, real estate education, wealth-building resources,
-    creator media, and personal growth material.
+    Capital Library brings together business tools, market resources, real estate education,
+    wealth-building books, and personal growth material in one focused learning hub.
   </p>
   <div class="hero-buttons">
     <a href="#assistant" class="btn">Ask Library Assistant</a>
-    <a href="#hot-new" class="btn light">See Hot & New</a>
+    <a href="#hot-new" class="btn light">Explore Resources</a>
   </div>
 </section>
 
@@ -388,7 +417,7 @@ footer{
 
 <section class="stats">
   <div class="stat"><strong>Wealth</strong> Investing and money education</div>
-  <div class="stat"><strong>Real Estate</strong> Property and cash-flow learning</div>
+  <div class="stat"><strong>Business</strong> Tools, taxes and operations</div>
   <div class="stat"><strong>Trading</strong> Market analysis and active investing</div>
   <div class="stat"><strong>Growth</strong> Personal development and learning</div>
 </section>
@@ -401,12 +430,12 @@ footer{
 
   <div class="assistant-box">
     <div class="assistant-row">
-      <input id="aiQuestion" placeholder="Ask: What should I study for real estate investing?" />
+      <input id="aiQuestion" placeholder="Ask: What should I study for bookkeeping or real estate?" />
       <button onclick="askAssistant()">Ask</button>
     </div>
 
     <div id="aiAnswer" class="assistant-answer">
-      Ask about wealth, investing, real estate, trading, stocks, crypto, silver, business, self-development, or media.
+      Ask about wealth, real estate, trading, stocks, crypto, business tools, taxes, bookkeeping, self-development, or media.
     </div>
   </div>
 </section>
@@ -424,7 +453,7 @@ footer{
       <h3>Oops, I Dated a Narcissist: How to Heal</h3>
       <p>A personal-growth book for readers healing from emotional manipulation, rebuilding confidence, and moving forward with clarity.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://www.amazon.com/Oops-Dated-Narcissist-Won-Heal-ebook/dp/B0GYSM6PK9" target="_blank">View on Amazon</a>
+        <a class="btn" href="https://www.amazon.com/Oops-Dated-Narcissist-Won-Heal-ebook/dp/B0GYSM6PK9" target="_blank">Access Now</a>
         <a class="btn light" href="https://danidoono.gumroad.com/l/hklbsx" target="_blank">Get Direct Copy</a>
       </div>
     </div>
@@ -434,7 +463,16 @@ footer{
       <h3>Real Estate Investment Starter Guide</h3>
       <p>A beginner-friendly resource for learning rental property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Open Resource</a>
+        <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a>
+      </div>
+    </div>
+
+    <div class="product featured business">
+      <div class="kicker">Business & Operations</div>
+      <h3>Business Tools Collection</h3>
+      <p>Accounting, bookkeeping, taxes, invoicing, office software, PDF tools, migration software and small-business operations resources.</p>
+      <div class="product-buttons">
+        <a class="btn" href="#business-tools">Explore Tools</a>
       </div>
     </div>
 
@@ -443,7 +481,7 @@ footer{
       <h3>CNC Academy Membership</h3>
       <p>Monthly stock-market learning membership for traders and investors looking for structured education and market guidance.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">View Membership</a>
+        <a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">Access Membership</a>
       </div>
     </div>
 
@@ -452,7 +490,7 @@ footer{
       <h3>Live Futures Educational Platform</h3>
       <p>Education platform focused on futures markets, live market learning, trading concepts, and active-market development.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://simplemarketmetrics.gumroad.com/l/gpcfp?a=812339299" target="_blank">View Platform</a>
+        <a class="btn" href="https://simplemarketmetrics.gumroad.com/l/gpcfp?a=812339299" target="_blank">Access Platform</a>
       </div>
     </div>
 
@@ -461,7 +499,7 @@ footer{
       <h3>Ninja Trader Wave Runner</h3>
       <p>A trading tool connected to NinjaTrader users focused on market movement, wave structure, and active trading workflows.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank">View Tool</a>
+        <a class="btn" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank">Access Tool</a>
       </div>
     </div>
 
@@ -470,7 +508,7 @@ footer{
       <h3>VIP RealTimeTrades ASX Stocks, Crypto & US Markets</h3>
       <p>Monthly market resource with trade alerts, stock and crypto analysis, market research, trading explanations, and community discussion.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://ruycorto.gumroad.com/l/gidjrr?a=812339299" target="_blank">View Membership</a>
+        <a class="btn" href="https://ruycorto.gumroad.com/l/gidjrr?a=812339299" target="_blank">Access Membership</a>
       </div>
     </div>
 
@@ -479,7 +517,7 @@ footer{
       <h3>Paycheck to Portfolio Membership</h3>
       <p>A membership focused on helping learners move from earned income to portfolio-building, investing habits, and long-term financial growth.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://paycheckportfolio.gumroad.com/l/iescv?a=812339299" target="_blank">View Membership</a>
+        <a class="btn" href="https://paycheckportfolio.gumroad.com/l/iescv?a=812339299" target="_blank">Access Membership</a>
       </div>
     </div>
 
@@ -488,7 +526,7 @@ footer{
       <h3>The RED-E Society</h3>
       <p>A financial education community focused on faith, discipline, financial mastery, and personal wealth development.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://rogers1906.gumroad.com/l/fcxjqn?a=812339299" target="_blank">View Society</a>
+        <a class="btn" href="https://rogers1906.gumroad.com/l/fcxjqn?a=812339299" target="_blank">Access Society</a>
       </div>
     </div>
 
@@ -497,7 +535,7 @@ footer{
       <h3>A Wealth Transfer Survival Manual</h3>
       <p>A financial education manual about managing a wealth transfer wisely and avoiding common mistakes after receiving a blessing.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://realthomsieloff.gumroad.com/l/fkmgcn?a=812339299" target="_blank">View Manual</a>
+        <a class="btn" href="https://realthomsieloff.gumroad.com/l/fkmgcn?a=812339299" target="_blank">Access Manual</a>
       </div>
     </div>
 
@@ -506,7 +544,7 @@ footer{
       <h3>To The Moon .999 Fine Silver Coin</h3>
       <p>A five-count collectible silver coin set for readers interested in precious metals, tangible assets, collectibles, and stores of value.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&recommended_by=search&_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&a=812339299" target="_blank">View Coin Collection</a>
+        <a class="btn" href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&recommended_by=search&_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&a=812339299" target="_blank">View Collection</a>
       </div>
     </div>
 
@@ -515,8 +553,107 @@ footer{
       <h3>MDE.TV Premium Membership</h3>
       <p>Premium creator membership with original shows, podcasts, commentary, comedy content, and exclusive releases.</p>
       <div class="product-buttons">
-        <a class="btn" href="https://samhyde.gumroad.com/l/HydeWars?a=812339299" target="_blank">View Membership</a>
+        <a class="btn" href="https://samhyde.gumroad.com/l/HydeWars?a=812339299" target="_blank">Access Membership</a>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="business-tools">
+  <div class="section-head">
+    <h2>Business & Operations</h2>
+    <p>Taxes, bookkeeping, accounting, software and small-business tools</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Tax • Accounting • Bookkeeping</div><div class="big">Small Business Owner Guide</div></div>
+      <div class="kicker">Taxes & Bookkeeping</div>
+      <h3>The Taxes, Accounting, Bookkeeping Bible</h3>
+      <p>A 3-in-1 guide for small business owners covering taxes, bookkeeping, accounting, savings tips, loopholes and IRS penalty avoidance.</p>
+      <a class="btn" href="https://amzn.to/4ecDZu6" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Bookkeeping</div><div class="big">All-in-One For Dummies</div></div>
+      <div class="kicker">Bookkeeping</div>
+      <h3>Bookkeeping All-in-One For Dummies</h3>
+      <p>A practical reference for learning bookkeeping, financial tracking, and business recordkeeping basics.</p>
+      <a class="btn" href="https://amzn.to/4wVM65T" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Taxes</div><div class="big">Deductions & Tax Breaks 2026</div></div>
+      <div class="kicker">Tax Planning</div>
+      <h3>Deductions and Tax Breaks 2026</h3>
+      <p>A tax reference for understanding deductible expenses, tax breaks, planning opportunities, and filing preparation.</p>
+      <a class="btn" href="https://amzn.to/3RAB59T" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Accounting</div><div class="big">Beginner Accounting Guide</div></div>
+      <div class="kicker">Accounting Education</div>
+      <h3>Accounting for Beginners</h3>
+      <p>An all-in-one accounting guide for learning financial statements, taxes, managerial accounting and business performance.</p>
+      <a class="btn" href="https://amzn.to/4vbVyjy" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">PDF Tools</div><div class="big">Edit • Convert • Merge • eSign</div></div>
+      <div class="kicker">Document Tools</div>
+      <h3>Scrivar PDF Suite Pro</h3>
+      <p>PDF software for organizing, editing, converting, merging, signing, OCR and document management workflows.</p>
+      <a class="btn" href="https://amzn.to/4e2O9fQ" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Migration Software</div><div class="big">PC Transfer Toolkit</div></div>
+      <div class="kicker">Business Technology</div>
+      <h3>Laplink PCmover Migration Software</h3>
+      <p>Business migration software for moving files, settings, apps and user data across business computers.</p>
+      <a class="btn" href="https://amzn.to/4fjj0a3" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Billing</div><div class="big">Invoice & Payment Workflow</div></div>
+      <div class="kicker">Invoicing</div>
+      <h3>Express Invoice Billing and Invoicing Software</h3>
+      <p>Billing and invoicing software for creating invoices, tracking payments, managing customers and business billing.</p>
+      <a class="btn" href="https://amzn.to/4akueHT" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Office Suite</div><div class="big">Word • Excel • PowerPoint</div></div>
+      <div class="kicker">Office Productivity</div>
+      <h3>Microsoft Office Home & Business 2024</h3>
+      <p>Classic desktop office apps for documents, spreadsheets, presentations, email, productivity and business work.</p>
+      <a class="btn" href="https://amzn.to/49ysgU3" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Finance Software</div><div class="big">Business & Personal Money</div></div>
+      <div class="kicker">Business Finance</div>
+      <h3>Quicken Classic Business & Personal</h3>
+      <p>Finance software for managing business and personal accounts, expenses, income, planning and financial tracking.</p>
+      <a class="btn" href="https://amzn.to/4uJOMlv" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Tax Software</div><div class="big">Premium & Business Filing</div></div>
+      <div class="kicker">Tax Software</div>
+      <h3>H&R Block Tax Software Premium & Business 2025</h3>
+      <p>Tax software for premium and business filing needs, online code delivery, and small-business tax preparation.</p>
+      <a class="btn" href="https://amzn.to/49wetgM" target="_blank">Access Now</a>
+    </div>
+
+    <div class="product featured business">
+      <div class="preview"><div class="small">Workforce Tools</div><div class="big">Cloud Time Clock</div></div>
+      <div class="kicker">Time Tracking</div>
+      <h3>NGTeco Cloud-Based Time Clock</h3>
+      <p>A WiFi attendance machine for small-business time tracking, team attendance, employee clock-in and workforce management.</p>
+      <a class="btn" href="https://amzn.to/4dI2Aa0" target="_blank">Access Now</a>
     </div>
 
   </div>
@@ -529,6 +666,13 @@ footer{
   </div>
 
   <div class="grid">
+    <div class="resource">
+      <div class="kicker">Business & Operations</div>
+      <h3>Taxes, Accounting & Office Tools</h3>
+      <p>Bookkeeping books, tax software, invoicing tools, office apps, PDF tools, time clocks and small-business systems.</p>
+      <a href="#business-tools" class="btn">Explore Tools</a>
+    </div>
+
     <div class="resource">
       <div class="kicker">Real Estate</div>
       <h3>Property Learning</h3>
@@ -546,21 +690,7 @@ footer{
       <h3>Portfolio & Financial Growth</h3>
       <p>Resources focused on building from income to assets, financial discipline, and wealth transfer education.</p>
     </div>
-
-    <div class="resource">
-      <div class="kicker">Self Development</div>
-      <h3>Healing & Personal Growth</h3>
-      <p>Books and resources focused on confidence, healing, relationships, mindset, and better decisions.</p>
-    </div>
   </div>
-</section>
-
-<section id="hot">
-  <div class="section-head">
-    <h2>Most Read</h2>
-    <p>Free public-domain books sorted by downloads</p>
-  </div>
-  <div id="hotItems" class="grid"></div>
 </section>
 
 <section id="books">
@@ -574,20 +704,20 @@ footer{
 </main>
 
 <footer>
-  Capital Library — wealth, investing, trading, real estate, hard assets, business, personal growth, media, and selected fiction classics.
+  Capital Library — wealth, investing, trading, real estate, business tools, hard assets, personal growth, and selected fiction classics.
 </footer>
 
 <script>
-function setCategory(category){
-  searchBooks(category);
-}
-
 function askAssistant(){
   const question = document.getElementById("aiQuestion").value.toLowerCase();
   const answer = document.getElementById("aiAnswer");
   let response = "";
 
-  if(question.includes("real estate") || question.includes("rental") || question.includes("property")){
+  if(question.includes("tax") || question.includes("bookkeeping") || question.includes("accounting") || question.includes("business tool") || question.includes("invoice")){
+    response = "Start with Business & Operations. That section includes tax guides, bookkeeping books, accounting resources, invoicing software, PDF tools, office software and small-business systems.";
+    document.getElementById("business-tools").scrollIntoView({behavior:"smooth"});
+  }
+  else if(question.includes("real estate") || question.includes("rental") || question.includes("property")){
     response = "Start with Real Estate. Review the Real Estate Investment Starter Guide, then study cash flow, cap rate, expenses, and rental property basics.";
     searchBooks("real estate");
   }
@@ -604,19 +734,15 @@ function askAssistant(){
     searchBooks("silver");
   }
   else if(question.includes("business") || question.includes("leadership")){
-    response = "Start with Business and Leadership. Study management, commerce, decision-making, and strategy.";
+    response = "Start with Business and Leadership. Study management, commerce, decision-making, strategy, and operations.";
     searchBooks("business");
   }
   else if(question.includes("narcissist") || question.includes("relationship") || question.includes("heal")){
     response = "Start with Self Development. Oops, I Dated a Narcissist fits this category for healing, clarity, and confidence.";
     searchBooks("self help");
   }
-  else if(question.includes("media") || question.includes("podcast") || question.includes("video")){
-    response = "Independent Media includes creator content, commentary, podcasts, video libraries, and long-form entertainment.";
-    searchBooks("media");
-  }
   else{
-    response = "Try Wealth Building, Real Estate, Trading, Stocks, Business, Self Development, or Silver & Hard Assets.";
+    response = "Try Business & Operations, Wealth Building, Real Estate, Trading, Stocks, Self Development, or Silver & Hard Assets.";
     searchBooks("wealth");
   }
 
@@ -653,7 +779,7 @@ function getCategory(book){
   return "Library";
 }
 
-function bookCard(book, hot=false){
+function bookCard(book){
   const title = clean(book.title);
   const author = clean(getAuthor(book));
   const cover = book.formats["image/jpeg"];
@@ -668,7 +794,7 @@ function bookCard(book, hot=false){
         ${cover ? `<img src="${cover}" alt="${title} cover">` : `<div class="fake-cover">${title}</div>`}
       </div>
       <div class="info">
-        <span class="tag">${hot ? "Most Read" : category}</span>
+        <span class="tag">${category}</span>
         <h3>${title}</h3>
         <div class="author">By ${author}</div>
         <div class="meta">Downloads: ${downloads.toLocaleString()}</div>
@@ -682,10 +808,7 @@ function bookCard(book, hot=false){
 }
 
 async function searchBooks(query="wealth"){
-  const hotItems = document.getElementById("hotItems");
   const ebookList = document.getElementById("ebookList");
-
-  hotItems.innerHTML = `<div class="loading">Loading most-read books...</div>`;
   ebookList.innerHTML = `<div class="loading">Loading book collection...</div>`;
 
   try{
@@ -695,18 +818,12 @@ async function searchBooks(query="wealth"){
 
     const ebookData = await ebookResponse.json();
     const books = ebookData.results || [];
-    const sorted = [...books].sort((a,b)=>(b.download_count || 0) - (a.download_count || 0));
-
-    hotItems.innerHTML = sorted.length
-      ? sorted.slice(0,4).map(book => bookCard(book,true)).join("")
-      : `<div class="loading">No most-read books found.</div>`;
 
     ebookList.innerHTML = books.length
       ? books.slice(0,12).map(book => bookCard(book)).join("")
       : `<div class="loading">No ebooks found for this topic.</div>`;
 
   }catch(error){
-    hotItems.innerHTML = `<div class="loading">Could not load most-read books.</div>`;
     ebookList.innerHTML = `<div class="loading">Could not load ebooks.</div>`;
   }
 }
