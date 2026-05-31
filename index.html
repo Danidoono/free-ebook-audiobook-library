@@ -15,13 +15,13 @@
   --cream:#f5efe3;
   --paper:#fffaf1;
   --gold:#c2a15b;
+  --silver:#bfc5c1;
   --text:#17231d;
   --muted:#66736b;
   --line:#ded3bd;
 }
 
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
 
 body{
@@ -255,6 +255,10 @@ button{
   border-top:5px solid var(--green3);
 }
 
+.product.silver{
+  border-top:5px solid var(--silver);
+}
+
 .product-buttons{
   display:flex;
   gap:10px;
@@ -418,7 +422,7 @@ footer{
   <p>
     Capital Library brings together published books, free public-domain reading,
     learning paths, and practical resources focused on wealth building, investing,
-    real estate, business, economics, personal growth, and a smaller shelf of fiction classics.
+    real estate, business, economics, personal growth, hard assets, and selected fiction classics.
   </p>
   <div class="hero-buttons">
     <a href="#published" class="btn">View Published Books</a>
@@ -431,8 +435,8 @@ footer{
 <section class="stats">
   <div class="stat"><strong>Wealth</strong> Investing and money education</div>
   <div class="stat"><strong>Real Estate</strong> Property and cash-flow learning</div>
+  <div class="stat"><strong>Hard Assets</strong> Silver, metals and tangible assets</div>
   <div class="stat"><strong>Self Growth</strong> Healing, mindset and discipline</div>
-  <div class="stat"><strong>Fiction</strong> A smaller classics section</div>
 </section>
 
 <section id="published">
@@ -466,6 +470,18 @@ footer{
         <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Open Resource</a>
       </div>
     </div>
+
+    <div class="product featured silver">
+      <div class="kicker">Silver & Hard Assets</div>
+      <h3>To The Moon .999 Fine Silver Coin</h3>
+      <p>
+        A five-count collectible silver coin set for readers interested in precious metals,
+        tangible assets, collectibles, and alternative stores of value.
+      </p>
+      <div class="product-buttons">
+        <a class="btn" href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&recommended_by=search&_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&a=812339299" target="_blank">View Coin Collection</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -484,6 +500,7 @@ footer{
     <span class="chip" onclick="setCategory('business')">Business</span>
     <span class="chip" onclick="setCategory('leadership')">Leadership</span>
     <span class="chip" onclick="setCategory('self help')">Self Help</span>
+    <span class="chip" onclick="setCategory('silver')">Silver & Hard Assets</span>
     <span class="chip" onclick="setCategory('fiction')">Fiction Classics</span>
   </div>
 </section>
@@ -508,6 +525,11 @@ footer{
     <div class="map-card" onclick="setCategory('real estate')">
       <h3>Real Estate</h3>
       <p>Property, rent, ownership, cash flow, land, and practical deal thinking.</p>
+    </div>
+
+    <div class="map-card" onclick="setCategory('silver')">
+      <h3>Silver & Hard Assets</h3>
+      <p>Precious metals, silver, collectibles, tangible assets, and stores of value.</p>
     </div>
 
     <div class="map-card" onclick="setCategory('business')">
@@ -562,6 +584,17 @@ footer{
     </div>
 
     <div class="path">
+      <h3>Hard Asset Basics</h3>
+      <p>Explore physical silver, precious metals, collectibles, and tangible assets.</p>
+      <ul>
+        <li>Search: silver</li>
+        <li>Learn about hard assets</li>
+        <li>Compare collectibility and value</li>
+      </ul>
+      <a class="btn" onclick="setCategory('silver')">Open Path</a>
+    </div>
+
+    <div class="path">
       <h3>Business Operator</h3>
       <p>For learning business, leadership, strategy, commerce, and management.</p>
       <ul>
@@ -603,13 +636,23 @@ footer{
     </div>
 
     <div class="resource">
-      <div class="kicker">Author Shelf</div>
+      <div class="kicker">Self Development</div>
       <h3>Oops, I Dated a Narcissist</h3>
       <p>
         A personal-growth book placed under Self Development and Relationships
         for readers focused on healing and emotional clarity.
       </p>
       <a href="https://danidoono.gumroad.com/l/hklbsx" target="_blank" class="btn">Get the Book</a>
+    </div>
+
+    <div class="resource">
+      <div class="kicker">Silver & Hard Assets</div>
+      <h3>To The Moon .999 Fine Silver Coin</h3>
+      <p>
+        A five-count collectible .999 fine silver coin set connected to the hard assets
+        and tangible wealth section of Capital Library.
+      </p>
+      <a href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&recommended_by=search&_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&a=812339299" target="_blank" class="btn">View Coin Collection</a>
     </div>
 
     <div class="resource">
@@ -651,7 +694,7 @@ footer{
 </main>
 
 <footer>
-  Capital Library — wealth, investing, real estate, business, personal growth, and selected fiction classics.
+  Capital Library — wealth, investing, real estate, hard assets, business, personal growth, and selected fiction classics.
 </footer>
 
 <script>
@@ -676,6 +719,7 @@ function getAuthor(book){
 function getCategory(book){
   const text = ((book.subjects || []).join(" ") + " " + book.title).toLowerCase();
 
+  if(text.includes("silver") || text.includes("gold") || text.includes("metal") || text.includes("coin")) return "Hard Assets";
   if(text.includes("finance") || text.includes("money") || text.includes("wealth")) return "Wealth";
   if(text.includes("investment") || text.includes("investing")) return "Investing";
   if(text.includes("real estate") || text.includes("property") || text.includes("land")) return "Real Estate";
