@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Hustle Hub - AI Tool Finder</title>
-<meta name="description" content="Find the best AI tools for your side hustle using a smart AI tool finder.">
+<title>AI Hustle Hub Chat</title>
+<meta name="description" content="Chat with AI Hustle Hub to find AI tools, side hustle ideas, and money-making workflows.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#050505;
-  --card:#111;
+  --panel:#101010;
+  --card:#161616;
   --yellow:#FFD60A;
   --muted:#bdbdbd;
+  --line:rgba(255,214,10,.2);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -23,295 +25,403 @@ body{
   color:white;
 }
 
-header{
-  text-align:center;
-  padding:80px 20px;
-  background:radial-gradient(circle at top,#3a2f00,#050505 60%);
+.app{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  padding:18px 6%;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#050505;
 }
 
 .logo{
-  font-size:1.4rem;
+  color:var(--yellow);
   font-weight:800;
-  color:var(--yellow);
-  margin-bottom:20px;
+  font-size:1.4rem;
 }
 
-h1{
-  font-size:3.5rem;
-  color:var(--yellow);
+.logo span{color:white;}
+
+.badge{
+  color:black;
+  background:var(--yellow);
+  padding:7px 12px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.8rem;
 }
 
-p{
+.hero{
+  text-align:center;
+  padding:45px 20px 25px;
+}
+
+.hero h1{
+  color:var(--yellow);
+  font-size:3rem;
+}
+
+.hero p{
   color:var(--muted);
+  max-width:750px;
+  margin:14px auto;
   line-height:1.6;
 }
 
-.search-box{
-  max-width:850px;
-  margin:35px auto 0;
-  background:#111;
-  border:1px solid rgba(255,214,10,.3);
+.chat-wrap{
+  width:min(980px,94%);
+  margin:0 auto 25px;
+  background:var(--panel);
+  border:1px solid var(--line);
   border-radius:24px;
-  padding:18px;
+  overflow:hidden;
+  box-shadow:0 0 35px rgba(255,214,10,.08);
 }
 
-textarea{
-  width:100%;
-  min-height:110px;
+.chat-box{
+  height:520px;
+  overflow-y:auto;
+  padding:22px;
+}
+
+.message{
+  max-width:82%;
+  margin-bottom:16px;
+  padding:16px;
+  border-radius:18px;
+  line-height:1.6;
+  white-space:pre-line;
+}
+
+.bot{
+  background:var(--card);
+  border:1px solid var(--line);
+  color:white;
+}
+
+.user{
+  background:var(--yellow);
+  color:black;
+  margin-left:auto;
+  font-weight:700;
+}
+
+.input-area{
+  display:flex;
+  gap:10px;
+  padding:16px;
+  border-top:1px solid var(--line);
+  background:#090909;
+}
+
+input{
+  flex:1;
+  padding:16px;
+  border-radius:14px;
+  border:1px solid var(--line);
   background:#050505;
   color:white;
-  border:1px solid rgba(255,214,10,.25);
-  border-radius:16px;
-  padding:18px;
   font-size:1rem;
-  resize:none;
   outline:none;
 }
 
 button{
-  margin-top:14px;
-  width:100%;
-  padding:15px;
+  padding:16px 22px;
   border:none;
   border-radius:14px;
   background:var(--yellow);
   color:black;
   font-weight:800;
-  font-size:1rem;
   cursor:pointer;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:35px 20px;
+.quick{
+  width:min(980px,94%);
+  margin:0 auto 40px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid rgba(255,214,10,.18);
-  border-radius:20px;
-  padding:24px;
-}
-
-.card h3{
-  color:var(--yellow);
-  margin-bottom:10px;
-}
-
-.card p{
-  margin-bottom:18px;
-}
-
-.btn{
-  display:inline-block;
-  background:var(--yellow);
-  color:black;
-  padding:10px 15px;
-  border-radius:12px;
-  font-weight:800;
-  text-decoration:none;
-}
-
-.section-title{
-  color:var(--yellow);
-  margin:30px 0 18px;
-}
-
-.examples{
-  margin-top:18px;
-  color:#999;
-  font-size:.95rem;
+.quick button{
+  padding:10px 14px;
+  font-size:.9rem;
 }
 
 footer{
   text-align:center;
-  padding:40px;
   color:#888;
+  padding:25px;
+  border-top:1px solid var(--line);
+}
+
+a{color:var(--yellow);}
+
+@media(max-width:650px){
+  .hero h1{font-size:2.2rem;}
+  .message{max-width:95%;}
+  .input-area{flex-direction:column;}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">⚡ AI Hustle Hub</div>
-  <h1>Find the Right AI Tool</h1>
-  <p>Type what you want to do, and we will recommend the best AI tools for your side hustle.</p>
+<div class="app">
 
-  <div class="search-box">
-    <textarea id="userInput" placeholder="Example: I want to make faceless YouTube videos with AI voice and captions..."></textarea>
-    <button onclick="findTools()">Find My AI Tools</button>
-    <div class="examples">
-      Try: “make TikTok videos”, “write blog posts”, “create AI voice”, “start dropshipping”, “make logos”, “automate my business”
+  <div class="topbar">
+    <div class="logo">⚡ AI <span>Hustle Hub</span></div>
+    <div class="badge">Free Tool Finder</div>
+  </div>
+
+  <section class="hero">
+    <h1>AI Side Hustle Chat</h1>
+    <p>Type what you want to create or sell. The chat will recommend AI tools, a simple workflow, and ways to make money.</p>
+  </section>
+
+  <div class="chat-wrap">
+    <div class="chat-box" id="chatBox">
+      <div class="message bot">
+Hi 👋 I’m AI Hustle Hub.
+
+Tell me your goal, like:
+“I want to make money with TikTok”
+“I want to start faceless YouTube”
+“I want to sell digital products”
+“I want to freelance with AI”
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input id="userInput" placeholder="Type your side hustle idea..." onkeydown="handleEnter(event)">
+      <button onclick="sendMessage()">Send</button>
     </div>
   </div>
-</header>
 
-<main class="container">
-  <h2 class="section-title">Recommended Tools</h2>
-  <div id="results" class="grid"></div>
-</main>
+  <div class="quick">
+    <button onclick="quickAsk('I want to make faceless YouTube videos')">Faceless YouTube</button>
+    <button onclick="quickAsk('I want to make money with TikTok')">TikTok</button>
+    <button onclick="quickAsk('I want to sell digital products')">Digital Products</button>
+    <button onclick="quickAsk('I want to freelance with AI')">Freelancing</button>
+    <button onclick="quickAsk('I want to start dropshipping')">Dropshipping</button>
+  </div>
 
-<footer>
-  © 2026 AI Hustle Hub
-</footer>
+  <footer>
+    © 2026 AI Hustle Hub — Tool recommendations only. Always check pricing and terms before using any tool.
+  </footer>
+
+</div>
 
 <script>
-const tools = [
-  {
-    name:"ChatGPT",
-    tags:["writing","ideas","business","side hustle","email","script","content","freelance"],
-    desc:"Best for business ideas, content writing, scripts, emails, and planning side hustles.",
-    url:"https://chatgpt.com"
-  },
-  {
-    name:"Claude",
-    tags:["writing","research","blog","long form","code","summarize"],
-    desc:"Great for long-form writing, research, coding help, and strategy.",
-    url:"https://claude.ai"
-  },
-  {
-    name:"Perplexity",
-    tags:["research","market","competitor","trend","search","facts"],
-    desc:"Best for researching markets, competitors, trends, and content ideas.",
-    url:"https://www.perplexity.ai"
-  },
-  {
-    name:"Runway",
-    tags:["video","ai video","youtube","tiktok","ad","creator"],
-    desc:"Create AI-generated videos for TikTok, YouTube Shorts, ads, and social content.",
-    url:"https://runwayml.com"
-  },
-  {
-    name:"Pika",
-    tags:["video","ai video","shorts","animation","creator"],
-    desc:"Generate short AI videos from text prompts and images.",
-    url:"https://pika.art"
-  },
-  {
-    name:"OpusClip",
-    tags:["shorts","tiktok","youtube","reels","clips","viral"],
-    desc:"Turn long videos into viral short clips for TikTok, Reels, and YouTube Shorts.",
-    url:"https://www.opus.pro"
-  },
-  {
-    name:"CapCut",
-    tags:["edit","video","tiktok","captions","shorts","reels"],
-    desc:"Edit short-form videos with captions, templates, effects, and AI tools.",
-    url:"https://www.capcut.com"
-  },
-  {
-    name:"ElevenLabs",
-    tags:["voice","voiceover","audio","faceless","youtube","podcast"],
-    desc:"Create realistic AI voiceovers for faceless videos, podcasts, and ads.",
-    url:"https://elevenlabs.io"
-  },
-  {
-    name:"Murf AI",
-    tags:["voice","voiceover","presentation","course","audio"],
-    desc:"Professional AI voiceovers for videos, courses, and presentations.",
-    url:"https://murf.ai"
-  },
-  {
-    name:"Midjourney",
-    tags:["image","art","thumbnail","design","poster","brand"],
-    desc:"Create premium AI images for thumbnails, branding, and digital products.",
-    url:"https://www.midjourney.com"
-  },
-  {
-    name:"Canva AI",
-    tags:["design","logo","thumbnail","poster","social media","presentation"],
-    desc:"Create logos, social posts, thumbnails, presentations, and marketing graphics.",
-    url:"https://www.canva.com"
-  },
-  {
-    name:"Leonardo AI",
-    tags:["image","art","mockup","game","product","design"],
-    desc:"Create AI art, product mockups, game assets, and marketing visuals.",
-    url:"https://leonardo.ai"
-  },
-  {
-    name:"Shopify Magic",
-    tags:["ecommerce","dropshipping","store","product","sell online"],
-    desc:"AI ecommerce tools for product descriptions, online stores, and selling products.",
-    url:"https://www.shopify.com/magic"
-  },
-  {
-    name:"AdCreative.ai",
-    tags:["ads","marketing","ecommerce","facebook ads","instagram ads"],
-    desc:"Create AI ad creatives for ecommerce, social media, and marketing campaigns.",
-    url:"https://www.adcreative.ai"
-  },
-  {
-    name:"Zapier",
-    tags:["automation","workflow","business","apps","no code"],
-    desc:"Automate side hustle workflows and connect apps without coding.",
-    url:"https://zapier.com"
-  },
-  {
-    name:"Make",
-    tags:["automation","workflow","business","apps","no code"],
-    desc:"Build powerful business and marketing automations visually.",
-    url:"https://www.make.com"
-  },
-  {
-    name:"Gamma",
-    tags:["presentation","pitch deck","slides","business","course"],
-    desc:"Create AI presentations, pitch decks, guides, and business documents.",
-    url:"https://gamma.app"
-  },
-  {
-    name:"Surfer SEO",
-    tags:["seo","blog","google","ranking","content"],
-    desc:"Optimize blog posts and articles to rank better on Google.",
-    url:"https://surferseo.com"
-  }
-];
+const toolLinks = {
+  "ChatGPT":"https://chatgpt.com",
+  "Claude":"https://claude.ai",
+  "Perplexity":"https://www.perplexity.ai",
+  "Canva AI":"https://www.canva.com",
+  "CapCut":"https://www.capcut.com",
+  "OpusClip":"https://www.opus.pro",
+  "Runway":"https://runwayml.com",
+  "Pika":"https://pika.art",
+  "ElevenLabs":"https://elevenlabs.io",
+  "Midjourney":"https://www.midjourney.com",
+  "Leonardo AI":"https://leonardo.ai",
+  "Shopify Magic":"https://www.shopify.com/magic",
+  "Zapier":"https://zapier.com",
+  "Make":"https://www.make.com",
+  "Gamma":"https://gamma.app",
+  "Jasper":"https://www.jasper.ai",
+  "Copy.ai":"https://www.copy.ai",
+  "Surfer SEO":"https://surferseo.com"
+};
 
-function findTools(){
-  const input = document.getElementById("userInput").value.toLowerCase();
-  const results = document.getElementById("results");
-  results.innerHTML = "";
+function addMessage(text, sender){
+  const chatBox = document.getElementById("chatBox");
+  const msg = document.createElement("div");
+  msg.className = "message " + sender;
+  msg.innerHTML = text;
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
 
-  if(input.trim() === ""){
-    results.innerHTML = "<p>Please type what you want to create or automate.</p>";
-    return;
+function linkTool(name){
+  return `<a href="${toolLinks[name]}" target="_blank">${name}</a>`;
+}
+
+function generateReply(input){
+  const q = input.toLowerCase();
+
+  if(q.includes("youtube") || q.includes("faceless")){
+    return `🎬 Best AI stack for faceless YouTube:
+
+1. ${linkTool("ChatGPT")} — write video ideas and scripts
+2. ${linkTool("ElevenLabs")} — create realistic voiceovers
+3. ${linkTool("Runway")} or ${linkTool("Pika")} — generate video clips
+4. ${linkTool("CapCut")} — edit, add captions, and export
+5. ${linkTool("Canva AI")} — create thumbnails
+
+Simple plan:
+Day 1: Pick a niche like money, health, facts, or tech.
+Day 2: Use ChatGPT to write 5 short scripts.
+Day 3: Make voiceovers with ElevenLabs.
+Day 4: Edit with CapCut.
+Day 5: Post on YouTube Shorts and TikTok.
+
+Money options:
+Affiliate links, YouTube ads, digital products, sponsorships.`;
   }
 
-  let matched = tools.filter(tool =>
-    tool.tags.some(tag => input.includes(tag))
-  );
+  if(q.includes("tiktok") || q.includes("reels") || q.includes("shorts")){
+    return `📱 Best AI stack for TikTok/Reels:
 
-  if(input.includes("faceless")){
-    matched.push(...tools.filter(t => ["ElevenLabs","CapCut","OpusClip","Runway"].includes(t.name)));
+1. ${linkTool("ChatGPT")} — viral hooks and scripts
+2. ${linkTool("CapCut")} — edit short videos
+3. ${linkTool("OpusClip")} — turn long videos into clips
+4. ${linkTool("ElevenLabs")} — AI voiceovers
+5. ${linkTool("Canva AI")} — thumbnails and carousel posts
+
+Content ideas:
+• AI tool tutorials
+• Side hustle tips
+• Product reviews
+• Motivational clips
+• “3 tools that save time” videos
+
+Money options:
+Affiliate links in bio, digital products, sponsorships, paid templates.`;
   }
 
-  if(input.includes("money") || input.includes("side hustle")){
-    matched.push(...tools.filter(t => ["ChatGPT","Canva AI","Zapier","Shopify Magic"].includes(t.name)));
+  if(q.includes("digital product") || q.includes("etsy") || q.includes("template")){
+    return `🛍️ Best AI stack for digital products:
+
+1. ${linkTool("ChatGPT")} — product ideas and copy
+2. ${linkTool("Canva AI")} — templates, planners, guides
+3. ${linkTool("Midjourney")} or ${linkTool("Leonardo AI")} — graphics
+4. ${linkTool("Gamma")} — ebooks and presentations
+5. ${linkTool("Perplexity")} — niche research
+
+Products to sell:
+• Resume templates
+• Study planners
+• Budget planners
+• AI prompt packs
+• Social media templates
+• Notion templates
+
+Money options:
+Etsy, Gumroad, Ko-fi, Shopify, Payhip.`;
   }
 
-  matched = [...new Map(matched.map(tool => [tool.name, tool])).values()];
+  if(q.includes("freelance") || q.includes("client") || q.includes("service")){
+    return `💼 Best AI stack for freelancing:
 
-  if(matched.length === 0){
-    matched = tools.slice(0,6);
+1. ${linkTool("ChatGPT")} — proposals, emails, service packages
+2. ${linkTool("Claude")} — long-form writing and strategy
+3. ${linkTool("Canva AI")} — client graphics
+4. ${linkTool("Jasper")} or ${linkTool("Copy.ai")} — marketing copy
+5. ${linkTool("Zapier")} — automate client workflows
+
+Services to offer:
+• Blog writing
+• Short video editing
+• Social media captions
+• Email marketing
+• AI automation setup
+• Resume writing
+
+Where to get clients:
+Fiverr, Upwork, Facebook groups, LinkedIn, local businesses.`;
   }
 
-  matched.forEach(tool => {
-    results.innerHTML += `
-      <div class="card">
-        <h3>${tool.name}</h3>
-        <p>${tool.desc}</p>
-        <a class="btn" href="${tool.url}" target="_blank">Open Tool</a>
-      </div>
-    `;
-  });
+  if(q.includes("dropshipping") || q.includes("ecommerce") || q.includes("shopify")){
+    return `🛒 Best AI stack for ecommerce:
+
+1. ${linkTool("Shopify Magic")} — product descriptions
+2. ${linkTool("ChatGPT")} — product research and ad copy
+3. ${linkTool("AdCreative.ai")} — ad creatives
+4. ${linkTool("Canva AI")} — product images and social posts
+5. ${linkTool("Zapier")} — automate store tasks
+
+Simple plan:
+1. Pick a niche product.
+2. Research competitors.
+3. Create product page copy.
+4. Make 3 ads.
+5. Test on TikTok, Instagram, or Pinterest.
+
+Money options:
+Shopify store, print-on-demand, affiliate ecommerce, digital downloads.`;
+  }
+
+  if(q.includes("blog") || q.includes("seo") || q.includes("website")){
+    return `📝 Best AI stack for blogging/SEO:
+
+1. ${linkTool("Perplexity")} — research topics
+2. ${linkTool("ChatGPT")} — outlines and drafts
+3. ${linkTool("Claude")} — long-form article writing
+4. ${linkTool("Surfer SEO")} — SEO optimization
+5. ${linkTool("Canva AI")} — blog images
+
+Money options:
+Display ads, affiliate links, sponsored posts, digital products.
+
+Best article ideas:
+• Best AI tools to make money online
+• AI side hustles for beginners
+• Best AI tools for TikTok creators
+• How to use ChatGPT for freelancing`;
+  }
+
+  return `Here is a general AI side hustle stack:
+
+1. ${linkTool("ChatGPT")} — ideas, scripts, business planning
+2. ${linkTool("Canva AI")} — designs and social content
+3. ${linkTool("CapCut")} — video editing
+4. ${linkTool("ElevenLabs")} — voiceovers
+5. ${linkTool("Perplexity")} — research
+6. ${linkTool("Zapier")} — automation
+
+Simple beginner plan:
+Day 1: Pick one niche.
+Day 2: Choose one platform: TikTok, YouTube, Etsy, Fiverr, or a blog.
+Day 3: Create 5 pieces of content or 1 digital product.
+Day 4: Publish and test.
+Day 5: Add affiliate links or a service offer.
+
+Try typing something more specific like:
+“I want to make TikTok videos”
+“I want to sell templates”
+“I want to freelance with AI”`;
+}
+
+function sendMessage(){
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if(!text) return;
+
+  addMessage(text, "user");
+  input.value = "";
+
+  setTimeout(() => {
+    addMessage(generateReply(text), "bot");
+  }, 400);
+}
+
+function quickAsk(text){
+  document.getElementById("userInput").value = text;
+  sendMessage();
+}
+
+function handleEnter(e){
+  if(e.key === "Enter"){
+    sendMessage();
+  }
 }
 </script>
 
