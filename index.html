@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Capital Library</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -446,73 +446,606 @@ footer{
     padding:28px 18px;
   }
 }
+
+/* Review update: smaller hero, top movers, animated assistant bar, collapsible categories */
+.hero{
+  padding:48px 7%;
+}
+
+.hero h1{
+  font-size:clamp(1.65rem,4vw,2.9rem);
+  max-width:720px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+main{
+  padding-top:24px;
+}
+
+#market-movers{
+  margin-top:0;
+}
+
+.movers-bar{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  white-space:nowrap;
+  box-shadow:0 12px 28px rgba(20,40,30,.07);
+}
+
+.movers-track{
+  display:inline-flex;
+  gap:28px;
+  padding:16px 24px;
+  min-width:max-content;
+  animation:moverScroll 28s linear infinite;
+}
+
+.mover-item{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-weight:800;
+}
+
+.mover-ticker{
+  color:var(--green-dark);
+}
+
+.mover-move.up,
+.up{
+  color:#2f9e44;
+}
+
+.mover-move.down,
+.down{
+  color:#c92a2a;
+}
+
+@keyframes moverScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+.assistant-box{
+  position:relative;
+  overflow:hidden;
+}
+
+.assistant-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+  transform:translateX(-100%);
+  animation:assistantShine 3.5s infinite;
+  pointer-events:none;
+}
+
+@keyframes assistantShine{
+  0%{transform:translateX(-100%)}
+  55%,100%{transform:translateX(100%)}
+}
+
+.assistant-row{
+  align-items:center;
+}
+
+.assistant-answer:empty{
+  display:none;
+}
+
+.category-toggle{
+  background:var(--green-dark);
+  color:white;
+  border:0;
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:800;
+  cursor:pointer;
+  min-width:92px;
+}
+
+.collapsible-section.collapsed .category-content{
+  display:none;
+}
+
+.collapsible-section .section-head{
+  align-items:center;
+}
+
+.pine-download-card{
+  max-width:760px;
+}
+
+@media(max-width:850px){
+  header{
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  nav a{
+    margin-left:0;
+    font-size:.82rem;
+    background:rgba(255,255,255,.08);
+    padding:8px 10px;
+    border-radius:999px;
+  }
+
+  .hero{
+    padding:38px 5%;
+  }
+
+  .hero h1{
+    font-size:clamp(1.45rem,8vw,2.25rem);
+  }
+
+  .section-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .section-head h2{
+    font-size:1.55rem;
+  }
+
+  .assistant-row{
+    flex-direction:row;
+    gap:8px;
+  }
+
+  .assistant-row input{
+    min-width:0;
+    padding:13px;
+  }
+
+  .assistant-row button{
+    padding:13px 16px;
+    white-space:nowrap;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:20px;
+  }
+}
+
+@media(max-width:430px){
+  .assistant-row{
+    flex-direction:column;
+  }
+
+  .assistant-row button{
+    width:100%;
+  }
+}
+
+
+/* Final review refinements */
+.logo-mark{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-badge{
+  width:44px;
+  height:44px;
+  border:2px solid var(--gold);
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  font-family:"Libre Baskerville",serif;
+  font-size:1rem;
+  color:#fff7df;
+  background:rgba(255,255,255,.08);
+  box-shadow:0 8px 20px rgba(0,0,0,.16);
+}
+
+.logo-copy{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.logo-copy strong{
+  font-family:"Libre Baskerville",serif;
+  font-size:1.35rem;
+  letter-spacing:.2px;
+}
+
+.logo-copy small{
+  margin-top:5px;
+  color:#f0d99b;
+  font-family:Inter,Arial,sans-serif;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  white-space:nowrap;
+  font-size:clamp(1.7rem,4.8vw,3.65rem);
+  letter-spacing:.02em;
+}
+
+.hero{
+  padding:44px 7%;
+}
+
+.hero p{
+  margin-bottom:0;
+}
+
+.single-line-head{
+  justify-content:space-between;
+}
+
+.single-line-head h2{
+  font-size:clamp(1.35rem,3vw,2rem);
+}
+
+.assistant-box{
+  padding:16px;
+}
+
+.assistant-row{
+  margin-bottom:0;
+}
+
+.assistant-row input{
+  min-height:46px;
+  border:2px solid rgba(200,165,93,.35);
+  animation:chatPulse 2.8s ease-in-out infinite;
+}
+
+.assistant-row button{
+  flex:0 0 auto;
+  padding:10px 14px;
+  min-height:38px;
+  border-radius:999px;
+  font-size:.85rem;
+}
+
+@keyframes chatPulse{
+  0%,100%{box-shadow:0 0 0 rgba(200,165,93,0)}
+  50%{box-shadow:0 0 0 5px rgba(200,165,93,.16)}
+}
+
+.collapsible-section{
+  background:rgba(255,253,248,.35);
+  border:1px solid rgba(226,216,195,.75);
+  border-radius:24px;
+  padding:0 18px 18px;
+  margin:24px 0;
+}
+
+.collapsible-section > .section-head{
+  margin:0;
+  padding:18px 0;
+}
+
+.category-toggle{
+  margin-left:auto;
+}
+
+.category-content{
+  padding-bottom:4px;
+}
+
+@media(max-width:850px){
+  .logo-badge{
+    width:40px;
+    height:40px;
+  }
+
+  .logo-copy strong{
+    font-size:1.18rem;
+  }
+
+  .hero h1{
+    white-space:normal;
+    font-size:clamp(1.45rem,7.5vw,2.4rem);
+  }
+
+  .hero{
+    padding:34px 5%;
+  }
+
+  .assistant-row{
+    flex-direction:row;
+  }
+
+  .assistant-row button{
+    padding:9px 12px;
+  }
+
+  .collapsible-section{
+    padding:0 14px 14px;
+  }
+}
+
+@media(max-width:430px){
+  .assistant-row{
+    flex-direction:row;
+  }
+
+  .assistant-row input{
+    font-size:14px;
+    padding:11px;
+  }
+
+  .assistant-row button{
+    width:auto;
+    padding:9px 11px;
+  }
+}
+
+
+/* Final aesthetic update */
+:root{
+  --green:#183f34;
+  --green-dark:#102c25;
+  --green-soft:#6aa98d;
+  --cream:#f6f1e7;
+  --paper:#fffdf8;
+  --gold:#d0a85f;
+  --text:#17231d;
+  --muted:#68766e;
+  --line:#e4d8c3;
+}
+
+body,
+input,
+button{
+  font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;
+}
+
+header{
+  background:rgba(16,44,37,.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;
+}
+
+.logo-mark{
+  gap:0;
+}
+
+.logo-badge{
+  display:none !important;
+}
+
+.logo-copy strong{
+  font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;
+  font-size:1.2rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.logo-copy small{
+  font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;
+  letter-spacing:.18em;
+  opacity:.92;
+}
+
+.hero{
+  padding:34px 7% 30px;
+}
+
+.hero h1{
+  font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;
+  font-size:clamp(1.15rem,3vw,2.05rem);
+  line-height:1.15;
+  letter-spacing:.12em;
+  font-weight:800;
+  white-space:nowrap;
+  margin:12px 0;
+}
+
+.hero p{
+  font-size:.98rem;
+}
+
+.section-head h2,
+.card h3,
+.preview .big{
+  font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;
+  font-weight:800;
+}
+
+.collapsible-section{
+  border-radius:22px;
+  background:rgba(255,253,248,.72);
+  backdrop-filter:blur(10px);
+}
+
+.collapsible-section > .section-head{
+  cursor:default;
+}
+
+.single-line-head h2{
+  font-size:clamp(1.15rem,2.5vw,1.6rem);
+}
+
+.category-toggle{
+  min-width:auto;
+  padding:9px 13px;
+  font-size:.78rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.movers-bar{
+  border-radius:16px;
+}
+
+.open-category-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.open-category-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:11px 15px;
+  border-radius:999px;
+  background:rgba(255,253,248,.95);
+  color:var(--green-dark);
+  border:1px solid rgba(255,255,255,.55);
+  text-decoration:none;
+  font-weight:800;
+  font-size:.82rem;
+  box-shadow:0 10px 24px rgba(15,35,28,.18);
+}
+
+.open-category-btn:hover{
+  transform:translateY(-1px);
+}
+
+.collapsible-section{
+  overflow:visible;
+}
+
+.collapsible-section.collapsed .category-content{
+  display:block;
+}
+
+.section-head{
+  cursor:default;
+}
+
+.category-toggle{
+  display:none !important;
+}
+
+@media(max-width:850px){
+  .hero h1{
+    white-space:normal;
+    font-size:clamp(1rem,5.2vw,1.55rem);
+    letter-spacing:.08em;
+  }
+
+  .hero{
+    padding:28px 5% 24px;
+  }
+
+  .logo-copy strong{
+    font-size:1.05rem;
+  }
+
+  .logo-copy small{
+    font-size:.62rem;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">Capital Library</div>
+  <div class="logo logo-mark">
+    <span class="logo-copy">
+      <strong>Capital Library</strong>
+      <small>Tools • Markets • Learning</small>
+    </span>
+  </div>
   <nav>
-    <a href="#assistant">Assistant</a>
     <a href="#hot-new">Hot & New</a>
     <a href="#business-tools">Business Tools</a>
     <a href="#reading">Reading</a>
     <a href="#market-movers">Market Movers</a>
+    <a href="#tradingview-tools">Free Pine Script</a>
     <a href="free-resource-vault.html">Free Vault</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="kicker">Wealth • Investing • Real Estate • Business Tools</div>
-  <h1>Capital, Knowledge & Opportunity.</h1>
+  <h1>CAPITAL - KNOWLEDGE - OPPORTUNITY</h1>
   <p>
     Premium resources for investors, entrepreneurs, operators, and lifelong learners.
   </p>
-  <div class="hero-buttons">
-    <a href="#assistant" class="btn">Ask Library Assistant</a>
-    <a href="#hot-new" class="btn light">Explore Resources</a>
+
+  <div class="open-category-buttons" aria-label="Open categories">
+    <a class="open-category-btn" href="#market-movers">Market Movers</a>
+    <a class="open-category-btn" href="#tradingview-tools">Free Pine Script</a>
+    <a class="open-category-btn" href="#hot-new">Hot & New</a>
+    <a class="open-category-btn" href="#business-tools">Business Tools</a>
+    <a class="open-category-btn" href="#reading">Reading</a>
+    <a class="open-category-btn" href="free-resource-vault.html">Free Vault</a>
   </div>
 </section>
 
 <main>
 
-<section class="stats">
-  <div class="stat"><strong>Wealth</strong> Capital, investing and money education</div>
-  <div class="stat"><strong>Business</strong> Taxes, bookkeeping and operations</div>
-  <div class="stat"><strong>Markets</strong> Trading, stocks, futures and crypto</div>
-  <div class="stat"><strong>Growth</strong> Books, guides and personal development</div>
-</section>
 
-<section id="market-movers">
+<section id="market-movers" class="collapsible-section">
 
-  <div class="section-head">
+  <div class="section-head single-line-head">
     <h2>Daily Market Movers</h2>
-    <p>Stocks showing notable daily movement</p>
   </div>
 
   <div id="moverGrid"></div>
 
 </section>
 
-<section id="assistant">
+
+<section id="tradingview-tools" class="collapsible-section">
+
   <div class="section-head">
-    <h2>Library Assistant</h2>
-    <p>Ask what to explore next</p>
+    <h2>Free TradingView Strategy Package</h2>
   </div>
 
-  <div class="assistant-box">
-    <div class="assistant-row">
-      <input id="aiQuestion" placeholder="Ask: What should I study for bookkeeping, trading, or real estate?" />
-      <button onclick="askAssistant()">Ask</button>
-    </div>
-    <div id="aiAnswer" class="assistant-answer">
-      Ask about business tools, taxes, bookkeeping, real estate, trading, wealth, self-development, or reading.
+  <div class="grid">
+    <div class="card trading pine-download-card">
+      <div class="kicker">Free Pine Script</div>
+      <h3>Capital Library Strategy Package</h3>
+      <p>
+        Free Pine Script v6 package with strategy modes, alerts, ATR risk controls, and a backtest dashboard.
+      </p>
+      <div class="buttons">
+        <a class="btn"
+           href="capital-library-tradingview-strategy-package-github.pine"
+           download>
+          Download Pine Script
+        </a>
+        <a class="btn light"
+           href="capital-library-tradingview-strategy-package-github.pine"
+           target="_blank">
+          View Code
+        </a>
+      </div>
     </div>
   </div>
+
 </section>
 
-<section id="hot-new">
+
+<section id="hot-new" class="collapsible-section">
   <div class="section-head">
     <h2>Hot & New</h2>
     <p>Featured books, tools, memberships and resources</p>
@@ -630,7 +1163,7 @@ footer{
   </div>
 </section>
 
-<section id="business-tools">
+<section id="business-tools" class="collapsible-section">
   <div class="section-head">
     <h2>Business & Operations</h2>
     <p>Taxes, bookkeeping, accounting, software and small-business tools</p>
@@ -716,7 +1249,7 @@ footer{
   </div>
 </section>
 
-<section id="reading">
+<section id="reading" class="collapsible-section">
   <div class="section-head">
     <h2>Recommended Finance Reading</h2>
     <p>Curated books for wealth, business and economics</p>
@@ -886,6 +1419,8 @@ function updateMoverNumbers(){
 
 loadMarketMovers();
 setInterval(updateMoverNumbers, 3000);
+
+
 
 </script>
 
