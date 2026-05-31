@@ -1,429 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Hustle Hub Chat</title>
-<meta name="description" content="Chat with AI Hustle Hub to find AI tools, side hustle ideas, and money-making workflows.">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Ebook & Audiobook Library</title>
 
-<style>
-:root{
-  --bg:#050505;
-  --panel:#101010;
-  --card:#161616;
-  --yellow:#FFD60A;
-  --muted:#bdbdbd;
-  --line:rgba(255,214,10,.2);
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+    header {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-body{
-  font-family:'Space Grotesk',sans-serif;
-  background:var(--bg);
-  color:white;
-}
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px;
+    }
 
-.app{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
 
-.topbar{
-  padding:18px 6%;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#050505;
-}
+    input {
+      flex: 1;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
-.logo{
-  color:var(--yellow);
-  font-weight:800;
-  font-size:1.4rem;
-}
+    button {
+      padding: 14px 22px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-.logo span{color:white;}
+    button:hover {
+      background: #1d4ed8;
+    }
 
-.badge{
-  color:black;
-  background:var(--yellow);
-  padding:7px 12px;
-  border-radius:999px;
-  font-weight:800;
-  font-size:.8rem;
-}
+    h2 {
+      margin-top: 35px;
+    }
 
-.hero{
-  text-align:center;
-  padding:45px 20px 25px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
 
-.hero h1{
-  color:var(--yellow);
-  font-size:3rem;
-}
+    .card {
+      background: white;
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
 
-.hero p{
-  color:var(--muted);
-  max-width:750px;
-  margin:14px auto;
-  line-height:1.6;
-}
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
 
-.chat-wrap{
-  width:min(980px,94%);
-  margin:0 auto 25px;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:24px;
-  overflow:hidden;
-  box-shadow:0 0 35px rgba(255,214,10,.08);
-}
+    .card p {
+      color: #555;
+      font-size: 14px;
+    }
 
-.chat-box{
-  height:520px;
-  overflow-y:auto;
-  padding:22px;
-}
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 8px;
+      color: white;
+      background: #2563eb;
+      padding: 9px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-.message{
-  max-width:82%;
-  margin-bottom:16px;
-  padding:16px;
-  border-radius:18px;
-  line-height:1.6;
-  white-space:pre-line;
-}
+    .card a.audio {
+      background: #7c3aed;
+    }
 
-.bot{
-  background:var(--card);
-  border:1px solid var(--line);
-  color:white;
-}
+    .notice {
+      background: #fff7ed;
+      border-left: 5px solid #f97316;
+      padding: 15px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+    }
 
-.user{
-  background:var(--yellow);
-  color:black;
-  margin-left:auto;
-  font-weight:700;
-}
-
-.input-area{
-  display:flex;
-  gap:10px;
-  padding:16px;
-  border-top:1px solid var(--line);
-  background:#090909;
-}
-
-input{
-  flex:1;
-  padding:16px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:#050505;
-  color:white;
-  font-size:1rem;
-  outline:none;
-}
-
-button{
-  padding:16px 22px;
-  border:none;
-  border-radius:14px;
-  background:var(--yellow);
-  color:black;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.quick{
-  width:min(980px,94%);
-  margin:0 auto 40px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.quick button{
-  padding:10px 14px;
-  font-size:.9rem;
-}
-
-footer{
-  text-align:center;
-  color:#888;
-  padding:25px;
-  border-top:1px solid var(--line);
-}
-
-a{color:var(--yellow);}
-
-@media(max-width:650px){
-  .hero h1{font-size:2.2rem;}
-  .message{max-width:95%;}
-  .input-area{flex-direction:column;}
-}
-</style>
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <h1>Free Ebook & Audiobook Library</h1>
+    <p>Search free public-domain ebooks and audiobooks</p>
+  </header>
 
-<div class="app">
-
-  <div class="topbar">
-    <div class="logo">⚡ AI <span>Hustle Hub</span></div>
-    <div class="badge">Free Tool Finder</div>
-  </div>
-
-  <section class="hero">
-    <h1>AI Side Hustle Chat</h1>
-    <p>Type what you want to create or sell. The chat will recommend AI tools, a simple workflow, and ways to make money.</p>
-  </section>
-
-  <div class="chat-wrap">
-    <div class="chat-box" id="chatBox">
-      <div class="message bot">
-Hi 👋 I’m AI Hustle Hub.
-
-Tell me your goal, like:
-“I want to make money with TikTok”
-“I want to start faceless YouTube”
-“I want to sell digital products”
-“I want to freelance with AI”
-      </div>
+  <main>
+    <div class="notice">
+      This website uses public-domain/free sources: Project Gutenberg through Gutendex, and LibriVox audiobooks.
     </div>
 
-    <div class="input-area">
-      <input id="userInput" placeholder="Type your side hustle idea..." onkeydown="handleEnter(event)">
-      <button onclick="sendMessage()">Send</button>
+    <div class="search-box">
+      <input id="searchInput" type="text" value="adventure" placeholder="Search for books..." />
+      <button onclick="searchBooks()">Search</button>
     </div>
-  </div>
 
-  <div class="quick">
-    <button onclick="quickAsk('I want to make faceless YouTube videos')">Faceless YouTube</button>
-    <button onclick="quickAsk('I want to make money with TikTok')">TikTok</button>
-    <button onclick="quickAsk('I want to sell digital products')">Digital Products</button>
-    <button onclick="quickAsk('I want to freelance with AI')">Freelancing</button>
-    <button onclick="quickAsk('I want to start dropshipping')">Dropshipping</button>
-  </div>
+    <h2>Ebooks</h2>
+    <section id="ebooks" class="grid"></section>
+
+    <h2>Audiobooks</h2>
+    <section id="audiobooks" class="grid"></section>
+
+    <h2>Your Own Free Audiobook</h2>
+    <div class="card">
+      <h3>Sample Audiobook</h3>
+      <p>To use your own audiobook, upload an MP3 file to your GitHub repository and change the file name below.</p>
+
+      <audio controls style="width:100%;">
+        <source src="sample.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+      </audio>
+    </div>
+  </main>
 
   <footer>
-    © 2026 AI Hustle Hub — Tool recommendations only. Always check pricing and terms before using any tool.
+    Built for free learning content.
   </footer>
 
-</div>
+  <script>
+    async function searchBooks() {
+      const query = document.getElementById("searchInput").value.trim();
+      const ebookBox = document.getElementById("ebooks");
+      const audioBox = document.getElementById("audiobooks");
 
-<script>
-const toolLinks = {
-  "ChatGPT":"https://chatgpt.com",
-  "Claude":"https://claude.ai",
-  "Perplexity":"https://www.perplexity.ai",
-  "Canva AI":"https://www.canva.com",
-  "CapCut":"https://www.capcut.com",
-  "OpusClip":"https://www.opus.pro",
-  "Runway":"https://runwayml.com",
-  "Pika":"https://pika.art",
-  "ElevenLabs":"https://elevenlabs.io",
-  "Midjourney":"https://www.midjourney.com",
-  "Leonardo AI":"https://leonardo.ai",
-  "Shopify Magic":"https://www.shopify.com/magic",
-  "Zapier":"https://zapier.com",
-  "Make":"https://www.make.com",
-  "Gamma":"https://gamma.app",
-  "Jasper":"https://www.jasper.ai",
-  "Copy.ai":"https://www.copy.ai",
-  "Surfer SEO":"https://surferseo.com"
-};
+      ebookBox.innerHTML = "Loading ebooks...";
+      audioBox.innerHTML = "Loading audiobooks...";
 
-function addMessage(text, sender){
-  const chatBox = document.getElementById("chatBox");
-  const msg = document.createElement("div");
-  msg.className = "message " + sender;
-  msg.innerHTML = text;
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
+      try {
+        const ebookResponse = await fetch(
+          "https://gutendex.com/books/?search=" + encodeURIComponent(query)
+        );
 
-function linkTool(name){
-  return `<a href="${toolLinks[name]}" target="_blank">${name}</a>`;
-}
+        const ebookData = await ebookResponse.json();
+        ebookBox.innerHTML = "";
 
-function generateReply(input){
-  const q = input.toLowerCase();
+        if (!ebookData.results || ebookData.results.length === 0) {
+          ebookBox.innerHTML = "<p>No ebooks found.</p>";
+        }
 
-  if(q.includes("youtube") || q.includes("faceless")){
-    return `🎬 Best AI stack for faceless YouTube:
+        ebookData.results.slice(0, 12).forEach(book => {
+          const author = book.authors && book.authors.length > 0
+            ? book.authors.map(a => a.name).join(", ")
+            : "Unknown author";
 
-1. ${linkTool("ChatGPT")} — write video ideas and scripts
-2. ${linkTool("ElevenLabs")} — create realistic voiceovers
-3. ${linkTool("Runway")} or ${linkTool("Pika")} — generate video clips
-4. ${linkTool("CapCut")} — edit, add captions, and export
-5. ${linkTool("Canva AI")} — create thumbnails
+          const readLink = book.formats["text/html"] || "";
+          const epubLink = book.formats["application/epub+zip"] || "";
 
-Simple plan:
-Day 1: Pick a niche like money, health, facts, or tech.
-Day 2: Use ChatGPT to write 5 short scripts.
-Day 3: Make voiceovers with ElevenLabs.
-Day 4: Edit with CapCut.
-Day 5: Post on YouTube Shorts and TikTok.
+          ebookBox.innerHTML += `
+            <div class="card">
+              <h3>${book.title}</h3>
+              <p>${author}</p>
+              ${readLink ? `<a href="${readLink}" target="_blank">Read Online</a>` : ""}
+              ${epubLink ? `<a href="${epubLink}" target="_blank">Download EPUB</a>` : ""}
+            </div>
+          `;
+        });
+      } catch (error) {
+        ebookBox.innerHTML = "<p>Could not load ebooks.</p>";
+      }
 
-Money options:
-Affiliate links, YouTube ads, digital products, sponsorships.`;
-  }
+      try {
+        const audioResponse = await fetch(
+          "https://librivox.org/api/feed/audiobooks/?format=json&search=" + encodeURIComponent(query)
+        );
 
-  if(q.includes("tiktok") || q.includes("reels") || q.includes("shorts")){
-    return `📱 Best AI stack for TikTok/Reels:
+        const audioData = await audioResponse.json();
+        audioBox.innerHTML = "";
 
-1. ${linkTool("ChatGPT")} — viral hooks and scripts
-2. ${linkTool("CapCut")} — edit short videos
-3. ${linkTool("OpusClip")} — turn long videos into clips
-4. ${linkTool("ElevenLabs")} — AI voiceovers
-5. ${linkTool("Canva AI")} — thumbnails and carousel posts
+        if (!audioData.books || audioData.books.length === 0) {
+          audioBox.innerHTML = "<p>No audiobooks found.</p>";
+        }
 
-Content ideas:
-• AI tool tutorials
-• Side hustle tips
-• Product reviews
-• Motivational clips
-• “3 tools that save time” videos
+        audioData.books.slice(0, 12).forEach(book => {
+          let author = "Unknown author";
 
-Money options:
-Affiliate links in bio, digital products, sponsorships, paid templates.`;
-  }
+          if (book.authors && book.authors.length > 0) {
+            author = book.authors.map(a => {
+              return `${a.first_name || ""} ${a.last_name || ""}`;
+            }).join(", ");
+          }
 
-  if(q.includes("digital product") || q.includes("etsy") || q.includes("template")){
-    return `🛍️ Best AI stack for digital products:
+          audioBox.innerHTML += `
+            <div class="card">
+              <h3>${book.title}</h3>
+              <p>${author}</p>
+              <a class="audio" href="${book.url_librivox}" target="_blank">Listen Free</a>
+            </div>
+          `;
+        });
+      } catch (error) {
+        audioBox.innerHTML = "<p>Could not load audiobooks.</p>";
+      }
+    }
 
-1. ${linkTool("ChatGPT")} — product ideas and copy
-2. ${linkTool("Canva AI")} — templates, planners, guides
-3. ${linkTool("Midjourney")} or ${linkTool("Leonardo AI")} — graphics
-4. ${linkTool("Gamma")} — ebooks and presentations
-5. ${linkTool("Perplexity")} — niche research
-
-Products to sell:
-• Resume templates
-• Study planners
-• Budget planners
-• AI prompt packs
-• Social media templates
-• Notion templates
-
-Money options:
-Etsy, Gumroad, Ko-fi, Shopify, Payhip.`;
-  }
-
-  if(q.includes("freelance") || q.includes("client") || q.includes("service")){
-    return `💼 Best AI stack for freelancing:
-
-1. ${linkTool("ChatGPT")} — proposals, emails, service packages
-2. ${linkTool("Claude")} — long-form writing and strategy
-3. ${linkTool("Canva AI")} — client graphics
-4. ${linkTool("Jasper")} or ${linkTool("Copy.ai")} — marketing copy
-5. ${linkTool("Zapier")} — automate client workflows
-
-Services to offer:
-• Blog writing
-• Short video editing
-• Social media captions
-• Email marketing
-• AI automation setup
-• Resume writing
-
-Where to get clients:
-Fiverr, Upwork, Facebook groups, LinkedIn, local businesses.`;
-  }
-
-  if(q.includes("dropshipping") || q.includes("ecommerce") || q.includes("shopify")){
-    return `🛒 Best AI stack for ecommerce:
-
-1. ${linkTool("Shopify Magic")} — product descriptions
-2. ${linkTool("ChatGPT")} — product research and ad copy
-3. ${linkTool("AdCreative.ai")} — ad creatives
-4. ${linkTool("Canva AI")} — product images and social posts
-5. ${linkTool("Zapier")} — automate store tasks
-
-Simple plan:
-1. Pick a niche product.
-2. Research competitors.
-3. Create product page copy.
-4. Make 3 ads.
-5. Test on TikTok, Instagram, or Pinterest.
-
-Money options:
-Shopify store, print-on-demand, affiliate ecommerce, digital downloads.`;
-  }
-
-  if(q.includes("blog") || q.includes("seo") || q.includes("website")){
-    return `📝 Best AI stack for blogging/SEO:
-
-1. ${linkTool("Perplexity")} — research topics
-2. ${linkTool("ChatGPT")} — outlines and drafts
-3. ${linkTool("Claude")} — long-form article writing
-4. ${linkTool("Surfer SEO")} — SEO optimization
-5. ${linkTool("Canva AI")} — blog images
-
-Money options:
-Display ads, affiliate links, sponsored posts, digital products.
-
-Best article ideas:
-• Best AI tools to make money online
-• AI side hustles for beginners
-• Best AI tools for TikTok creators
-• How to use ChatGPT for freelancing`;
-  }
-
-  return `Here is a general AI side hustle stack:
-
-1. ${linkTool("ChatGPT")} — ideas, scripts, business planning
-2. ${linkTool("Canva AI")} — designs and social content
-3. ${linkTool("CapCut")} — video editing
-4. ${linkTool("ElevenLabs")} — voiceovers
-5. ${linkTool("Perplexity")} — research
-6. ${linkTool("Zapier")} — automation
-
-Simple beginner plan:
-Day 1: Pick one niche.
-Day 2: Choose one platform: TikTok, YouTube, Etsy, Fiverr, or a blog.
-Day 3: Create 5 pieces of content or 1 digital product.
-Day 4: Publish and test.
-Day 5: Add affiliate links or a service offer.
-
-Try typing something more specific like:
-“I want to make TikTok videos”
-“I want to sell templates”
-“I want to freelance with AI”`;
-}
-
-function sendMessage(){
-  const input = document.getElementById("userInput");
-  const text = input.value.trim();
-  if(!text) return;
-
-  addMessage(text, "user");
-  input.value = "";
-
-  setTimeout(() => {
-    addMessage(generateReply(text), "bot");
-  }, 400);
-}
-
-function quickAsk(text){
-  document.getElementById("userInput").value = text;
-  sendMessage();
-}
-
-function handleEnter(e){
-  if(e.key === "Enter"){
-    sendMessage();
-  }
-}
-</script>
-
+    searchBooks();
+  </script>
 </body>
 </html>
