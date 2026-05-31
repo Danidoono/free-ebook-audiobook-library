@@ -9,15 +9,15 @@
 
 <style>
 :root{
-  --green:#23634d;
-  --green-dark:#174535;
-  --green-soft:#3f8a6d;
-  --cream:#f6f0e5;
-  --paper:#fffaf1;
-  --gold:#c5a15a;
+  --green:#2c6b53;
+  --green-dark:#1c4b3a;
+  --green-soft:#67a588;
+  --cream:#f8f4eb;
+  --paper:#fffdf8;
+  --gold:#c8a55d;
   --text:#17231d;
   --muted:#66736b;
-  --line:#ded3bd;
+  --line:#e2d8c3;
 }
 
 *{box-sizing:border-box}
@@ -31,7 +31,7 @@ body{
 }
 
 header{
-  background:var(--green);
+  background:var(--green-dark);
   color:white;
   padding:20px 7%;
   display:flex;
@@ -39,7 +39,7 @@ header{
   align-items:center;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:20;
 }
 
 .logo{
@@ -50,15 +50,17 @@ header{
 nav a{
   color:#f5ead3;
   text-decoration:none;
-  margin-left:18px;
+  margin-left:16px;
   font-weight:700;
   font-size:.9rem;
 }
 
 .hero{
-  background:linear-gradient(135deg,var(--green),var(--green-soft));
+  background:
+    linear-gradient(rgba(44,107,83,.9),rgba(28,75,58,.95)),
+    radial-gradient(circle at top right,#91c6aa,transparent 36%);
   color:white;
-  padding:86px 7%;
+  padding:88px 7%;
 }
 
 .kicker{
@@ -78,7 +80,7 @@ nav a{
 }
 
 .hero p{
-  max-width:700px;
+  max-width:720px;
   color:#f4ead9;
   line-height:1.75;
   font-size:1.08rem;
@@ -200,7 +202,9 @@ main{
 .preview{
   height:150px;
   border-radius:18px;
-  background:linear-gradient(135deg,var(--green-dark),var(--green-soft));
+  background:
+    radial-gradient(circle at top right,rgba(255,255,255,.35),transparent 35%),
+    linear-gradient(135deg,var(--green-dark),var(--green-soft));
   color:white;
   display:flex;
   flex-direction:column;
@@ -289,15 +293,15 @@ footer{
     <a href="#hot-new">Hot & New</a>
     <a href="#business-tools">Business Tools</a>
     <a href="#reading">Reading</a>
+    <a href="free-resource-vault.html">Free Vault</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="kicker">Wealth • Investing • Real Estate • Business Tools</div>
-  <h1>Curated intelligence for wealth builders.</h1>
+  <h1>Capital, Knowledge & Opportunity.</h1>
   <p>
-    Executive resources for business, investing, real estate, operations,
-    market education, and personal growth.
+    Premium resources for investors, entrepreneurs, operators, and lifelong learners.
   </p>
   <div class="hero-buttons">
     <a href="#assistant" class="btn">Ask Library Assistant</a>
@@ -434,7 +438,7 @@ footer{
       <h3>To The Moon .999 Fine Silver Coin</h3>
       <p>A five-count collectible silver coin set for hard asset and collectible investors.</p>
       <div class="buttons">
-        <a class="btn" href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&recommended_by=search&_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&a=812339299" target="_blank">View Collection</a>
+        <a class="btn" href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&recommended_by=search&_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&a=812339299" target="_blank">Access Now</a>
       </div>
     </div>
 
@@ -456,27 +460,82 @@ footer{
   </div>
 
   <div class="grid">
-    <div class="card business"><div class="preview"><div class="small">Tax • Accounting</div><div class="big">Small Business Owner Guide</div></div><h3>The Taxes, Accounting, Bookkeeping Bible</h3><p>Small-business guide covering taxes, bookkeeping, accounting, savings tips and IRS penalty avoidance.</p><a class="btn" href="https://amzn.to/4ecDZu6" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Tax • Accounting</div><div class="big">Small Business Owner Guide</div></div>
+      <h3>The Taxes, Accounting, Bookkeeping Bible</h3>
+      <p>Small-business guide covering taxes, bookkeeping, accounting, savings tips and IRS penalty avoidance.</p>
+      <a class="btn" href="https://amzn.to/4ecDZu6" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Bookkeeping</div><div class="big">All-in-One For Dummies</div></div><h3>Bookkeeping All-in-One For Dummies</h3><p>A reference for learning bookkeeping, financial tracking and business recordkeeping basics.</p><a class="btn" href="https://amzn.to/4wVM65T" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Bookkeeping</div><div class="big">All-in-One For Dummies</div></div>
+      <h3>Bookkeeping All-in-One For Dummies</h3>
+      <p>A reference for learning bookkeeping, financial tracking and business recordkeeping basics.</p>
+      <a class="btn" href="https://amzn.to/4wVM65T" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Taxes</div><div class="big">Deductions & Tax Breaks 2026</div></div><h3>Deductions and Tax Breaks 2026</h3><p>A tax reference for deductions, tax breaks, planning opportunities and filing preparation.</p><a class="btn" href="https://amzn.to/3RAB59T" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Taxes</div><div class="big">Deductions & Tax Breaks 2026</div></div>
+      <h3>Deductions and Tax Breaks 2026</h3>
+      <p>A tax reference for deductions, tax breaks, planning opportunities and filing preparation.</p>
+      <a class="btn" href="https://amzn.to/3RAB59T" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Accounting</div><div class="big">Beginner Accounting Guide</div></div><h3>Accounting for Beginners</h3><p>Learn financial statements, taxes, managerial accounting and business performance basics.</p><a class="btn" href="https://amzn.to/4vbVyjy" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Accounting</div><div class="big">Beginner Accounting Guide</div></div>
+      <h3>Accounting for Beginners</h3>
+      <p>Learn financial statements, taxes, managerial accounting and business performance basics.</p>
+      <a class="btn" href="https://amzn.to/4vbVyjy" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">PDF Tools</div><div class="big">Edit • Convert • eSign</div></div><h3>Scrivar PDF Suite Pro</h3><p>PDF software for organizing, editing, converting, merging, signing, OCR and document workflows.</p><a class="btn" href="https://amzn.to/4e2O9fQ" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">PDF Tools</div><div class="big">Edit • Convert • eSign</div></div>
+      <h3>Scrivar PDF Suite Pro</h3>
+      <p>PDF software for organizing, editing, converting, merging, signing, OCR and document workflows.</p>
+      <a class="btn" href="https://amzn.to/4e2O9fQ" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Migration</div><div class="big">PC Transfer Toolkit</div></div><h3>Laplink PCmover Migration Software</h3><p>Business migration software for moving files, settings, apps and user data.</p><a class="btn" href="https://amzn.to/4fjj0a3" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Migration</div><div class="big">PC Transfer Toolkit</div></div>
+      <h3>Laplink PCmover Migration Software</h3>
+      <p>Business migration software for moving files, settings, apps and user data.</p>
+      <a class="btn" href="https://amzn.to/4fjj0a3" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Billing</div><div class="big">Invoice Workflow</div></div><h3>Express Invoice Billing Software</h3><p>Billing and invoicing software for payments, customers and business billing.</p><a class="btn" href="https://amzn.to/4akueHT" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Billing</div><div class="big">Invoice Workflow</div></div>
+      <h3>Express Invoice Billing Software</h3>
+      <p>Billing and invoicing software for payments, customers and business billing.</p>
+      <a class="btn" href="https://amzn.to/4akueHT" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Office Suite</div><div class="big">Word • Excel • PowerPoint</div></div><h3>Microsoft Office Home & Business 2024</h3><p>Desktop office apps for documents, spreadsheets, presentations and business work.</p><a class="btn" href="https://amzn.to/49ysgU3" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Office Suite</div><div class="big">Word • Excel • PowerPoint</div></div>
+      <h3>Microsoft Office Home & Business 2024</h3>
+      <p>Desktop office apps for documents, spreadsheets, presentations and business work.</p>
+      <a class="btn" href="https://amzn.to/49ysgU3" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Finance</div><div class="big">Business & Personal Money</div></div><h3>Quicken Classic Business & Personal</h3><p>Finance software for managing accounts, expenses, income and financial tracking.</p><a class="btn" href="https://amzn.to/4uJOMlv" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Finance</div><div class="big">Business & Personal Money</div></div>
+      <h3>Quicken Classic Business & Personal</h3>
+      <p>Finance software for managing accounts, expenses, income and financial tracking.</p>
+      <a class="btn" href="https://amzn.to/4uJOMlv" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Tax Software</div><div class="big">Premium & Business Filing</div></div><h3>H&R Block Tax Software Premium & Business 2025</h3><p>Tax software for premium and business filing needs and small-business tax preparation.</p><a class="btn" href="https://amzn.to/49wetgM" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Tax Software</div><div class="big">Premium & Business Filing</div></div>
+      <h3>H&R Block Tax Software Premium & Business 2025</h3>
+      <p>Tax software for premium and business filing needs and small-business tax preparation.</p>
+      <a class="btn" href="https://amzn.to/49wetgM" target="_blank">Access Now</a>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Workforce</div><div class="big">Cloud Time Clock</div></div><h3>NGTeco Cloud-Based Time Clock</h3><p>WiFi attendance machine for time tracking, clock-in and workforce management.</p><a class="btn" href="https://amzn.to/4dI2Aa0" target="_blank">Access Now</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Workforce</div><div class="big">Cloud Time Clock</div></div>
+      <h3>NGTeco Cloud-Based Time Clock</h3>
+      <p>WiFi attendance machine for time tracking, clock-in and workforce management.</p>
+      <a class="btn" href="https://amzn.to/4dI2Aa0" target="_blank">Access Now</a>
+    </div>
   </div>
 </section>
 
@@ -487,17 +546,62 @@ footer{
   </div>
 
   <div class="grid">
-    <div class="card wealth"><div class="preview"><div class="small">Wealth</div><div class="big">The Richest Man in Babylon</div></div><h3>The Richest Man in Babylon</h3><p>A classic personal finance book about saving, discipline and building wealth.</p><a class="btn" href="https://www.gutenberg.org/ebooks/72170" target="_blank">Read Free</a></div>
+    <div class="card wealth">
+      <div class="preview"><div class="small">Wealth</div><div class="big">The Richest Man in Babylon</div></div>
+      <h3>The Richest Man in Babylon</h3>
+      <p>A classic personal finance book about saving, discipline and building wealth.</p>
+      <div class="buttons">
+        <a class="btn" href="https://www.gutenberg.org/ebooks/72170" target="_blank">Read Free</a>
+      </div>
+    </div>
 
-    <div class="card wealth"><div class="preview"><div class="small">Business Classic</div><div class="big">The Art of Money Getting</div></div><h3>The Art of Money Getting</h3><p>P.T. Barnum’s classic book on business habits, money discipline and practical success.</p><a class="btn" href="https://www.gutenberg.org/ebooks/8581" target="_blank">Read Free</a></div>
+    <div class="card wealth">
+      <div class="preview"><div class="small">Business Classic</div><div class="big">The Art of Money Getting</div></div>
+      <h3>The Art of Money Getting</h3>
+      <p>P.T. Barnum’s classic book on business habits, money discipline and practical success.</p>
+      <div class="buttons">
+        <a class="btn" href="https://www.gutenberg.org/cache/epub/8581/pg8581-images.html" target="_blank">Read Online</a>
+        <a class="btn light" href="https://www.gutenberg.org/ebooks/8581.epub.images" target="_blank">Download EPUB</a>
+      </div>
+    </div>
 
-    <div class="card wealth"><div class="preview"><div class="small">Economics</div><div class="big">The Wealth of Nations</div></div><h3>The Wealth of Nations</h3><p>Adam Smith’s foundational work on markets, labor, productivity, trade and economic systems.</p><a class="btn" href="https://www.gutenberg.org/ebooks/3300" target="_blank">Read Free</a></div>
+    <div class="card wealth">
+      <div class="preview"><div class="small">Economics</div><div class="big">The Wealth of Nations</div></div>
+      <h3>The Wealth of Nations</h3>
+      <p>Adam Smith’s foundational work on markets, labor, productivity, trade and economic systems.</p>
+      <div class="buttons">
+        <a class="btn" href="https://www.gutenberg.org/cache/epub/3300/pg3300-images.html" target="_blank">Read Online</a>
+        <a class="btn light" href="https://www.gutenberg.org/ebooks/3300.epub.images" target="_blank">Download EPUB</a>
+      </div>
+    </div>
 
-    <div class="card business"><div class="preview"><div class="small">Opportunity</div><div class="big">Acres of Diamonds</div></div><h3>Acres of Diamonds</h3><p>A short business classic about recognizing value, discipline and opportunity close to home.</p><a class="btn" href="https://www.gutenberg.org/ebooks/368" target="_blank">Read Free</a></div>
+    <div class="card business">
+      <div class="preview"><div class="small">Opportunity</div><div class="big">Acres of Diamonds</div></div>
+      <h3>Acres of Diamonds</h3>
+      <p>A short business classic about recognizing value, discipline and opportunity close to home.</p>
+      <div class="buttons">
+        <a class="btn" href="https://www.gutenberg.org/cache/epub/368/pg368-images.html" target="_blank">Read Online</a>
+        <a class="btn light" href="https://www.gutenberg.org/ebooks/368.epub.images" target="_blank">Download EPUB</a>
+      </div>
+    </div>
 
-    <div class="card realestate"><div class="preview"><div class="small">Real Estate</div><div class="big">Investment Starter Guide</div></div><h3>Real Estate Investment Starter Guide</h3><p>Your guide for cash flow, ROI, cap rate, expenses and rental property deal review.</p><a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a></div>
+    <div class="card realestate">
+      <div class="preview"><div class="small">Real Estate</div><div class="big">Investment Starter Guide</div></div>
+      <h3>Real Estate Investment Starter Guide</h3>
+      <p>Your guide for cash flow, ROI, cap rate, expenses and rental property deal review.</p>
+      <div class="buttons">
+        <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a>
+      </div>
+    </div>
 
-    <div class="card relationship"><div class="preview"><div class="small">Self Development</div><div class="big">Oops, I Dated a Narcissist</div></div><h3>Oops, I Dated a Narcissist</h3><p>Your book for readers healing from emotional manipulation and rebuilding confidence.</p><a class="btn" href="https://www.amazon.com/Oops-Dated-Narcissist-Won-Heal-ebook/dp/B0GYSM6PK9" target="_blank">Access Now</a></div>
+    <div class="card relationship">
+      <div class="preview"><div class="small">Self Development</div><div class="big">Oops, I Dated a Narcissist</div></div>
+      <h3>Oops, I Dated a Narcissist</h3>
+      <p>Your book for readers healing from emotional manipulation and rebuilding confidence.</p>
+      <div class="buttons">
+        <a class="btn" href="https://www.amazon.com/Oops-Dated-Narcissist-Won-Heal-ebook/dp/B0GYSM6PK9" target="_blank">Access Now</a>
+      </div>
+    </div>
   </div>
 </section>
 
