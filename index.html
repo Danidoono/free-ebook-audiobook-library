@@ -1201,7 +1201,255 @@
       }
     }
 
-  </style>
+  
+/* TradingView Market Summary + Community Ideas */
+.tv-market-suite{
+  background:#0b0f19;
+  color:#d1d4dc;
+  padding:20px 4% 28px;
+  border-bottom:1px solid #2a2e39;
+  position:relative;
+  overflow:hidden;
+}
+.tv-market-suite::before{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(41,98,255,.22),transparent 30%),
+    radial-gradient(circle at 85% 10%,rgba(0,188,212,.12),transparent 28%),
+    radial-gradient(circle at 50% 100%,rgba(255,152,0,.08),transparent 30%);
+  animation:tvGlowDrift 12s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes tvGlowDrift{
+  from{transform:translate3d(-1%,0,0) scale(1)}
+  to{transform:translate3d(1%,1%,0) scale(1.04)}
+}
+.tv-market-inner{
+  width:min(1320px,100%);
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.tv-suite-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  margin:0 0 16px;
+}
+.tv-suite-head h2{
+  color:#fff;
+  margin:0;
+  font-size:clamp(1.35rem,3vw,2.35rem);
+  letter-spacing:-.04em;
+}
+.tv-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#8ab4ff;
+  background:rgba(41,98,255,.13);
+  border:1px solid rgba(41,98,255,.32);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:.78rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.tv-live-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#22ab94;
+  box-shadow:0 0 0 6px rgba(34,171,148,.13);
+}
+.tv-market-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.18fr) minmax(340px,.82fr);
+  gap:18px;
+}
+.tv-widget-shell,
+.tv-panel{
+  background:rgba(19,23,34,.92);
+  border:1px solid #2a2e39;
+  border-radius:18px;
+  box-shadow:0 24px 60px rgba(0,0,0,.28);
+  overflow:hidden;
+  animation:tvPanelRise .85s ease both;
+}
+.tv-panel:nth-child(2){animation-delay:.12s}
+@keyframes tvPanelRise{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.tv-panel-head{
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px 16px;
+  border-bottom:1px solid #2a2e39;
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
+}
+.tv-panel-head h3{
+  color:#fff;
+  margin:0;
+  font-size:1rem;
+  font-weight:900;
+}
+.tv-widget-box{
+  height:640px;
+  overflow:hidden;
+}
+.tradingview-widget-container,
+.tradingview-widget-container__widget{
+  width:100%;
+  height:100%;
+}
+.tv-indicator-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  padding:14px;
+  border-top:1px solid #2a2e39;
+}
+.tv-stat{
+  background:#0b0f19;
+  border:1px solid #2a2e39;
+  border-radius:14px;
+  padding:12px;
+}
+.tv-stat span{
+  display:block;
+  color:#787b86;
+  font-size:.72rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.tv-stat strong{
+  display:block;
+  color:#fff;
+  margin-top:6px;
+  font-size:1rem;
+}
+.tv-green{color:#22ab94!important}
+.tv-red{color:#f23645!important}
+.tv-blue{color:#2962ff!important}
+.tv-idea-list{
+  max-height:730px;
+  overflow:auto;
+  padding:12px;
+  display:grid;
+  gap:10px;
+  scrollbar-color:#2a2e39 #0b0f19;
+}
+.tv-idea{
+  background:#0f1420;
+  border:1px solid #2a2e39;
+  border-radius:16px;
+  padding:14px;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.tv-idea:hover{
+  transform:translateY(-2px);
+  border-color:#2962ff;
+  background:#111a2b;
+}
+.tv-idea h4{
+  color:#fff;
+  margin:0 0 8px;
+  font-size:.98rem;
+  line-height:1.25;
+}
+.tv-idea p{
+  color:#aeb3c2;
+  margin:0;
+  font-size:.86rem;
+  line-height:1.55;
+}
+.tv-idea-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+  color:#787b86;
+  font-size:.78rem;
+  font-weight:800;
+}
+.tv-idea-actions{
+  display:flex;
+  gap:10px;
+  color:#787b86;
+}
+.tv-mini-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:12px;
+  border-bottom:1px solid #2a2e39;
+}
+.tv-mini-tabs span{
+  border:1px solid #2a2e39;
+  background:#0b0f19;
+  color:#d1d4dc;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:.76rem;
+  font-weight:900;
+}
+.tv-mini-tabs span:first-child{
+  color:#fff;
+  background:#2962ff;
+  border-color:#2962ff;
+}
+.tv-market-note{
+  color:#787b86;
+  font-size:.78rem;
+  line-height:1.5;
+  padding:0 14px 14px;
+}
+@media(max-width:980px){
+  .tv-market-grid{
+    grid-template-columns:1fr;
+  }
+  .tv-widget-box{
+    height:560px;
+  }
+  .tv-indicator-strip{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:620px){
+  .tv-market-suite{
+    padding:14px 3% 20px;
+  }
+  .tv-suite-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .tv-widget-box{
+    height:520px;
+  }
+  .tv-panel-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .tv-indicator-strip{
+    grid-template-columns:1fr;
+  }
+  .tv-idea-list{
+    max-height:640px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -1210,6 +1458,7 @@
   <header>
     <div class="logo">Capital Library</div>
     <nav aria-label="Main navigation">
+      <a href="#market-summary">Market Summary</a>
       <a href="#trading-ideas">Trading Ideas</a>
       <a href="#trading">Trading</a>
       <a href="#real-estate">Real Estate</a>
@@ -1218,6 +1467,185 @@
       <a href="#resources">Resources</a>
     </nav>
   </header>
+
+  <section class="tv-market-suite" id="market-summary" aria-label="TradingView market summary and community ideas">
+    <div class="tv-market-inner">
+      <div class="tv-suite-head">
+        <div>
+          <span class="tv-pill"><span class="tv-live-dot"></span> TradingView-style dashboard</span>
+          <h2>Market Summary</h2>
+        </div>
+        <span class="tv-pill">Major Indices • Crypto • Commodities • Ideas</span>
+      </div>
+
+      <div class="tv-market-grid">
+        <article class="tv-widget-shell">
+          <div class="tv-panel-head">
+            <h3>Major Indices & Markets</h3>
+            <span class="tv-pill">Live widget</span>
+          </div>
+          <div class="tv-widget-box">
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+              {
+                "colorTheme": "dark",
+                "dateRange": "1M",
+                "showChart": true,
+                "locale": "en",
+                "largeChartUrl": "",
+                "isTransparent": true,
+                "showSymbolLogo": true,
+                "showFloatingTooltip": true,
+                "width": "100%",
+                "height": "100%",
+                "plotLineColorGrowing": "rgba(34, 171, 148, 1)",
+                "plotLineColorFalling": "rgba(242, 54, 69, 1)",
+                "gridLineColor": "rgba(42, 46, 57, 0.5)",
+                "scaleFontColor": "rgba(209, 212, 220, 1)",
+                "belowLineFillColorGrowing": "rgba(34, 171, 148, 0.12)",
+                "belowLineFillColorFalling": "rgba(242, 54, 69, 0.12)",
+                "belowLineFillColorGrowingBottom": "rgba(34, 171, 148, 0)",
+                "belowLineFillColorFallingBottom": "rgba(242, 54, 69, 0)",
+                "symbolActiveColor": "rgba(41, 98, 255, 0.16)",
+                "tabs": [
+                  {
+                    "title": "Major Indices",
+                    "symbols": [
+                      {"s": "FOREXCOM:SPXUSD", "d": "S&P 500"},
+                      {"s": "NASDAQ:NDX", "d": "Nasdaq 100"},
+                      {"s": "TVC:NI225", "d": "Japan 225"},
+                      {"s": "SSE:000001", "d": "SSE Composite"},
+                      {"s": "TVC:UKX", "d": "FTSE 100"},
+                      {"s": "TVC:DAX", "d": "DAX"},
+                      {"s": "TVC:CAC40", "d": "CAC 40"}
+                    ],
+                    "originalTitle": "Indices"
+                  },
+                  {
+                    "title": "Crypto",
+                    "symbols": [
+                      {"s": "CRYPTOCAP:TOTAL", "d": "Crypto Market Cap"},
+                      {"s": "CRYPTOCAP:BTC.D", "d": "Bitcoin Dominance"},
+                      {"s": "BITSTAMP:BTCUSD", "d": "Bitcoin"},
+                      {"s": "BITSTAMP:ETHUSD", "d": "Ethereum"}
+                    ]
+                  },
+                  {
+                    "title": "Commodities",
+                    "symbols": [
+                      {"s": "TVC:DXY", "d": "US Dollar Index"},
+                      {"s": "NYMEX:CL1!", "d": "Light Crude Oil"},
+                      {"s": "NYMEX:NG1!", "d": "Natural Gas"},
+                      {"s": "COMEX:GC1!", "d": "Gold"},
+                      {"s": "COMEX:HG1!", "d": "Copper"}
+                    ]
+                  },
+                  {
+                    "title": "Rates",
+                    "symbols": [
+                      {"s": "TVC:US10Y", "d": "US 10-Year Yield"},
+                      {"s": "ECONOMICS:USIRYY", "d": "US Inflation Rate"},
+                      {"s": "ECONOMICS:USINTR", "d": "US Interest Rate"}
+                    ]
+                  }
+                ]
+              }
+              </script>
+            </div>
+          </div>
+
+          <div class="tv-indicator-strip">
+            <div class="tv-stat"><span>S&P 500</span><strong class="tv-red">SPX • −0.74%</strong></div>
+            <div class="tv-stat"><span>Nasdaq 100</span><strong class="tv-red">NDX • −0.29%</strong></div>
+            <div class="tv-stat"><span>Bitcoin</span><strong class="tv-red">BTCUSD • −4.21%</strong></div>
+            <div class="tv-stat"><span>US Dollar</span><strong class="tv-green">DXY • +1.00%</strong></div>
+          </div>
+        </article>
+
+        <aside class="tv-panel">
+          <div class="tv-panel-head">
+            <h3>Community Ideas</h3>
+            <span class="tv-pill">Editors' picks style</span>
+          </div>
+          <div class="tv-mini-tabs">
+            <span>Community Ideas</span>
+            <span>Indicators</span>
+            <span>Strategies</span>
+            <span>Markets</span>
+          </div>
+
+          <div class="tv-idea-list">
+            <article class="tv-idea">
+              <h4>Nvidia Stock Jumps on Big PC Makeover. The Key to $6 Trillion?</h4>
+              <p>Nvidia has been the picks-and-shovels name in the AI rush. This idea looks at whether consumer PCs become the next growth driver.</p>
+              <div class="tv-idea-meta"><span>by TradingView • Jun 1</span><span class="tv-idea-actions">💬 2 ★ 4 🔁 2</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>SpaceX is going public — What does this mean for Tesla?</h4>
+              <p>A potential SpaceX IPO could become a major Tesla catalyst as investors price Tesla around AI, robotics, autonomy, and related assets.</p>
+              <div class="tv-idea-meta"><span>by Bmillytookprof • May 28</span><span class="tv-idea-actions">💬 1 ★ 3 🔁 6</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>Microsoft Is Back to 2024 Levels, But Check Out These Two Charts</h4>
+              <p>Microsoft is trading near levels from early 2024. This setup compares the chart with fundamental context.</p>
+              <div class="tv-idea-meta"><span>by moomoo • May 21</span><span class="tv-idea-actions">💬 1 ★ 5 🔁 8</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>Silver Analysis & Areas of Interest — 30min Time Frame</h4>
+              <p>A short-term silver analysis with areas of interest for traders watching intraday structure.</p>
+              <div class="tv-idea-meta"><span>by easyMarkets • May 25</span><span class="tv-idea-actions">💬 8 ★ 7</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>Oil pullback on the cards</h4>
+              <p>Brent crude may be due for consolidation as traders reassess energy demand and geopolitical risk.</p>
+              <div class="tv-idea-meta"><span>by Blueberry • May 23</span><span class="tv-idea-actions">💬 2 ★ 4</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>How to Trade Gold With Auction Market Theory — XAUUSD</h4>
+              <p>Gold trade planning using auction-market concepts, macro context, and areas where buyers or sellers may react.</p>
+              <div class="tv-idea-meta"><span>by fxtraderanthony • Updated May 31</span><span class="tv-idea-actions">💬 7 ★ 0</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>Gold Still Bearish After Breakout Failure</h4>
+              <p>Gold remains under bearish order-flow pressure after a failed breakout and retracement into premium supply zones.</p>
+              <div class="tv-idea-meta"><span>by wavenacci • Updated May 26</span><span class="tv-idea-actions">💬 4 ★ 4</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>$DOGE — The chart that reads the crypto cycle best</h4>
+              <p>DOGE is used as a cycle psychology chart to compare prior crypto bottoms and market behavior.</p>
+              <div class="tv-idea-meta"><span>by Cryptollica • May 25</span><span class="tv-idea-actions">💬 4 ★ 4</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>NQ Chart Review, Smart Money Reversal Confirmed?</h4>
+              <p>Nasdaq futures still show bullish delivery across higher timeframes, with buy-side liquidity already taken.</p>
+              <div class="tv-idea-meta"><span>by propfirmwise • Updated May 26</span><span class="tv-idea-actions">💬 3 ★ 9</span></div>
+            </article>
+
+            <article class="tv-idea">
+              <h4>BULL RUN liquidity grab on last week's quad-session highs?</h4>
+              <p>A gold-focused chart review around market correction, liquidity, and calculated risk-to-reward.</p>
+              <div class="tv-idea-meta"><span>by TreyHighPwr • May 23</span><span class="tv-idea-actions">💬 1 ★ 8</span></div>
+            </article>
+          </div>
+
+          <p class="tv-market-note">
+            Idea summaries are displayed directly on your page so visitors can browse without opening TradingView. Replace text or links anytime.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+
 
 <section class="tv-top" id="trading-ideas" aria-label="TradingView trading ideas">
       <div class="tv-live-bar">
