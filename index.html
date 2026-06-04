@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Capital Library | TradingView Style</title>
+  <title>Capital Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -657,7 +657,7 @@
 
     /* TradingView-inspired top layout + motion refresh */
     :root{
-      --green:#2962ff;
+      --green:#00c076;
       --green-dark:#0b1220;
       --green-soft:#13233f;
       --cream:#0b0f19;
@@ -667,7 +667,7 @@
       --muted:#8ea1bd;
       --line:#22314d;
       --shadow:0 22px 60px rgba(0,0,0,.34);
-      --tv-blue:#2962ff;
+      --tv-blue:#00c076;
       --tv-cyan:#00e5ff;
       --tv-panel:#111827;
       --tv-panel-2:#0f172a;
@@ -696,7 +696,7 @@
     .category-jump a{
       color:#cfe1ff;
       background:rgba(17,24,39,.72);
-      border:1px solid rgba(41,98,255,.22);
+      border:1px solid rgba(0,192,118,.22);
     }
 
     nav a:hover,
@@ -709,7 +709,7 @@
       background:
         linear-gradient(135deg,rgba(9,17,32,.94),rgba(13,27,50,.96)),
         radial-gradient(circle at top right,rgba(41,98,255,.36),transparent 38%);
-      border-bottom:1px solid rgba(41,98,255,.22);
+      border-bottom:1px solid rgba(0,192,118,.22);
       overflow:hidden;
       position:relative;
     }
@@ -751,7 +751,7 @@
     .btn.light{
       background:rgba(17,24,39,.86);
       color:#cfe1ff;
-      border:1px solid rgba(41,98,255,.32);
+      border:1px solid rgba(0,192,118,.32);
     }
 
     .market-snapshot,
@@ -763,7 +763,7 @@
     .search-box,
     .email-capture{
       background:linear-gradient(180deg,rgba(17,24,39,.92),rgba(15,23,42,.92));
-      border:1px solid rgba(41,98,255,.22);
+      border:1px solid rgba(0,192,118,.22);
       box-shadow:var(--shadow);
       color:var(--text);
     }
@@ -803,7 +803,7 @@
     #trading-ideas{
       margin-top:0;
       border-color:rgba(0,229,255,.38);
-      box-shadow:0 30px 90px rgba(41,98,255,.22);
+      box-shadow:0 30px 90px rgba(0,192,118,.22);
       animation:topGlow 3.2s ease-in-out infinite;
     }
 
@@ -850,7 +850,7 @@
 
     .tv-placeholder{
       background:
-        linear-gradient(135deg,rgba(41,98,255,.22),rgba(15,23,42,.84)),
+        linear-gradient(135deg,rgba(0,192,118,.22),rgba(15,23,42,.84)),
         repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 46px);
       border:1px solid rgba(0,229,255,.24);
     }
@@ -886,7 +886,7 @@
     footer{
       background:#08111f;
       color:#8ea1bd;
-      border-top:1px solid rgba(41,98,255,.22);
+      border-top:1px solid rgba(0,192,118,.22);
     }
 
     @keyframes tvGridMove{
@@ -971,7 +971,7 @@
       border:1px solid rgba(41,98,255,.38);
       border-radius:28px;
       background:
-        radial-gradient(circle at 10% 10%,rgba(41,98,255,.22),transparent 26%),
+        radial-gradient(circle at 10% 10%,rgba(0,192,118,.22),transparent 26%),
         radial-gradient(circle at 90% 0%,rgba(0,229,255,.18),transparent 30%),
         #131722;
       box-shadow:0 26px 70px rgba(0,0,0,.38);
@@ -1093,7 +1093,7 @@
     }
 
     .tv-note{
-      border-left:3px solid #2962ff;
+      border-left:3px solid #00c076;
       padding:10px 12px;
       color:#b9c7dc;
       background:rgba(41,98,255,.08);
@@ -1202,7 +1202,7 @@
     }
 
   
-/* TradingView Market Summary + Portfolio Ideas */
+/* TradingView Market Summary + Community Ideas */
 .tv-market-suite{
   background:#0b0f19;
   color:#d1d4dc;
@@ -1216,7 +1216,7 @@
   position:absolute;
   inset:-30%;
   background:
-    radial-gradient(circle at 15% 15%,rgba(41,98,255,.22),transparent 30%),
+    radial-gradient(circle at 15% 15%,rgba(0,192,118,.22),transparent 30%),
     radial-gradient(circle at 85% 10%,rgba(0,188,212,.12),transparent 28%),
     radial-gradient(circle at 50% 100%,rgba(255,152,0,.08),transparent 30%);
   animation:tvGlowDrift 12s ease-in-out infinite alternate;
@@ -1249,9 +1249,9 @@
   display:inline-flex;
   align-items:center;
   gap:8px;
-  color:#8ab4ff;
-  background:rgba(41,98,255,.13);
-  border:1px solid rgba(41,98,255,.32);
+  color:#9dffbd;
+  background:rgba(0,192,118,.13);
+  border:1px solid rgba(0,192,118,.32);
   border-radius:999px;
   padding:8px 12px;
   font-size:.78rem;
@@ -1340,7 +1340,7 @@
 }
 .tv-green{color:#22ab94!important}
 .tv-red{color:#f23645!important}
-.tv-blue{color:#2962ff!important}
+.tv-blue{color:#00c076!important}
 .tv-idea-list{
   max-height:730px;
   overflow:auto;
@@ -1358,7 +1358,7 @@
 }
 .tv-idea:hover{
   transform:translateY(-2px);
-  border-color:#2962ff;
+  border-color:#00c076;
   background:#111a2b;
 }
 .tv-idea h4{
@@ -1406,8 +1406,8 @@
 }
 .tv-mini-tabs span:first-child{
   color:#fff;
-  background:#2962ff;
-  border-color:#2962ff;
+  background:#00c076;
+  border-color:#00c076;
 }
 .tv-market-note{
   color:#787b86;
@@ -1449,6 +1449,231 @@
   }
 }
 
+
+/* Green TradingView theme + natural affiliate resource shelf */
+:root{
+  --tv-bg:#07140f;
+  --tv-panel:#0d1f18;
+  --tv-panel-2:#10291f;
+  --tv-border:#1f4d3b;
+  --tv-text:#f2fff8;
+  --tv-muted:#9ab8aa;
+  --tv-green:#00c076;
+  --tv-green-soft:#22ab94;
+  --tv-lime:#8bff9b;
+  --tv-red:#f23645;
+}
+
+body{
+  background:linear-gradient(180deg,#06110d 0%,#0a1812 42%,#eff8f0 100%);
+}
+
+header{
+  background:rgba(6,17,13,.92)!important;
+  border-bottom:1px solid rgba(0,192,118,.24);
+}
+
+.logo{color:#eafff3}
+nav a:hover{background:rgba(0,192,118,.15);color:#fff}
+
+.tv-market-suite,
+.tv-top{
+  background:#07140f!important;
+}
+
+.tv-market-suite::before{
+  background:
+    radial-gradient(circle at 15% 15%,rgba(0,192,118,.28),transparent 30%),
+    radial-gradient(circle at 85% 10%,rgba(139,255,155,.12),transparent 28%),
+    radial-gradient(circle at 50% 100%,rgba(34,171,148,.13),transparent 30%)!important;
+}
+
+.tv-widget-shell,
+.tv-panel,
+.tv-terminal,
+.tv-chart-card,
+.tv-info-panel{
+  background:rgba(13,31,24,.94)!important;
+  border-color:rgba(0,192,118,.23)!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.38),0 0 0 1px rgba(0,192,118,.06)!important;
+}
+
+.tv-panel-head,
+.tv-terminal-head,
+.tv-live-bar,
+.tv-chart-toolbar{
+  border-color:rgba(0,192,118,.20)!important;
+  background:linear-gradient(180deg,rgba(0,192,118,.08),rgba(255,255,255,0))!important;
+}
+
+.tv-pill,
+.tv-status,
+.tv-tag{
+  color:#caffdf!important;
+  background:rgba(0,192,118,.13)!important;
+  border-color:rgba(0,192,118,.35)!important;
+}
+
+.tv-mini-tabs span{
+  background:#081711!important;
+  border-color:rgba(0,192,118,.25)!important;
+}
+
+.tv-mini-tabs span:first-child{
+  background:linear-gradient(135deg,#00c076,#22ab94)!important;
+  border-color:#00c076!important;
+  color:#04110b!important;
+}
+
+.tv-idea,
+.tv-stat,
+.affiliate-card{
+  background:#081711!important;
+  border-color:rgba(0,192,118,.22)!important;
+}
+
+.tv-idea:hover,
+.affiliate-card:hover{
+  border-color:#00c076!important;
+  background:#0f281e!important;
+  transform:translateY(-3px);
+}
+
+.tv-blue{color:#00c076!important}
+.tv-live-dot,.live-dot{background:#00c076!important;box-shadow:0 0 0 6px rgba(0,192,118,.14)!important}
+.tv-red{color:#ff6572!important}
+.tv-green{color:#8bff9b!important}
+
+.btn{
+  background:linear-gradient(135deg,#00c076,#8bff9b)!important;
+  color:#03100a!important;
+  border:0!important;
+  box-shadow:0 10px 24px rgba(0,192,118,.18);
+}
+
+.btn.secondary,
+.btn.light{
+  background:rgba(255,255,255,.08)!important;
+  color:#eafff3!important;
+  border:1px solid rgba(0,192,118,.28)!important;
+}
+
+.hero{
+  background:linear-gradient(135deg,#07140f,#0e2a20 62%,#14533d)!important;
+}
+
+.market-snapshot,
+.movers-wrap{
+  background:rgba(13,31,24,.78)!important;
+  border-color:rgba(0,192,118,.22)!important;
+}
+
+.card,
+.tool-panel,
+.email-capture,
+.comparison-table,
+.accordion{
+  border-color:rgba(31,95,74,.24)!important;
+}
+
+.card.trading,
+.card.business,
+.card.realestate,
+.card.wealth{
+  border-top-color:#00c076!important;
+}
+
+.affiliate-suite{
+  margin:18px 0 0;
+  background:rgba(13,31,24,.92);
+  border:1px solid rgba(0,192,118,.23);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.28);
+  animation:tvPanelRise .95s ease both;
+}
+
+.affiliate-head{
+  padding:16px;
+  border-bottom:1px solid rgba(0,192,118,.18);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:linear-gradient(180deg,rgba(0,192,118,.08),rgba(255,255,255,0));
+}
+
+.affiliate-head h3{
+  color:#fff;
+  margin:0;
+  font-size:1.05rem;
+  font-weight:900;
+}
+
+.affiliate-head p{
+  margin:3px 0 0;
+  color:#9ab8aa;
+  font-size:.86rem;
+  line-height:1.45;
+}
+
+.affiliate-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  padding:14px;
+}
+
+.affiliate-card{
+  color:#d1d4dc;
+  border:1px solid rgba(0,192,118,.22);
+  border-radius:16px;
+  padding:14px;
+  text-decoration:none;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+  min-height:150px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.affiliate-card span{
+  display:inline-flex;
+  width:max-content;
+  color:#03100a;
+  background:linear-gradient(135deg,#00c076,#8bff9b);
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:.68rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.affiliate-card h4{
+  color:#fff;
+  margin:10px 0 7px;
+  font-size:.98rem;
+  line-height:1.24;
+}
+
+.affiliate-card p{
+  color:#9ab8aa;
+  margin:0;
+  font-size:.82rem;
+  line-height:1.45;
+}
+
+@media(max-width:980px){
+  .affiliate-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:560px){
+  .affiliate-head{align-items:flex-start;flex-direction:column}
+  .affiliate-grid{grid-template-columns:1fr}
+  .affiliate-card{min-height:auto}
+}
+
 </style>
 </head>
 
@@ -1468,11 +1693,11 @@
     </nav>
   </header>
 
-  <section class="tv-market-suite" id="market-summary" aria-label="TradingView market summary and Portfolio Ideas">
+  <section class="tv-market-suite" id="market-summary" aria-label="TradingView market summary and community ideas">
     <div class="tv-market-inner">
       <div class="tv-suite-head">
         <div>
-          <span class="tv-pill"><span class="tv-live-dot">
+          <span class="tv-pill"><span class="tv-live-dot"></span> TradingView-style dashboard</span>
           <h2>Market Summary</h2>
         </div>
         <span class="tv-pill">Major Indices • Crypto • Commodities • Ideas</span>
@@ -1507,7 +1732,7 @@
                 "belowLineFillColorFalling": "rgba(242, 54, 69, 0.12)",
                 "belowLineFillColorGrowingBottom": "rgba(34, 171, 148, 0)",
                 "belowLineFillColorFallingBottom": "rgba(242, 54, 69, 0)",
-                "symbolActiveColor": "rgba(41, 98, 255, 0.16)",
+                "symbolActiveColor": "rgba(0, 192, 118, 0.16)",
                 "tabs": [
                   {
                     "title": "Major Indices",
@@ -1565,11 +1790,11 @@
 
         <aside class="tv-panel">
           <div class="tv-panel-head">
-            <h3>Portfolio Ideas</h3>
+            <h3>Community Ideas</h3>
             <span class="tv-pill">Editors' picks style</span>
           </div>
           <div class="tv-mini-tabs">
-            <span>Portfolio Ideas</span>
+            <span>Community Ideas</span>
             <span>Indicators</span>
             <span>Strategies</span>
             <span>Markets</span>
@@ -1637,11 +1862,94 @@
             </article>
           </div>
 
+
+          <div class="tv-mini-tabs" aria-label="Helpful next steps">
+            <a class="btn small" href="capital-library-tradingview-strategy-package-github.pine" download>Download Pine Script</a>
+            <a class="btn small secondary" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank" rel="noopener">Stock Education</a>
+            <a class="btn small secondary" href="#trading">Use Calculators</a>
+          </div>
+
           <p class="tv-market-note">
             Idea summaries are displayed directly on your page so visitors can browse without opening TradingView. Replace text or links anytime.
           </p>
         </aside>
       </div>
+
+      <section class="affiliate-suite" aria-label="Recommended trader and builder resources">
+        <div class="affiliate-head">
+          <div>
+            <h3>Recommended Tools & Resources</h3>
+            <p>Quick links that match the market dashboard: trading education, Pine tools, business systems, real estate, and wealth planning.</p>
+          </div>
+          <span class="tv-pill">Featured Links</span>
+        </div>
+
+        <div class="affiliate-grid">
+          <a class="affiliate-card" href="capital-library-tradingview-strategy-package-github.pine" download>
+            <span>Free Trading</span>
+            <div>
+              <h4>TradingView Pine Script Strategy Package</h4>
+              <p>Download the free strategy package for backtesting, alerts, ATR exits, and market-structure tools.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank" rel="noopener">
+            <span>Education</span>
+            <div>
+              <h4>CNC Academy Membership</h4>
+              <p>Stock-market learning resource for traders and investors who want a structured learning path.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank" rel="noopener">
+            <span>Futures Tool</span>
+            <div>
+              <h4>Ninja Trader Wave Runner</h4>
+              <p>Active-trading workflow tool for market movement, wave structure, and futures market review.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://simplemarketmetrics.gumroad.com/l/gpcfp?a=812339299" target="_blank" rel="noopener">
+            <span>Live Futures</span>
+            <div>
+              <h4>Live Futures Educational Platform</h4>
+              <p>Trading education platform for futures markets, live learning, and market concepts.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://ruycorto.gumroad.com/l/gidjrr?a=812339299" target="_blank" rel="noopener">
+            <span>Market Alerts</span>
+            <div>
+              <h4>VIP RealTimeTrades</h4>
+              <p>Market resource covering ASX stocks, crypto, US markets, trade alerts, and research.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://amzn.to/4ecDZu6" target="_blank" rel="noopener">
+            <span>Business</span>
+            <div>
+              <h4>Taxes, Accounting, Bookkeeping Bible</h4>
+              <p>Small-business guide for bookkeeping, taxes, accounting basics, and owner operations.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank" rel="noopener">
+            <span>Real Estate</span>
+            <div>
+              <h4>Real Estate Investment Starter Guide</h4>
+              <p>Rental-property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
+            </div>
+          </a>
+
+          <a class="affiliate-card" href="https://paycheckportfolio.gumroad.com/l/iescv?a=812339299" target="_blank" rel="noopener">
+            <span>Wealth</span>
+            <div>
+              <h4>Paycheck to Portfolio Membership</h4>
+              <p>Build investing habits and a long-term portfolio path from active income.</p>
+            </div>
+          </a>
+        </div>
+      </section>
     </div>
   </section>
 
