@@ -1,944 +1,974 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Capital Library</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --green:#1f5f4a;
-  --green-dark:#123b31;
-  --green-soft:#e7f2ed;
-  --cream:#f7f3ea;
-  --paper:#fffdf8;
-  --gold:#c8a55d;
-  --text:#16231d;
-  --muted:#66736b;
-  --line:#e4dac7;
-  --shadow:0 14px 34px rgba(21,48,38,.09);
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  background:var(--cream);
-  color:var(--text);
-  font-family:"Manrope",Arial,sans-serif;
-}
-
-header{
-  background:rgba(18,59,49,.98);
-  color:white;
-  padding:16px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:20;
-  backdrop-filter:blur(10px);
-}
-
-.logo{
-  font-size:1.05rem;
-  font-weight:900;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-nav{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-
-nav a{
-  color:#f5ead3;
-  text-decoration:none;
-  font-weight:800;
-  font-size:.82rem;
-  padding:8px 10px;
-  border-radius:999px;
-}
-
-nav a:hover{
-  background:rgba(255,255,255,.1);
-}
-
-.hero{
-  background:
-    linear-gradient(135deg,rgba(31,95,74,.96),rgba(18,59,49,.98)),
-    radial-gradient(circle at top right,#91c6aa,transparent 34%);
-  color:white;
-  padding:28px 6% 24px;
-}
-
-.kicker{
-  color:#f0d99b;
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  font-size:.72rem;
-  font-weight:900;
-}
-
-.hero h1{
-  font-size:clamp(1.55rem,2.8vw,2.65rem);
-  letter-spacing:.03em;
-  line-height:1.08;
-  margin:10px 0 10px;
-  text-transform:uppercase;
-  font-weight:900;
-}
-
-.hero p{
-  max-width:760px;
-  color:#f4ead9;
-  line-height:1.7;
-  font-size:.96rem;
-  margin:0;
-}
-
-.quick-actions{
-  margin-top:16px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-main{
-  width:min(1180px,92%);
-  margin:auto;
-  padding:26px 0 70px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  background:var(--gold);
-  color:#13271f;
-  padding:11px 16px;
-  border-radius:999px;
-  font-weight:900;
-  text-decoration:none;
-  cursor:pointer;
-  border:0;
-  white-space:nowrap;
-}
-
-.btn.secondary{
-  background:white;
-  color:var(--green-dark);
-  border:1px solid var(--line);
-}
-
-.btn.small{
-  padding:8px 11px;
-  font-size:.82rem;
-}
-
-.section-head{
-  margin:34px 0 16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:18px;
-}
-
-.section-head h2{
-  font-size:clamp(1.45rem,3vw,2.15rem);
-  margin:0;
-  font-weight:900;
-  letter-spacing:-.03em;
-}
-
-.section-head p{
-  color:var(--muted);
-  margin:0;
-  font-weight:700;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-}
-
-.card{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-
-.card h3{
-  font-size:1.16rem;
-  margin:4px 0 8px;
-  font-weight:900;
-  letter-spacing:-.02em;
-}
-
-.card p{
-  color:var(--muted);
-  line-height:1.62;
-  margin:8px 0;
-}
-
-.tool-card{
-  border-top:5px solid var(--green);
-}
-
-.trading{border-top:5px solid #4c7fb8}
-.business{border-top:5px solid #2c6b53}
-.realestate{border-top:5px solid #67a588}
-.wealth{border-top:5px solid #c8a55d}
-
-.buttons{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-
-.movers-wrap{
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:22px;
-  box-shadow:0 18px 36px rgba(0,0,0,.12);
-  overflow:hidden;
-  backdrop-filter:blur(10px);
-}
-
-.movers-title{
-  padding:13px 18px;
-  font-weight:900;
-  color:var(--green-dark);
-  border-bottom:1px solid var(--line);
-}
-
-.ticker{
-  white-space:nowrap;
-  overflow:hidden;
-}
-
-.ticker-track{
-  display:inline-block;
-  padding:15px 0;
-  animation:tickerMove 22s linear infinite;
-}
-
-.ticker span{
-  display:inline-block;
-  margin-right:30px;
-  font-weight:900;
-}
-
-.up{color:#2f9e44}
-.down{color:#c92a2a}
-
-@keyframes tickerMove{
-  from{transform:translateX(100%)}
-  to{transform:translateX(-100%)}
-}
-
-.tool-nav{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:10px;
-}
-
-.tool-nav a{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:13px;
-  color:var(--green-dark);
-  text-decoration:none;
-  font-weight:900;
-  box-shadow:0 8px 22px rgba(21,48,38,.05);
-}
-
-.tool-panel{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:22px;
-  margin:18px 0;
-  box-shadow:var(--shadow);
-}
-
-.tool-panel h3{
-  margin:0 0 12px;
-  font-size:1.35rem;
-  font-weight:900;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;
-  margin:14px 0;
-}
-
-label{
-  font-size:.78rem;
-  font-weight:900;
-  color:var(--muted);
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-
-input,select,textarea{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:white;
-  font:inherit;
-  margin-top:6px;
-}
-
-textarea{min-height:92px;resize:vertical}
-
-.result{
-  background:var(--green-soft);
-  border:1px solid #c9e1d6;
-  color:var(--green-dark);
-  border-radius:14px;
-  padding:14px;
-  font-weight:800;
-  line-height:1.65;
-  margin-top:12px;
-}
-
-.table-wrap{overflow:auto}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:12px;
-  font-size:.92rem;
-}
-
-th,td{
-  border-bottom:1px solid var(--line);
-  padding:10px;
-  text-align:left;
-}
-
-footer{
-  background:var(--green-dark);
-  color:#f5ead3;
-  text-align:center;
-  padding:34px;
-}
-
-@media(max-width:850px){
-  header{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:12px;
-  }
-
-  nav{
-    width:100%;
-    overflow:auto;
-    flex-wrap:nowrap;
-    padding-bottom:4px;
-  }
-
-  nav a{
-    flex:0 0 auto;
-  }
-
-  .hero{
-    padding:42px 5% 28px;
-  }
-
-  main{
-    width:94%;
-  }
-
-  .section-head{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .quick-actions .btn{
-    width:100%;
-  }
-
-  .tool-panel{
-    padding:18px;
-  }
-}
-
-/* Affiliate/resource card compatibility */
-.btn.light,
-.btn.secondary{
-  background:#ffffff;
-  color:var(--green-dark);
-  border:1px solid var(--line);
-}
-
-.card.relationship{border-top:5px solid #8d6b4f}
-.card.realestate{border-top:5px solid var(--green-soft)}
-.card.trading{border-top:5px solid #6d9dc5}
-.card.silver{border-top:5px solid #bfc5c1}
-.card.media{border-top:5px solid #8c78a8}
-.card.wealth{border-top:5px solid var(--gold)}
-.card.business{border-top:5px solid var(--green)}
-
-.preview{
-  height:140px;
-  border-radius:18px;
-  background:
-    radial-gradient(circle at top right,rgba(255,255,255,.35),transparent 35%),
-    linear-gradient(135deg,var(--green-dark),var(--green-soft));
-  color:white;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:20px;
-  margin-bottom:18px;
-}
-
-.preview .small{
-  text-transform:uppercase;
-  letter-spacing:1.8px;
-  font-size:.68rem;
-  color:#f2dfb4;
-  font-weight:800;
-  margin-bottom:10px;
-}
-
-.preview .big{
-  font-family:var(--font);
-  font-weight:800;
-  font-size:1.05rem;
-  line-height:1.25;
-}
-
-.resource-divider{
-  margin-top:64px;
-  padding-top:20px;
-  border-top:1px solid var(--line);
-}
-
-/* Dropdown category layout */
-.category-stack{
-  display:block;
-  margin-top:18px;
-}
-
-.accordion{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:22px;
-  margin:16px 0;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  scroll-margin-top:96px;
-}
-
-.accordion summary{
-  list-style:none;
-  cursor:pointer;
-  padding:19px 22px;
-  font-size:1.08rem;
-  font-weight:900;
-  color:var(--green-dark);
-  background:linear-gradient(135deg,#ffffff,var(--green-soft));
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-}
-
-.accordion summary::-webkit-details-marker{
-  display:none;
-}
-
-.accordion summary::after{
-  content:"+";
-  width:32px;
-  height:32px;
-  flex:0 0 32px;
-  border-radius:999px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--green-dark);
-  color:#fff;
-  font-size:1.35rem;
-  line-height:1;
-}
-
-.accordion[open] summary::after{
-  content:"−";
-}
-
-.accordion-body{
-  padding:20px;
-  border-top:1px solid var(--line);
-}
-
-.accordion-body > .section-head:first-child{
-  display:none;
-}
-
-.accordion .tool-panel:first-child,
-.accordion .grid:first-child,
-.accordion .tool-nav:first-child,
-.accordion .movers-wrap:first-child{
-  margin-top:0;
-}
-
-.section-intro{
-  color:var(--muted);
-  font-weight:700;
-  margin:0 0 16px;
-}
-
-.category-jump{
-  position:sticky;
-  top:68px;
-  z-index:10;
-  background:rgba(247,243,234,.94);
-  backdrop-filter:blur(10px);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:10px;
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  margin:18px 0;
-}
-
-.category-jump a{
-  flex:0 0 auto;
-  text-decoration:none;
-  color:var(--green-dark);
-  background:white;
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:9px 12px;
-  font-weight:900;
-  font-size:.82rem;
-}
-
-@media(max-width:850px){
-  .accordion summary{
-    padding:16px 18px;
-    font-size:1rem;
-  }
-
-  .accordion-body{
-    padding:16px;
-  }
-
-  .category-jump{
-    top:0;
-  }
-}
-
-
-/* Conversion-focused affiliate sections */
-.conversion-section{
-  margin:22px 0;
-}
-
-.search-box{
-  background:linear-gradient(135deg,#fffdf8,#f1eadb);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-
-.search-row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.search-row input{
-  flex:1;
-  margin-top:0;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:var(--green-soft);
-  color:var(--green-dark);
-  border:1px solid #c9e1d6;
-  border-radius:999px;
-  padding:7px 10px;
-  font-size:.78rem;
-  font-weight:900;
-  margin:5px 5px 5px 0;
-}
-
-.start-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:10px;
-  margin:14px 0;
-}
-
-.choice-btn{
-  width:100%;
-  background:var(--paper);
-  color:var(--green-dark);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 8px 18px rgba(21,48,38,.05);
-}
-
-.choice-btn:hover{
-  border-color:var(--gold);
-  transform:translateY(-1px);
-}
-
-.featured-banner{
-  background:linear-gradient(135deg,var(--green-dark),var(--green));
-  color:white;
-  border-radius:26px;
-  padding:26px;
-  box-shadow:var(--shadow);
-}
-
-.featured-banner p{
-  color:#f5ead3;
-}
-
-.featured-banner .btn.secondary{
-  background:white;
-}
-
-.email-capture{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-
-.email-row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.email-row input{
-  margin-top:0;
-}
-
-.mini-proof{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:10px;
-}
-
-.proof-item{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
-  font-weight:900;
-  color:var(--green-dark);
-}
-
-.comparison-table{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:18px;
-  box-shadow:var(--shadow);
-  overflow:auto;
-}
-
-.quick-resource{
-  display:none;
-  margin-top:12px;
-}
-
-.quick-resource.active{
-  display:block;
-}
-
-@media(max-width:720px){
-  .search-row,
-  .email-row{
-    flex-direction:column;
-  }
-
-  .search-row .btn,
-  .email-row .btn{
-    width:100%;
-  }
-}
-
-
-/* Performance + affiliate conversion refresh */
-.hero-dashboard{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 310px;
-  gap:24px;
-  align-items:start;
-}
-
-.market-snapshot{
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:22px;
-  padding:16px;
-  box-shadow:0 18px 36px rgba(0,0,0,.12);
-}
-
-.market-snapshot h3{
-  margin:0 0 10px;
-  font-size:.78rem;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:#f0d99b;
-}
-
-.market-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:14px;
-  padding:9px 0;
-  border-top:1px solid rgba(255,255,255,.14);
-  font-weight:900;
-}
-
-.market-row:first-of-type{
-  border-top:0;
-}
-
-.market-row span:last-child{
-  color:#8ce99a;
-}
-
-.hero p{
-  max-width:700px;
-}
-
-.quick-actions .btn{
-  box-shadow:0 10px 24px rgba(0,0,0,.12);
-}
-
-.hero-note{
-  margin-top:12px;
-  color:#f4ead9;
-  font-size:.86rem;
-  font-weight:700;
-  opacity:.92;
-}
-
-.movers-wrap{
-  margin-top:0;
-}
-
-.ticker-track{
-  will-change:transform;
-}
-
-.category-jump{
-  position:sticky;
-  top:68px;
-  z-index:15;
-  background:rgba(247,243,234,.92);
-  backdrop-filter:blur(10px);
-  padding:10px 0;
-}
-
-.category-jump a{
-  transition:transform .15s ease, background .15s ease;
-}
-
-.category-jump a:hover{
-  transform:translateY(-1px);
-  background:var(--gold);
-  color:#13271f;
-}
-
-.top-pickk{
-  position:relative;
-}
-
-.top-pickk::after{
-  content:"Top Pick";
-  position:absolute;
-  top:14px;
-  right:14px;
-  background:var(--gold);
-  color:#13271f;
-  border-radius:999px;
-  padding:6px 10px;
-  font-size:.72rem;
-  font-weight:900;
-}
-
-@media(max-width:900px){
-  .hero-dashboard{
-    grid-template-columns:1fr;
-  }
-
-  .market-snapshot{
-    max-width:100%;
-  }
-
-  .category-jump{
-    top:0;
-    overflow:auto;
-    white-space:nowrap;
-  }
-}
-
-@media(max-width:520px){
-  .hero{
-    padding:22px 5% 18px;
-  }
-
-  .hero h1{
-    font-size:1.55rem;
-  }
-
-  .hero p{
-    font-size:.9rem;
-  }
-
-  .market-snapshot{
-    padding:14px;
-  }
-
-  .ticker-track{
-    animation-duration:19s;
-  }
-}
-
-
-/* Top Pick item-only glass style */
-#popular .card.top-pickk{
-  background:linear-gradient(135deg,rgba(31,95,74,.92),rgba(18,59,49,.95));
-  border:1px solid rgba(255,255,255,.16);
-  color:white;
-  box-shadow:0 18px 36px rgba(0,0,0,.12);
-  backdrop-filter:blur(10px);
-}
-
-#popular .card.top-pickk h3{
-  color:white;
-}
-
-#popular .card.top-pickk p{
-  color:#f5ead3;
-}
-
-#popular .card.top-pickk .badge{
-  background:rgba(255,255,255,.12);
-  color:#f7e7b8;
-  border:1px solid rgba(255,255,255,.18);
-}
-
-#popular .card.top-pickk .btn{
-  background:var(--gold);
-  color:#13271f;
-}
-
-#popular .card.top-pickk::after{
-  background:var(--gold);
-  color:#13271f;
-}
-
-
-/* Final clean glass styling */
-#market-movers .movers-wrap{
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:22px;
-  box-shadow:0 18px 36px rgba(0,0,0,.12);
-  overflow:hidden;
-  backdrop-filter:blur(10px);
-}
-
-#popular .top-pick-row{
-  background:linear-gradient(135deg,rgba(31,95,74,.92),rgba(18,59,49,.95));
-  border:1px solid rgba(255,255,255,.16);
-  color:white;
-  box-shadow:0 18px 36px rgba(0,0,0,.12);
-  backdrop-filter:blur(10px);
-}
-
-#popular .pick-title{
-  color:white;
-}
-
-#popular .pick-desc{
-  color:#f5ead3;
-}
-
-#popular .pick-badge{
-  background:rgba(255,255,255,.12);
-  color:#f7e7b8;
-  border:1px solid rgba(255,255,255,.18);
-}
-
-#popular .section-head p{
-  color:var(--muted);
-}
-
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Capital Library | TradingView Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#1f5f4a;
+      --green-dark:#123b31;
+      --green-soft:#e7f2ed;
+      --cream:#f7f3ea;
+      --paper:#fffdf8;
+      --gold:#c8a55d;
+      --text:#16231d;
+      --muted:#66736b;
+      --line:#e4dac7;
+      --danger:#c92a2a;
+      --success:#2f9e44;
+      --shadow:0 14px 34px rgba(21,48,38,.09);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--cream);
+      color:var(--text);
+      font-family:"Manrope",Arial,sans-serif;
+    }
+
+    a{color:inherit}
+    img,iframe{max-width:100%}
+
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    .skip-link:focus{
+      left:16px;
+      top:16px;
+      width:auto;
+      height:auto;
+      background:white;
+      color:var(--green-dark);
+      padding:10px 14px;
+      border-radius:999px;
+      z-index:100;
+    }
+
+    header{
+      background:rgba(18,59,49,.98);
+      color:white;
+      padding:14px 6%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
+    }
+
+    .logo{
+      font-size:1.03rem;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav a{
+      color:#f5ead3;
+      text-decoration:none;
+      font-weight:900;
+      font-size:.82rem;
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    nav a:hover, nav a:focus{
+      background:rgba(255,255,255,.12);
+      outline:none;
+    }
+
+    .hero{
+      background:
+        linear-gradient(135deg,rgba(31,95,74,.96),rgba(18,59,49,.98)),
+        radial-gradient(circle at top right,#91c6aa,transparent 34%);
+      color:white;
+      padding:32px 6% 24px;
+    }
+
+    .hero-dashboard{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 320px;
+      gap:24px;
+      align-items:start;
+    }
+
+    .kicker{
+      color:#f0d99b;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.72rem;
+      font-weight:900;
+    }
+
+    .hero h1{
+      font-size:clamp(1.65rem,3vw,2.75rem);
+      letter-spacing:.03em;
+      line-height:1.08;
+      margin:10px 0;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .hero p{
+      max-width:760px;
+      color:#f4ead9;
+      line-height:1.7;
+      font-size:.96rem;
+      margin:0;
+    }
+
+    .hero-note{
+      margin-top:12px;
+      color:#f4ead9;
+      font-size:.86rem;
+      font-weight:700;
+      opacity:.92;
+    }
+
+    .quick-actions{
+      margin-top:17px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .market-snapshot{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      padding:16px;
+      box-shadow:0 18px 36px rgba(0,0,0,.12);
+    }
+
+    .market-snapshot h3{
+      margin:0 0 10px;
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#f0d99b;
+    }
+
+    .market-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:9px 0;
+      border-top:1px solid rgba(255,255,255,.14);
+      font-weight:900;
+    }
+
+    .market-row:first-of-type{border-top:0}
+    .market-row span:last-child{color:#8ce99a}
+
+    .movers-wrap{
+      margin-top:20px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      box-shadow:0 18px 36px rgba(0,0,0,.12);
+      overflow:hidden;
+      backdrop-filter:blur(10px);
+    }
+
+    .ticker{white-space:nowrap;overflow:hidden}
+    .ticker-track{
+      display:inline-block;
+      padding:14px 0;
+      animation:tickerMove 22s linear infinite;
+      will-change:transform;
+    }
+
+    .ticker span{
+      display:inline-block;
+      margin-right:30px;
+      font-weight:900;
+    }
+
+    .up{color:#8ce99a}
+    .down{color:#ff8787}
+
+    @keyframes tickerMove{
+      from{transform:translateX(100%)}
+      to{transform:translateX(-100%)}
+    }
+
+    main{
+      width:min(1180px,92%);
+      margin:auto;
+      padding:24px 0 70px;
+    }
+
+    .category-jump{
+      position:sticky;
+      top:66px;
+      z-index:30;
+      background:rgba(247,243,234,.94);
+      backdrop-filter:blur(10px);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:10px;
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      margin:18px 0 24px;
+    }
+
+    .category-jump a{
+      flex:0 0 auto;
+      text-decoration:none;
+      color:var(--green-dark);
+      background:white;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:9px 12px;
+      font-weight:900;
+      font-size:.82rem;
+    }
+
+    .category-jump a:hover{
+      background:var(--gold);
+      color:#13271f;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      background:var(--gold);
+      color:#13271f;
+      padding:11px 16px;
+      border-radius:999px;
+      font-weight:900;
+      text-decoration:none;
+      cursor:pointer;
+      border:0;
+      white-space:nowrap;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+    }
+
+    .btn.secondary,.btn.light{
+      background:white;
+      color:var(--green-dark);
+      border:1px solid var(--line);
+    }
+
+    .btn.small{
+      padding:8px 11px;
+      font-size:.82rem;
+    }
+
+    .section-head{
+      margin:30px 0 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+    }
+
+    .section-head h2{
+      font-size:clamp(1.45rem,3vw,2.15rem);
+      margin:0;
+      font-weight:900;
+      letter-spacing:-.03em;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      margin:0;
+      font-weight:700;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:18px;
+    }
+
+    .card,.tool-panel,.search-box,.email-capture,.comparison-table{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .card{
+      padding:22px;
+      position:relative;
+    }
+
+    .card h3{
+      font-size:1.16rem;
+      margin:4px 0 8px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .card p,.tool-panel p{
+      color:var(--muted);
+      line-height:1.62;
+      margin:8px 0;
+    }
+
+    .trading{border-top:5px solid #4c7fb8}
+    .business{border-top:5px solid #2c6b53}
+    .realestate{border-top:5px solid #67a588}
+    .wealth{border-top:5px solid var(--gold)}
+    .silver{border-top:5px solid #bfc5c1}
+    .media{border-top:5px solid #8c78a8}
+    .relationship{border-top:5px solid #8d6b4f}
+
+    .top-pick{
+      background:linear-gradient(135deg,rgba(31,95,74,.92),rgba(18,59,49,.96));
+      border:1px solid rgba(255,255,255,.16);
+      color:white;
+    }
+
+    .top-pick h3{color:white}
+    .top-pick p{color:#f5ead3}
+    .top-pick::after{
+      content:"Top Pick";
+      position:absolute;
+      top:14px;
+      right:14px;
+      background:var(--gold);
+      color:#13271f;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.72rem;
+      font-weight:900;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:var(--green-soft);
+      color:var(--green-dark);
+      border:1px solid #c9e1d6;
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:.78rem;
+      font-weight:900;
+      margin:5px 5px 5px 0;
+    }
+
+    .top-pick .badge{
+      background:rgba(255,255,255,.12);
+      color:#f7e7b8;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .buttons{
+      display:flex;
+      gap:9px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .featured-banner{
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      color:white;
+      border-radius:26px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      margin:22px 0;
+    }
+
+    .featured-banner p{color:#f5ead3}
+    .featured-banner .btn.secondary{background:white}
+
+    details.accordion{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:22px;
+      margin:16px 0;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      scroll-margin-top:96px;
+    }
+
+    .accordion summary{
+      list-style:none;
+      cursor:pointer;
+      padding:19px 22px;
+      font-size:1.08rem;
+      font-weight:900;
+      color:var(--green-dark);
+      background:linear-gradient(135deg,#ffffff,var(--green-soft));
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+
+    .accordion summary::-webkit-details-marker{display:none}
+    .accordion summary::after{
+      content:"+";
+      width:32px;
+      height:32px;
+      flex:0 0 32px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--green-dark);
+      color:#fff;
+      font-size:1.35rem;
+      line-height:1;
+    }
+
+    .accordion[open] summary::after{content:"−"}
+
+    .accordion-body{
+      padding:20px;
+      border-top:1px solid var(--line);
+    }
+
+    .section-intro{
+      color:var(--muted);
+      font-weight:700;
+      margin:0 0 16px;
+      line-height:1.6;
+    }
+
+    .tv-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:18px;
+      margin-top:16px;
+    }
+
+    .tv-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+
+    .tv-card iframe{
+      width:100%;
+      height:680px;
+      border:0;
+      border-radius:14px;
+      background:#0b1220;
+      display:block;
+    }
+
+    .tv-placeholder{
+      background:linear-gradient(135deg,#0f172a,#1f5f4a);
+      color:white;
+      border-radius:14px;
+      min-height:360px;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:14px;
+    }
+
+    .tv-placeholder p{color:#f5ead3;margin:0;line-height:1.6}
+
+    .search-box{
+      padding:18px;
+      margin:16px 0;
+    }
+
+    .search-row,.email-row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .search-row input,.email-row input{margin-top:0}
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:12px;
+      margin:14px 0;
+    }
+
+    label{
+      font-size:.78rem;
+      font-weight:900;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    input,select,textarea{
+      width:100%;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:white;
+      font:inherit;
+      margin-top:6px;
+    }
+
+    textarea{min-height:92px;resize:vertical}
+
+    .tool-panel{
+      padding:22px;
+      margin:18px 0;
+    }
+
+    .tool-panel h3{
+      margin:0 0 12px;
+      font-size:1.35rem;
+      font-weight:900;
+    }
+
+    .result{
+      background:var(--green-soft);
+      border:1px solid #c9e1d6;
+      color:var(--green-dark);
+      border-radius:14px;
+      padding:14px;
+      font-weight:800;
+      line-height:1.65;
+      margin-top:12px;
+    }
+
+    .table-wrap,.comparison-table{overflow:auto}
+    .comparison-table{padding:18px}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      font-size:.92rem;
+    }
+
+    th,td{
+      border-bottom:1px solid var(--line);
+      padding:10px;
+      text-align:left;
+      vertical-align:top;
+    }
+
+    .preview{
+      min-height:126px;
+      border-radius:18px;
+      background:
+        radial-gradient(circle at top right,rgba(255,255,255,.35),transparent 35%),
+        linear-gradient(135deg,var(--green-dark),var(--green));
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:20px;
+      margin-bottom:18px;
+    }
+
+    .preview .small{
+      text-transform:uppercase;
+      letter-spacing:1.8px;
+      font-size:.68rem;
+      color:#f2dfb4;
+      font-weight:800;
+      margin-bottom:10px;
+    }
+
+    .preview .big{
+      font-weight:900;
+      font-size:1.05rem;
+      line-height:1.25;
+    }
+
+    .email-capture{
+      padding:22px;
+      margin-top:26px;
+    }
+
+    footer{
+      background:var(--green-dark);
+      color:#f5ead3;
+      text-align:center;
+      padding:34px 6%;
+      line-height:1.6;
+    }
+
+    @media(max-width:900px){
+      header{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:12px;
+      }
+
+      nav{
+        width:100%;
+        overflow:auto;
+        flex-wrap:nowrap;
+        padding-bottom:4px;
+        justify-content:flex-start;
+      }
+
+      nav a{flex:0 0 auto}
+
+      .hero-dashboard{grid-template-columns:1fr}
+      .category-jump{top:0}
+      .section-head{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+    }
+
+    @media(max-width:720px){
+      main{width:94%}
+      .hero{padding:24px 5% 20px}
+      .hero h1{font-size:1.55rem}
+      .hero p{font-size:.9rem}
+      .quick-actions .btn,.buttons .btn{width:100%}
+      .accordion summary{
+        padding:16px 18px;
+        font-size:1rem;
+      }
+      .accordion-body,.tool-panel,.card{padding:16px}
+      .tv-card iframe{height:520px}
+      .search-row,.email-row{flex-direction:column}
+      .search-row .btn,.email-row .btn{width:100%}
+      .ticker-track{animation-duration:19s}
+    }
+
+    /* TradingView-inspired top layout + motion refresh */
+    :root{
+      --green:#2962ff;
+      --green-dark:#0b1220;
+      --green-soft:#13233f;
+      --cream:#0b0f19;
+      --paper:#111827;
+      --gold:#00e5ff;
+      --text:#e5edf8;
+      --muted:#8ea1bd;
+      --line:#22314d;
+      --shadow:0 22px 60px rgba(0,0,0,.34);
+      --tv-blue:#2962ff;
+      --tv-cyan:#00e5ff;
+      --tv-panel:#111827;
+      --tv-panel-2:#0f172a;
+    }
+
+    body{
+      background:
+        radial-gradient(circle at 20% 0%,rgba(41,98,255,.20),transparent 32%),
+        radial-gradient(circle at 80% 8%,rgba(0,229,255,.12),transparent 28%),
+        linear-gradient(180deg,#08111f,#0b0f19 42%,#0b0f19);
+      color:var(--text);
+    }
+
+    header{
+      background:rgba(8,17,31,.86);
+      border-bottom:1px solid rgba(41,98,255,.24);
+      box-shadow:0 10px 30px rgba(0,0,0,.22);
+    }
+
+    .logo{
+      color:#fff;
+      text-shadow:0 0 22px rgba(41,98,255,.55);
+    }
+
+    nav a,
+    .category-jump a{
+      color:#cfe1ff;
+      background:rgba(17,24,39,.72);
+      border:1px solid rgba(41,98,255,.22);
+    }
+
+    nav a:hover,
+    .category-jump a:hover{
+      background:var(--tv-blue);
+      color:#fff;
+    }
+
+    .hero{
+      background:
+        linear-gradient(135deg,rgba(9,17,32,.94),rgba(13,27,50,.96)),
+        radial-gradient(circle at top right,rgba(41,98,255,.36),transparent 38%);
+      border-bottom:1px solid rgba(41,98,255,.22);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-120px;
+      background:
+        linear-gradient(90deg,transparent 0 48%,rgba(41,98,255,.08) 49% 51%,transparent 52%),
+        linear-gradient(0deg,transparent 0 48%,rgba(41,98,255,.06) 49% 51%,transparent 52%);
+      background-size:64px 64px;
+      animation:tvGridMove 18s linear infinite;
+      pointer-events:none;
+      opacity:.7;
+    }
+
+    .hero > *{position:relative;z-index:1}
+
+    .kicker{
+      color:var(--tv-cyan);
+    }
+
+    .btn{
+      background:linear-gradient(135deg,var(--tv-blue),#1d4ed8);
+      color:#fff;
+      border:1px solid rgba(125,170,255,.35);
+      box-shadow:0 14px 28px rgba(41,98,255,.24);
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 18px 42px rgba(41,98,255,.36);
+      filter:brightness(1.08);
+    }
+
+    .btn.secondary,
+    .btn.light{
+      background:rgba(17,24,39,.86);
+      color:#cfe1ff;
+      border:1px solid rgba(41,98,255,.32);
+    }
+
+    .market-snapshot,
+    .movers-wrap,
+    .accordion,
+    .card,
+    .tool-panel,
+    .comparison-table,
+    .search-box,
+    .email-capture{
+      background:linear-gradient(180deg,rgba(17,24,39,.92),rgba(15,23,42,.92));
+      border:1px solid rgba(41,98,255,.22);
+      box-shadow:var(--shadow);
+      color:var(--text);
+    }
+
+    .card,
+    .tool-panel,
+    .accordion,
+    .tv-card{
+      animation:floatIn .65s ease both;
+    }
+
+    .card:hover,
+    .tool-panel:hover,
+    .tv-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(0,229,255,.48);
+      box-shadow:0 24px 70px rgba(41,98,255,.18);
+    }
+
+    .card,
+    .tool-panel,
+    .tv-card{
+      transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .accordion summary{
+      color:#fff;
+      background:linear-gradient(135deg,rgba(41,98,255,.28),rgba(15,23,42,.96));
+      border-bottom:1px solid rgba(41,98,255,.18);
+    }
+
+    .accordion summary::after{
+      background:var(--tv-blue);
+      box-shadow:0 0 24px rgba(41,98,255,.5);
+    }
+
+    #trading-ideas{
+      margin-top:0;
+      border-color:rgba(0,229,255,.38);
+      box-shadow:0 30px 90px rgba(41,98,255,.22);
+      animation:topGlow 3.2s ease-in-out infinite;
+    }
+
+    #trading-ideas summary{
+      min-height:70px;
+      background:
+        linear-gradient(135deg,rgba(41,98,255,.88),rgba(12,28,58,.98)),
+        radial-gradient(circle at top right,rgba(0,229,255,.38),transparent 40%);
+      font-size:1.2rem;
+    }
+
+    #trading-ideas .accordion-body{
+      background:
+        radial-gradient(circle at 90% 0%,rgba(0,229,255,.10),transparent 30%),
+        linear-gradient(180deg,rgba(10,18,34,.96),rgba(13,20,36,.96));
+    }
+
+    .tv-grid{
+      grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+      align-items:stretch;
+    }
+
+    .tv-card{
+      background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(17,24,39,.98));
+      border:1px solid rgba(41,98,255,.28);
+      color:var(--text);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .tv-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg,transparent 0 35%,rgba(0,229,255,.09) 45%,transparent 55% 100%);
+      transform:translateX(-120%);
+      animation:shine 4.5s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    .tv-card h3{
+      color:#fff;
+    }
+
+    .tv-placeholder{
+      background:
+        linear-gradient(135deg,rgba(41,98,255,.22),rgba(15,23,42,.84)),
+        repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 46px);
+      border:1px solid rgba(0,229,255,.24);
+    }
+
+    .section-head h2,
+    .accordion h3,
+    .card h3,
+    .tool-panel h3{
+      color:#fff;
+    }
+
+    .section-head p,
+    .section-intro,
+    .card p,
+    .tool-panel p{
+      color:var(--muted);
+    }
+
+    input,select,textarea{
+      background:#0b1220;
+      color:#e5edf8;
+      border:1px solid rgba(41,98,255,.28);
+    }
+
+    input::placeholder,textarea::placeholder{color:#7084a4}
+
+    .result,.badge{
+      background:rgba(41,98,255,.14);
+      color:#cfe1ff;
+      border-color:rgba(41,98,255,.28);
+    }
+
+    footer{
+      background:#08111f;
+      color:#8ea1bd;
+      border-top:1px solid rgba(41,98,255,.22);
+    }
+
+    @keyframes tvGridMove{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(64px,64px,0)}
+    }
+
+    @keyframes floatIn{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @keyframes topGlow{
+      0%,100%{box-shadow:0 30px 90px rgba(41,98,255,.18)}
+      50%{box-shadow:0 30px 110px rgba(0,229,255,.26)}
+    }
+
+    @keyframes shine{
+      0%,55%{transform:translateX(-120%)}
+      75%,100%{transform:translateX(120%)}
+    }
+
+    @media(max-width:900px){
+      .tv-grid{grid-template-columns:1fr}
+      #trading-ideas summary{font-size:1.05rem}
+    }
+
+    @media(max-width:720px){
+      #trading-ideas{
+        border-radius:18px;
+      }
+      #trading-ideas summary{
+        min-height:58px;
+      }
+      .tv-card iframe{height:560px}
+      .category-jump{
+        margin-top:12px;
+      }
+    }
+
+  </style>
 </head>
-<body>
-<header>
-<div class="logo">Capital Library</div>
-<nav>
-  <a href="#market-movers">Movers</a>
-  <a href="#popular">Top Picks</a>
-  <a href="#tradingview">Free Pine</a>
-  <a href="#trading-tools">Tools</a>
-  <a href="resources.html">Resources</a>
-</nav>
-</header>
 
-<section class="hero">
-  <div class="hero-dashboard">
-    <div>
-      <div class="kicker">Financial Tools • Trading • Business • Wealth</div>
-      <h1>Capital • Knowledge • Opportunity</h1>
-      <p>Fast access to calculators, trading tools, resources, and free finance reading for traders, investors, business owners, and builders.</p>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="logo">Capital Library</div>
+    <nav aria-label="Main navigation">
+      <a href="#trading-ideas">Trading Ideas</a>
+      <a href="#trading">Trading</a>
+      <a href="#real-estate">Real Estate</a>
+      <a href="#business">Business</a>
+      <a href="#wealth">Wealth</a>
+      <a href="#resources">Resources</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-dashboard">
+      <div>
+        <div class="kicker">Financial Tools • Trading • Business • Wealth</div>
+        <h1>Capital • Knowledge • Opportunity</h1>
+        <p>Fast access to calculators, trading tools, resources, TradingView ideas, and free finance reading for traders, investors, business owners, and builders.</p>
+        <div class="quick-actions">
+          <a class="btn" href="#trading-ideas">View Trading Ideas</a>
+          <a class="btn secondary" href="#trading">Use Free Tools</a>
+        </div>
+        <div class="hero-note">Educational tools only. Always verify current market data before making financial decisions.</div>
       </div>
-      <div class="hero-note">Educational tools only. Always verify current market data before making financial decisions.</div>
+
+      <aside class="market-snapshot" aria-label="Market snapshot">
+        <h3>Market Snapshot</h3>
+        <div class="market-row"><strong>S&amp;P 500</strong><span>+0.45%</span></div>
+        <div class="market-row"><strong>NASDAQ</strong><span>+0.62%</span></div>
+        <div class="market-row"><strong>Bitcoin</strong><span>+1.24%</span></div>
+        <div class="hero-note">Replace these sample values with live data or manual updates.</div>
+      </aside>
     </div>
 
-    <aside class="market-snapshot" aria-label="Market snapshot">
-      <h3>Market Snapshot</h3>
-      <div class="market-row"><strong>S&amp;P 500</strong><span>+0.45%</span></div>
-      <div class="market-row"><strong>NASDAQ</strong><span>+0.62%</span></div>
-      <div class="market-row"><strong>Bitcoin</strong><span>+1.24%</span></div>
-    </aside>
-  </div>
-
-  <section id="market-movers" class="market-movers-section">
-    <div class="movers-wrap">
-      
-      <div class="ticker">
+    <div class="movers-wrap" id="market-movers">
+      <div class="ticker" aria-label="Sample market movers">
         <div class="ticker-track">
           <span class="up">NVDA +4.8%</span>
           <span class="down">TSLA -3.6%</span>
@@ -956,788 +986,681 @@ footer{
       </div>
     </div>
   </section>
-</section>
 
-<main>
-  <div class="category-jump">
-    <a href="#popular">Top Picks</a>
-    <a href="#tradingview">Pine</a>
-    <a href="#trading-tools">Trading Tools</a>
-    <a href="#real-estate-tools">Real Estate</a>
-    <a href="#business-tools">Business</a>
-    <a href="#wealth-tools">Wealth</a>
-    <a href="#resources">Resources</a>
-    <a href="#reading">Reading</a>
-  </div>
+  <main id="main">
 
-<section id="popular" class="conversion-section">
-  <div class="section-head">
-    <h2>Most Popular This Week</h2>
-    <p>Fast access to the highest-intent resources</p>
-  </div>
-  <div class="grid">
-    <div class="card trading top-pickk">
-      <div class="kicker">Free Download</div>
-      <h3>TradingView Pine Script Strategy Package</h3>
-      <p>Free Pine Script v6 package with strategy modes, alerts, ATR exits, market structure, liquidity concepts, FVGs, and dashboard.</p>
-      <span class="badge">★★★★★ Free Tool</span>
-      <span class="badge">Best For Traders</span>
-      <div class="buttons">
-        <a class="btn" href="capital-library-tradingview-strategy-package-github.pine" download>Download Free</a>
+    <details class="accordion" id="trading-ideas" open>
+      <summary>📈 TradingView Trading Ideas</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Mobile-friendly area for TradingView posts, trader ideas, and market analysis. Replace the placeholder URL with the exact Good Trader Finaner TradingView idea URL or official embed code.</p>
+
+        <div class="search-box">
+          <div class="search-row">
+            <input id="ideaSearch" type="search" placeholder="Search TradingView ideas, traders, tickers..." oninput="filterIdeas()" />
+            <a class="btn secondary" href="https://www.tradingview.com/" target="_blank" rel="noopener">Find Ideas</a>
+          </div>
+          <div class="result" id="ideaSearchResult">Showing all trading ideas.</div>
+        </div>
+
+        <div class="tv-grid">
+          <article class="tv-card idea-item">
+            <h3>Good Trader Finaner</h3>
+            <p>TradingView trading idea embed placeholder.</p>
+            <div class="tv-placeholder">
+              <div class="kicker">TradingView Embed</div>
+              <h3>Replace this box with the TradingView embed code</h3>
+              <p>Open the idea on TradingView, click Share, choose Embed, and paste the provided iframe or script code here.</p>
+              <a class="btn" href="https://www.tradingview.com/" target="_blank" rel="noopener">Open TradingView</a>
+            </div>
+          </article>
+
+          <article class="tv-card idea-item">
+            <h3>TradingView Chart Widget</h3>
+            <p>Sample chart widget area. You can change the symbol in TradingView’s widget builder.</p>
+            <iframe
+              title="TradingView Chart"
+              src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=NASDAQ%3AAAPL&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hideideas=1"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </article>
+        </div>
       </div>
+    </details>
+
+    <div class="category-jump" aria-label="Category shortcuts">
+      <a href="#trading-ideas">📈 Ideas</a>
+      <a href="#trading">📊 Trading</a>
+      <a href="#real-estate">🏠 Real Estate</a>
+      <a href="#business">💼 Business</a>
+      <a href="#wealth">💰 Wealth</a>
+      <a href="#resources">📚 Resources</a>
+      <a href="#reading">Reading</a>
     </div>
 
-    <div class="card trading top-pickk">
-      <div class="kicker">Stock Education</div>
-      <h3>CNC Academy Membership</h3>
-      <p>Monthly stock-market learning membership for traders and investors.</p>
-      <span class="badge">★★★★★ Beginner Friendly</span>
-      <span class="badge">Trading Education</span>
-      <div class="buttons">
-        <a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">Access Membership</a>
+    <section id="popular">
+      <div class="section-head">
+        <h2>Most Popular This Week</h2>
+        <p>Fast access to the highest-intent resources.</p>
       </div>
-    </div>
 
-    <div class="card business top-pickk">
-      <div class="kicker">Business & Taxes</div>
-      <h3>The Taxes, Accounting, Bookkeeping Bible</h3>
-      <p>Small-business guide covering taxes, bookkeeping, accounting, savings tips, and IRS penalty avoidance.</p>
-      <span class="badge">★★★★★ Business Owners</span>
-      <span class="badge">Best Value</span>
-      <div class="buttons">
-        <a class="btn" href="https://amzn.to/4ecDZu6" target="_blank">Access Now</a>
+      <div class="grid">
+        <article class="card trading top-pick">
+          <div class="kicker">Free Download</div>
+          <h3>TradingView Pine Script Strategy Package</h3>
+          <p>Free Pine Script package with strategy modes, alerts, ATR exits, market structure, liquidity concepts, FVGs, and dashboard.</p>
+          <span class="badge">Free Tool</span>
+          <span class="badge">Best For Traders</span>
+          <div class="buttons">
+            <a class="btn" href="capital-library-tradingview-strategy-package-github.pine" download>Download Free</a>
+          </div>
+        </article>
+
+        <article class="card trading top-pick">
+          <div class="kicker">Stock Education</div>
+          <h3>CNC Academy Membership</h3>
+          <p>Monthly stock-market learning membership for traders and investors.</p>
+          <span class="badge">Beginner Friendly</span>
+          <span class="badge">Trading Education</span>
+          <div class="buttons">
+            <a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank" rel="noopener">Access Membership</a>
+          </div>
+        </article>
+
+        <article class="card business top-pick">
+          <div class="kicker">Business & Taxes</div>
+          <h3>The Taxes, Accounting, Bookkeeping Bible</h3>
+          <p>Small-business guide covering taxes, bookkeeping, accounting, savings tips, and IRS penalty avoidance.</p>
+          <span class="badge">Business Owners</span>
+          <span class="badge">Best Value</span>
+          <div class="buttons">
+            <a class="btn" href="https://amzn.to/4ecDZu6" target="_blank" rel="noopener">Access Now</a>
+          </div>
+        </article>
+
+        <article class="card realestate top-pick">
+          <div class="kicker">Real Estate</div>
+          <h3>Real Estate Investment Starter Guide</h3>
+          <p>Learn rental property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
+          <span class="badge">New Investors</span>
+          <span class="badge">Rental Analysis</span>
+          <div class="buttons">
+            <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank" rel="noopener">Access Resource</a>
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <div class="card realestate top-pickk">
-      <div class="kicker">Real Estate</div>
-      <h3>Real Estate Investment Starter Guide</h3>
-      <p>Learn rental property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
-      <span class="badge">★★★★★ New Investors</span>
-      <span class="badge">Rental Analysis</span>
+    <section class="featured-banner">
+      <div class="kicker">Featured TradingView Idea</div>
+      <h2>Good Trader Finaner</h2>
+      <p>Add the exact TradingView idea link below. Use TradingView Share → Embed when available, or link directly to the idea page.</p>
       <div class="buttons">
-        <a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a>
+        <a class="btn" href="#trading-ideas">View Ideas</a>
+        <a class="btn secondary" href="https://www.tradingview.com/" target="_blank" rel="noopener">Open TradingView</a>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="conversion-section featured-banner">
-  <div class="kicker">Featured Resource</div>
-  <h2>Free TradingView Strategy Package</h2>
-  <p>Includes EMA Trend, Supertrend, VWAP Mean Reversion, Opening Range Breakout, Market Structure, alerts, ATR exits, and backtest tools.</p>
-  <div class="buttons">
-    <a class="btn" href="capital-library-tradingview-strategy-package-github.pine" download>Free Pine Script</a>
-    <a class="btn secondary" href="#pine-generator">Create Pine Script Request</a>
-  </div>
-</section>
+    <details class="accordion" id="resources" open>
+      <summary>🔥 Featured Resources</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Featured books, tools, memberships, and resources.</p>
+        <div class="grid">
+          <article class="card realestate">
+            <div class="kicker">Real Estate</div>
+            <h3>Real Estate Investment Starter Guide</h3>
+            <p>Learn rental property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
+            <div class="buttons"><a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank" rel="noopener">Access Resource</a></div>
+          </article>
+          <article class="card business">
+            <div class="kicker">Business & Operations</div>
+            <h3>Business Tools Collection</h3>
+            <p>Accounting, taxes, bookkeeping, invoicing, office software, and small-business systems.</p>
+            <div class="buttons"><a class="btn" href="#business">Explore Tools</a></div>
+          </article>
+          <article class="card trading">
+            <div class="kicker">Stock Education</div>
+            <h3>CNC Academy Membership</h3>
+            <p>Monthly stock-market learning membership for traders and investors.</p>
+            <div class="buttons"><a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank" rel="noopener">Access Membership</a></div>
+          </article>
+          <article class="card trading">
+            <div class="kicker">Futures Trading</div>
+            <h3>Live Futures Educational Platform</h3>
+            <p>Education platform for futures markets, live learning, and trading concepts.</p>
+            <div class="buttons"><a class="btn" href="https://simplemarketmetrics.gumroad.com/l/gpcfp?a=812339299" target="_blank" rel="noopener">Access Platform</a></div>
+          </article>
+          <article class="card trading">
+            <div class="kicker">Trading Tools</div>
+            <h3>Ninja Trader Wave Runner</h3>
+            <p>A NinjaTrader tool for market movement, wave structure, and active trading workflows.</p>
+            <div class="buttons"><a class="btn" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank" rel="noopener">Access Tool</a></div>
+          </article>
+          <article class="card wealth">
+            <div class="kicker">Wealth Building</div>
+            <h3>Paycheck to Portfolio Membership</h3>
+            <p>Move from income to portfolio-building, investing habits, and long-term financial growth.</p>
+            <div class="buttons"><a class="btn" href="https://paycheckportfolio.gumroad.com/l/iescv?a=812339299" target="_blank" rel="noopener">Access Membership</a></div>
+          </article>
+        </div>
+      </div>
+    </details>
 
+    <details class="accordion" id="compare-resources">
+      <summary>Compare Popular Resources</summary>
+      <div class="accordion-body">
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr><th>Resource</th><th>Best For</th><th>Skill Level</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>TradingView Pine Script Package</td><td>Backtesting strategies</td><td>Beginner-Intermediate</td><td><a class="btn small" href="capital-library-tradingview-strategy-package-github.pine" download>Download</a></td></tr>
+              <tr><td>CNC Academy</td><td>Stock-market education</td><td>Beginner</td><td><a class="btn small" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank" rel="noopener">Access</a></td></tr>
+              <tr><td>Wave Runner</td><td>Futures trading workflows</td><td>Intermediate</td><td><a class="btn small" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank" rel="noopener">Access</a></td></tr>
+              <tr><td>Bookkeeping Bible</td><td>Small-business taxes</td><td>Beginner</td><td><a class="btn small" href="https://amzn.to/4ecDZu6" target="_blank" rel="noopener">Access</a></td></tr>
+              <tr><td>Real Estate Starter Guide</td><td>Rental property analysis</td><td>Beginner</td><td><a class="btn small" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank" rel="noopener">Access</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
 
-<details class="accordion" id="compare-resources">
-  <summary>Compare Popular Resources</summary>
-  <div class="accordion-body">
-    <div class="comparison-table">
-      <table>
-        <thead>
-          <tr><th>Resource</th><th>Best For</th><th>Skill Level</th><th>Action</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>TradingView Pine Script Package</td><td>Backtesting strategies</td><td>Beginner-Intermediate</td><td><a class="btn small" href="capital-library-tradingview-strategy-package-github.pine" download>Download</a></td></tr>
-          <tr><td>CNC Academy</td><td>Stock-market education</td><td>Beginner</td><td><a class="btn small" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">Access</a></td></tr>
-          <tr><td>Wave Runner</td><td>Futures trading workflows</td><td>Intermediate</td><td><a class="btn small" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank">Access</a></td></tr>
-          <tr><td>Bookkeeping Bible</td><td>Small-business taxes</td><td>Beginner</td><td><a class="btn small" href="https://amzn.to/4ecDZu6" target="_blank">Access</a></td></tr>
-          <tr><td>Real Estate Starter Guide</td><td>Rental property analysis</td><td>Beginner</td><td><a class="btn small" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access</a></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <details class="accordion" id="trading" open>
+      <summary>📊 Trading & Investing Tools</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Risk, entries, journals, sessions, Pine Script requests, and strategy planning.</p>
 
-</div>
-</div>
-</div></details>
-</div></details>
-<details class="accordion" id="tradingview" open=""><summary>Capital Library Strategy Package</summary><div class="accordion-body"><p class="section-intro">Download the Pine Script v6 tool</p>
+        <div class="grid">
+          <article class="card trading">
+            <div class="kicker">Pine Script</div>
+            <h3>Capital Library Strategy Package</h3>
+            <p>Includes strategy modes, alerts, ATR exits, market-structure tools, liquidity concepts, FVGs, and a backtest dashboard.</p>
+            <div class="buttons"><a class="btn" download href="capital-library-tradingview-strategy-package-github.pine">Free Pine Script</a></div>
+          </article>
+        </div>
 
-<div class="grid">
-<div class="card trading">
-<div class="kicker">Pine Script v6</div>
-<h3>Capital Library Strategy Package</h3>
-<p>Includes strategy modes, alerts, ATR exits, market-structure tools, liquidity concepts, FVGs, and a backtest dashboard.</p>
-<div class="buttons">
-<a class="btn" download="" href="capital-library-tradingview-strategy-package-github.pine">Free Pine Script</a>
-</div>
-</div>
-</div>
-</div></details>
-<details class="accordion" id="hot-new"><summary>Featured Resources</summary><div class="accordion-body"><p class="section-intro">Featured books, tools, memberships and resources</p>
+        <div class="tool-panel" id="position-size">
+          <h3>1. Position Size Calculator</h3>
+          <p>Calculate shares/contracts from account size, risk percentage, entry, and stop loss.</p>
+          <div class="form-grid">
+            <label>Account Size<input id="psAccount" type="number" value="10000"></label>
+            <label>Risk %<input id="psRisk" type="number" value="1"></label>
+            <label>Entry<input id="psEntry" type="number" value="100"></label>
+            <label>Stop Loss<input id="psStop" type="number" value="95"></label>
+          </div>
+          <button class="btn small" onclick="positionSize()">Calculate</button>
+          <div class="result" id="psResult">Enter values and calculate.</div>
+        </div>
 
-<div class="grid">
-<div class="card realestate">
-<div class="kicker">Real Estate</div>
-<h3>Real Estate Investment Starter Guide</h3>
-<p>Learn rental property basics, cash flow, ROI, cap rate, expenses, and deal review.</p>
-<div class="buttons">
-<a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a>
-</div>
-</div>
-<div class="card business">
-<div class="kicker">Business &amp; Operations</div>
-<h3>Business Tools Collection</h3>
-<p>Accounting, taxes, bookkeeping, invoicing, office software and small-business systems.</p>
-<div class="buttons">
-<a class="btn" href="#business-resources">Explore Tools</a>
-</div>
-</div>
-<div class="card trading">
-<div class="kicker">Stock Education</div>
-<h3>CNC Academy Membership</h3>
-<p>Monthly stock-market learning membership for traders and investors.</p>
-<div class="buttons">
-<a class="btn" href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">Access Membership</a>
-</div>
-</div>
-<div class="card trading">
-<div class="kicker">Futures Trading</div>
-<h3>Live Futures Educational Platform</h3>
-<p>Education platform for futures markets, live learning, and trading concepts.</p>
-<div class="buttons">
-<a class="btn" href="https://simplemarketmetrics.gumroad.com/l/gpcfp?a=812339299" target="_blank">Access Platform</a>
-</div>
-</div>
-<div class="card trading">
-<div class="kicker">Trading Tools</div>
-<h3>Ninja Trader Wave Runner</h3>
-<p>A NinjaTrader tool for market movement, wave structure, and active trading workflows.</p>
-<div class="buttons">
-<a class="btn" href="https://simplemarketmetrics.gumroad.com/l/jeiyj?a=812339299" target="_blank">Access Tool</a>
-</div>
-</div>
-<div class="card trading">
-<div class="kicker">Market Analysis</div>
-<h3>VIP RealTimeTrades ASX Stocks, Crypto &amp; US Markets</h3>
-<p>Monthly market resource with trade alerts, analysis, research and community discussion.</p>
-<div class="buttons">
-<a class="btn" href="https://ruycorto.gumroad.com/l/gidjrr?a=812339299" target="_blank">Access Membership</a>
-</div>
-</div>
-<div class="card wealth">
-<div class="kicker">Wealth Building</div>
-<h3>Paycheck to Portfolio Membership</h3>
-<p>Move from income to portfolio-building, investing habits and long-term financial growth.</p>
-<div class="buttons">
-<a class="btn" href="https://paycheckportfolio.gumroad.com/l/iescv?a=812339299" target="_blank">Access Membership</a>
-</div>
-</div>
-<div class="card wealth">
-<div class="kicker">Faith &amp; Finance</div>
-<h3>The RED-E Society</h3>
-<p>A financial education community focused on faith, discipline and financial mastery.</p>
-<div class="buttons">
-<a class="btn" href="https://rogers1906.gumroad.com/l/fcxjqn?a=812339299" target="_blank">Access Society</a>
-</div>
-</div>
-<div class="card wealth">
-<div class="kicker">Wealth Transfer</div>
-<h3>A Wealth Transfer Survival Manual</h3>
-<p>A manual about managing a wealth transfer wisely and avoiding common mistakes.</p>
-<div class="buttons">
-<a class="btn" href="https://realthomsieloff.gumroad.com/l/fkmgcn?a=812339299" target="_blank">Access Manual</a>
-</div>
-</div>
-<div class="card silver">
-<div class="kicker">Hard Assets</div>
-<h3>To The Moon .999 Fine Silver Coin</h3>
-<p>A five-count collectible silver coin set for hard asset and collectible investors.</p>
-<div class="buttons">
-<a class="btn" href="https://allpatriots.gumroad.com/l/tothemooncoinfivecount?layout=discover&amp;recommended_by=search&amp;_gl=1*m2iayq*_ga*MTQwNjkyNjkyNS4xNzgwMjQ4NDI5*_ga_6LJN6D94N6*czE3ODAyNDg0MjgkbzEkZzEkdDE3ODAyNTE4MTgkajMkbDAkaDA.&amp;a=812339299" target="_blank">Access Now</a>
-</div>
-</div>
-<div class="card media">
-<div class="kicker">Independent Media</div>
-<h3>MDE.TV Premium Membership</h3>
-<p>Creator membership with original shows, podcasts, commentary, comedy and exclusive releases.</p>
-<div class="buttons">
-<a class="btn" href="https://samhyde.gumroad.com/l/HydeWars?a=812339299" target="_blank">Access Membership</a>
-</div>
-</div>
-</div>
-</div></details>
-<details class="accordion" id="business-resources"><summary>Business &amp; Operations Resources</summary><div class="accordion-body"><p class="section-intro">Taxes, bookkeeping, accounting, software and small-business tools</p>
+        <div class="tool-panel" id="risk-reward">
+          <h3>2. Risk / Reward Calculator</h3>
+          <p>Review entry, stop, target, risk, reward, and R:R ratio.</p>
+          <div class="form-grid">
+            <label>Entry<input id="rrEntry" type="number" value="100"></label>
+            <label>Stop<input id="rrStop" type="number" value="95"></label>
+            <label>Target<input id="rrTarget" type="number" value="112"></label>
+          </div>
+          <button class="btn small" onclick="riskReward()">Calculate</button>
+          <div class="result" id="rrResult">Enter values and calculate.</div>
+        </div>
 
-<div class="grid">
-<div class="card business">
-<div class="preview"><div class="small">Tax • Accounting</div><div class="big">Small Business Owner Guide</div></div>
-<h3>The Taxes, Accounting, Bookkeeping Bible</h3>
-<p>Small-business guide covering taxes, bookkeeping, accounting, savings tips and IRS penalty avoidance.</p>
-<a class="btn" href="https://amzn.to/4ecDZu6" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Bookkeeping</div><div class="big">All-in-One For Dummies</div></div>
-<h3>Bookkeeping All-in-One For Dummies</h3>
-<p>A reference for learning bookkeeping, financial tracking and business recordkeeping basics.</p>
-<a class="btn" href="https://amzn.to/4wVM65T" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Taxes</div><div class="big">Deductions &amp; Tax Breaks 2026</div></div>
-<h3>Deductions and Tax Breaks 2026</h3>
-<p>A tax reference for deductions, tax breaks, planning opportunities and filing preparation.</p>
-<a class="btn" href="https://amzn.to/3RAB59T" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Accounting</div><div class="big">Beginner Accounting Guide</div></div>
-<h3>Accounting for Beginners</h3>
-<p>Learn financial statements, taxes, managerial accounting and business performance basics.</p>
-<a class="btn" href="https://amzn.to/4vbVyjy" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">PDF Tools</div><div class="big">Edit • Convert • eSign</div></div>
-<h3>Scrivar PDF Suite Pro</h3>
-<p>PDF software for organizing, editing, converting, merging, signing, OCR and document workflows.</p>
-<a class="btn" href="https://amzn.to/4e2O9fQ" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Migration</div><div class="big">PC Transfer Toolkit</div></div>
-<h3>Laplink PCmover Migration Software</h3>
-<p>Business migration software for moving files, settings, apps and user data.</p>
-<a class="btn" href="https://amzn.to/4fjj0a3" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Billing</div><div class="big">Invoice Workflow</div></div>
-<h3>Express Invoice Billing Software</h3>
-<p>Billing and invoicing software for payments, customers and business billing.</p>
-<a class="btn" href="https://amzn.to/4akueHT" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Office Suite</div><div class="big">Word • Excel • PowerPoint</div></div>
-<h3>Microsoft Office Home &amp; Business 2024</h3>
-<p>Desktop office apps for documents, spreadsheets, presentations and business work.</p>
-<a class="btn" href="https://amzn.to/49ysgU3" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Finance</div><div class="big">Business &amp; Personal Money</div></div>
-<h3>Quicken Classic Business &amp; Personal</h3>
-<p>Finance software for managing accounts, expenses, income and financial tracking.</p>
-<a class="btn" href="https://amzn.to/4uJOMlv" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Tax Software</div><div class="big">Premium &amp; Business Filing</div></div>
-<h3>H&amp;R Block Tax Software Premium &amp; Business 2025</h3>
-<p>Tax software for premium and business filing needs and small-business tax preparation.</p>
-<a class="btn" href="https://amzn.to/49wetgM" target="_blank">Access Now</a>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Workforce</div><div class="big">Cloud Time Clock</div></div>
-<h3>NGTeco Cloud-Based Time Clock</h3>
-<p>WiFi attendance machine for time tracking, clock-in and workforce management.</p>
-<a class="btn" href="https://amzn.to/4dI2Aa0" target="_blank">Access Now</a>
-</div>
-</div>
-</div></details>
-<details class="accordion" id="reading"><summary>Recommended Finance Reading</summary><div class="accordion-body"><p class="section-intro">Curated books for wealth, business and economics</p>
+        <div class="tool-panel" id="compound">
+          <h3>3. Compound Interest Calculator</h3>
+          <p>Estimate future value using starting capital, monthly contributions, years, and return.</p>
+          <div class="form-grid">
+            <label>Starting Capital<input id="ciStart" type="number" value="5000"></label>
+            <label>Monthly Contribution<input id="ciMonthly" type="number" value="250"></label>
+            <label>Years<input id="ciYears" type="number" value="10"></label>
+            <label>Annual Return %<input id="ciReturn" type="number" value="8"></label>
+          </div>
+          <button class="btn small" onclick="compoundCalc()">Calculate</button>
+          <div class="result" id="ciResult">Enter values and calculate.</div>
+        </div>
 
-<div class="grid">
-<div class="card wealth">
-<div class="preview"><div class="small">Wealth</div><div class="big">The Richest Man in Babylon</div></div>
-<h3>The Richest Man in Babylon</h3>
-<p>A classic personal finance book about saving, discipline and building wealth.</p>
-<div class="buttons">
-<a class="btn" href="https://www.gutenberg.org/ebooks/72170" target="_blank">Read Free</a>
-</div>
-</div>
-<div class="card wealth">
-<div class="preview"><div class="small">Business Classic</div><div class="big">The Art of Money Getting</div></div>
-<h3>The Art of Money Getting</h3>
-<p>P.T. Barnum’s classic book on business habits, money discipline and practical success.</p>
-<div class="buttons">
-<a class="btn" href="https://www.gutenberg.org/cache/epub/8581/pg8581-images.html" target="_blank">Read Online</a>
-<a class="btn light" href="https://www.gutenberg.org/ebooks/8581.epub.images" target="_blank">Download EPUB</a>
-</div>
-</div>
-<div class="card wealth">
-<div class="preview"><div class="small">Economics</div><div class="big">The Wealth of Nations</div></div>
-<h3>The Wealth of Nations</h3>
-<p>Adam Smith’s foundational work on markets, labor, productivity, trade and economic systems.</p>
-<div class="buttons">
-<a class="btn" href="https://www.gutenberg.org/cache/epub/3300/pg3300-images.html" target="_blank">Read Online</a>
-<a class="btn light" href="https://www.gutenberg.org/ebooks/3300.epub.images" target="_blank">Download EPUB</a>
-</div>
-</div>
-<div class="card business">
-<div class="preview"><div class="small">Opportunity</div><div class="big">Acres of Diamonds</div></div>
-<h3>Acres of Diamonds</h3>
-<p>A short business classic about recognizing value, discipline and opportunity close to home.</p>
-<div class="buttons">
-<a class="btn" href="https://www.gutenberg.org/cache/epub/368/pg368-images.html" target="_blank">Read Online</a>
-<a class="btn light" href="https://www.gutenberg.org/ebooks/368.epub.images" target="_blank">Download EPUB</a>
-</div>
-</div>
-<div class="card realestate">
-<div class="preview"><div class="small">Real Estate</div><div class="big">Investment Starter Guide</div></div>
-<h3>Real Estate Investment Starter Guide</h3>
-<p>Your guide for cash flow, ROI, cap rate, expenses and rental property deal review.</p>
-<div class="buttons">
-<a class="btn" href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Access Resource</a>
-</div>
-</div>
-</div>
-</div></details>
-<details class="accordion" id="self-development"><summary>Self Development</summary><div class="accordion-body">
+        <div class="tool-panel" id="journal">
+          <h3>4. Trade Journal</h3>
+          <p>Save trades in your browser and export the list as a CSV file.</p>
+          <div class="form-grid">
+            <label>Ticker<input id="tjTicker" placeholder="AAPL"></label>
+            <label>Entry<input id="tjEntry" type="number"></label>
+            <label>Exit<input id="tjExit" type="number"></label>
+            <label>Shares/Contracts<input id="tjQty" type="number" value="1"></label>
+          </div>
+          <label>Notes<textarea id="tjNotes" placeholder="Setup, emotion, lesson learned..."></textarea></label>
+          <div class="buttons">
+            <button class="btn small" onclick="addTrade()">Add Trade</button>
+            <button class="btn secondary small" onclick="clearTrades()">Clear</button>
+            <button class="btn secondary small" onclick="exportTrades()">Export CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table id="tradeTable">
+              <thead><tr><th>Ticker</th><th>Entry</th><th>Exit</th><th>Qty</th><th>P/L</th><th>Notes</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
 
-<div class="grid">
-<div class="card relationship">
-<div class="kicker">Self Development</div>
-<h3>Oops, I Dated a Narcissist: How to Heal</h3>
-<p>A personal-growth book for healing, rebuilding confidence, and moving forward with clarity.</p>
-<div class="buttons">
-<a class="btn" href="https://www.amazon.com/Oops-Dated-Narcissist-Won-Heal-ebook/dp/B0GYSM6PK9" target="_blank">Access Now</a>
-<a class="btn light" href="https://danidoono.gumroad.com/l/hklbsx" target="_blank">Direct Copy</a>
-</div>
-</div>
-</div>
-</div></details>
-<details class="accordion" id="trading-tools"><summary>Trading &amp; Investing Tools</summary><div class="accordion-body"><p class="section-intro">Risk, entries, journals, sessions, and strategy planning</p>
+        <div class="tool-panel" id="sessions">
+          <h3>5. Market Session Clock</h3>
+          <p>Simple UTC-based session clock for New York, London, Tokyo, and Sydney.</p>
+          <div class="result" id="sessionClock">Loading session clock...</div>
+        </div>
 
-<div class="tool-panel" id="position-size">
-<h3>1. Position Size Calculator</h3>
-<p>Calculate shares/contracts from account size, risk percentage, entry, and stop loss.</p>
-<div class="form-grid">
-<label>Account Size<input id="psAccount" type="number" value="10000"/></label>
-<label>Risk %<input id="psRisk" type="number" value="1"/></label>
-<label>Entry<input id="psEntry" type="number" value="100"/></label>
-<label>Stop Loss<input id="psStop" type="number" value="95"/></label>
-</div>
-<button class="btn small" onclick="positionSize()">Calculate</button>
-<div class="result" id="psResult">Enter values and calculate.</div>
-</div>
-<div class="tool-panel" id="risk-reward">
-<h3>2. Risk / Reward Calculator</h3>
-<p>Review entry, stop, target, risk, reward, and R:R ratio.</p>
-<div class="form-grid">
-<label>Entry<input id="rrEntry" type="number" value="100"/></label>
-<label>Stop<input id="rrStop" type="number" value="95"/></label>
-<label>Target<input id="rrTarget" type="number" value="112"/></label>
-</div>
-<button class="btn small" onclick="riskReward()">Calculate</button>
-<div class="result" id="rrResult">Enter values and calculate.</div>
-</div>
-<div class="tool-panel" id="compound">
-<h3>3. Compound Interest Calculator</h3>
-<p>Estimate future value using starting capital, monthly contributions, years, and return.</p>
-<div class="form-grid">
-<label>Starting Capital<input id="ciStart" type="number" value="5000"/></label>
-<label>Monthly Contribution<input id="ciMonthly" type="number" value="250"/></label>
-<label>Years<input id="ciYears" type="number" value="10"/></label>
-<label>Annual Return %<input id="ciReturn" type="number" value="8"/></label>
-</div>
-<button class="btn small" onclick="compoundCalc()">Calculate</button>
-<div class="result" id="ciResult">Enter values and calculate.</div>
-</div>
-<div class="tool-panel" id="journal">
-<h3>4. Trade Journal</h3>
-<p>Save trades in your browser and export the list as a CSV file.</p>
-<div class="form-grid">
-<label>Ticker<input id="tjTicker" placeholder="AAPL"/></label>
-<label>Entry<input id="tjEntry" type="number"/></label>
-<label>Exit<input id="tjExit" type="number"/></label>
-<label>Shares/Contracts<input id="tjQty" type="number" value="1"/></label>
-</div>
-<label>Notes<textarea id="tjNotes" placeholder="Setup, emotion, lesson learned..."></textarea></label>
-<div class="buttons">
-<button class="btn small" onclick="addTrade()">Add Trade</button>
-<button class="btn secondary small" onclick="clearTrades()">Clear</button>
-<button class="btn secondary small" onclick="exportTrades()">Export CSV</button>
-</div>
-<div class="table-wrap">
-<table id="tradeTable"><thead><tr><th>Ticker</th><th>Entry</th><th>Exit</th><th>Qty</th><th>P/L</th><th>Notes</th></tr></thead><tbody></tbody></table>
-</div>
-</div>
-<div class="tool-panel" id="sessions">
-<h3>6. Pine Script Request Generator</h3>
-<p>Create a clean Pine Script strategy request template.</p>
-<div class="form-grid">
-<label>Market<select id="pgMarket"><option>Stocks</option><option>Futures</option><option>Forex</option><option>Crypto</option></select></label>
-<label>Timeframe<select id="pgTime"><option>1m</option><option>5m</option><option>15m</option><option>1H</option><option>Daily</option></select></label>
-<label>Style<select id="pgStyle"><option>Scalping</option><option>Day Trading</option><option>Swing Trading</option></select></label>
-<label>Strategy<select id="pgStrategy"><option>EMA Trend</option><option>Supertrend</option><option>VWAP Mean Reversion</option><option>Opening Range Breakout</option><option>Market Structure</option></select></label>
-</div>
-<button class="btn small" onclick="pineRequest()">Generate</button>
-<div class="result" id="pgResult">Generate a request template.</div>
-</div>
-<div class="tool-panel" id="strategy-compare">
+        <div class="tool-panel" id="pine-generator">
+          <h3>6. Pine Script Request Generator</h3>
+          <p>Create a clean Pine Script strategy request template.</p>
+          <div class="form-grid">
+            <label>Market<select id="pgMarket"><option>Stocks</option><option>Futures</option><option>Forex</option><option>Crypto</option></select></label>
+            <label>Timeframe<select id="pgTime"><option>1m</option><option>5m</option><option>15m</option><option>1H</option><option>Daily</option></select></label>
+            <label>Style<select id="pgStyle"><option>Scalping</option><option>Day Trading</option><option>Swing Trading</option></select></label>
+            <label>Strategy<select id="pgStrategy"><option>EMA Trend</option><option>Supertrend</option><option>VWAP Mean Reversion</option><option>Opening Range Breakout</option><option>Market Structure</option></select></label>
+          </div>
+          <button class="btn small" onclick="pineRequest()">Generate</button>
+          <div class="result" id="pgResult">Generate a request template.</div>
+        </div>
+      </div>
+    </details>
 
-</div></details>
-<details class="accordion" id="real-estate-tools"><summary>Real Estate Tools</summary><div class="accordion-body"><p class="section-intro">Analyze rental cash flow, ROI, and BRRRR deals</p>
+    <details class="accordion" id="real-estate">
+      <summary>🏠 Real Estate Tools</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Analyze rental cash flow, ROI, and BRRRR deals.</p>
 
-<div class="tool-panel" id="rental">
-<h3>8. Rental Property Calculator</h3>
-<div class="form-grid">
-<label>Purchase Price<input id="rpPrice" type="number" value="250000"/></label>
-<label>Monthly Rent<input id="rpRent" type="number" value="2200"/></label>
-<label>Monthly Expenses<input id="rpExpenses" type="number" value="900"/></label>
-<label>Down Payment<input id="rpDown" type="number" value="50000"/></label>
-</div>
-<button class="btn small" onclick="rentalCalc()">Calculate</button>
-<div class="result" id="rpResult">Enter values and calculate.</div>
-</div>
-<div class="tool-panel" id="brrrr">
-<h3>9. BRRRR Calculator</h3>
-<div class="form-grid">
-<label>Purchase<input id="brBuy" type="number" value="140000"/></label>
-<label>Rehab<input id="brRehab" type="number" value="35000"/></label>
-<label>ARV<input id="brArv" type="number" value="230000"/></label>
-<label>Refi LTV %<input id="brLtv" type="number" value="75"/></label>
-</div>
-<button class="btn small" onclick="brrrrCalc()">Calculate</button>
-<div class="result" id="brResult">Enter values and calculate.</div>
-</div>
-</div></details>
-<details class="accordion" id="business-tools"><summary>Business Tools</summary><div class="accordion-body"><p class="section-intro">Startup planning and tax deduction tracking</p>
+        <div class="tool-panel" id="rental">
+          <h3>Rental Property Calculator</h3>
+          <div class="form-grid">
+            <label>Purchase Price<input id="rpPrice" type="number" value="250000"></label>
+            <label>Monthly Rent<input id="rpRent" type="number" value="2200"></label>
+            <label>Monthly Expenses<input id="rpExpenses" type="number" value="900"></label>
+            <label>Down Payment<input id="rpDown" type="number" value="50000"></label>
+          </div>
+          <button class="btn small" onclick="rentalCalc()">Calculate</button>
+          <div class="result" id="rpResult">Enter values and calculate.</div>
+        </div>
 
-<div class="tool-panel" id="startup">
-<h3>10. Business Startup Cost Calculator</h3>
-<div class="form-grid">
-<label>Equipment<input id="scEquip" type="number" value="2500"/></label>
-<label>Marketing<input id="scMarketing" type="number" value="1000"/></label>
-<label>Software<input id="scSoftware" type="number" value="500"/></label>
-<label>Inventory<input id="scInventory" type="number" value="3000"/></label>
-</div>
-<button class="btn small" onclick="startupCalc()">Calculate</button>
-<div class="result" id="scResult">Enter values and calculate.</div>
-</div>
-<div class="tool-panel" id="tax-tracker">
-<h3>11. Tax Deduction Tracker</h3>
-<div class="form-grid">
-<label>Category<input id="txCategory" placeholder="Software"/></label>
-<label>Description<input id="txDescription" placeholder="Monthly tool"/></label>
-<label>Amount<input id="txAmount" type="number" value="0"/></label>
-</div>
-<div class="buttons">
-<button class="btn small" onclick="addDeduction()">Add Deduction</button>
-<button class="btn secondary small" onclick="clearDeductions()">Clear</button>
-<button class="btn secondary small" onclick="exportDeductions()">Export CSV</button>
-</div>
-<div class="result" id="txTotal">Total deductions: $0.00</div>
-<div class="table-wrap">
-<table id="taxTable"><thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead><tbody></tbody></table>
-</div>
-</div>
-</div></details>
-<details class="accordion" id="wealth-tools"><summary>Wealth Tools</summary><div class="accordion-body"><p class="section-intro">Net worth, FIRE planning, and long-term capital growth</p>
+        <div class="tool-panel" id="brrrr">
+          <h3>BRRRR Calculator</h3>
+          <div class="form-grid">
+            <label>Purchase<input id="brBuy" type="number" value="140000"></label>
+            <label>Rehab<input id="brRehab" type="number" value="35000"></label>
+            <label>ARV<input id="brArv" type="number" value="230000"></label>
+            <label>Refi LTV %<input id="brLtv" type="number" value="75"></label>
+          </div>
+          <button class="btn small" onclick="brrrrCalc()">Calculate</button>
+          <div class="result" id="brResult">Enter values and calculate.</div>
+        </div>
+      </div>
+    </details>
 
-<div class="tool-panel" id="net-worth">
-<h3>12. Net Worth Calculator</h3>
-<div class="form-grid">
-<label>Cash<input id="nwCash" type="number" value="5000"/></label>
-<label>Investments<input id="nwInvestments" type="number" value="25000"/></label>
-<label>Real Estate Equity<input id="nwRealEstate" type="number" value="50000"/></label>
-<label>Other Assets<input id="nwOther" type="number" value="0"/></label>
-<label>Mortgage<input id="nwMortgage" type="number" value="0"/></label>
-<label>Loans/Credit Cards<input id="nwDebt" type="number" value="5000"/></label>
-</div>
-<button class="btn small" onclick="netWorthCalc()">Calculate</button>
-<div class="result" id="nwResult">Enter values and calculate.</div>
-</div>
-<div class="tool-panel" id="fire">
-<h3>13. FIRE Calculator</h3>
-<div class="form-grid">
-<label>Annual Spending<input id="fiSpend" type="number" value="50000"/></label>
-<label>Current Investments<input id="fiCurrent" type="number" value="25000"/></label>
-<label>Monthly Savings<input id="fiSavings" type="number" value="1000"/></label>
-<label>Annual Return %<input id="fiReturn" type="number" value="7"/></label>
-</div>
-<button class="btn small" onclick="fireCalc()">Calculate</button>
-<div class="result" id="fiResult">Enter values and calculate.</div>
-</div>
-</div></details>
+    <details class="accordion" id="business">
+      <summary>💼 Business Tools & Resources</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Startup planning, tax deduction tracking, bookkeeping, accounting, software, and small-business tools.</p>
 
-</div></details>
+        <div class="tool-panel" id="startup">
+          <h3>Business Startup Cost Calculator</h3>
+          <div class="form-grid">
+            <label>Equipment<input id="scEquip" type="number" value="2500"></label>
+            <label>Marketing<input id="scMarketing" type="number" value="1000"></label>
+            <label>Software<input id="scSoftware" type="number" value="500"></label>
+            <label>Inventory<input id="scInventory" type="number" value="3000"></label>
+          </div>
+          <button class="btn small" onclick="startupCalc()">Calculate</button>
+          <div class="result" id="scResult">Enter values and calculate.</div>
+        </div>
 
-  <section class="conversion-section email-capture">
-  <div class="kicker">Free Updates</div>
-  <h2>Get Weekly Market & Business Tools</h2>
-  <div class="email-row">
-    <input id="emailInput" type="email" placeholder="Enter your email" />
-    <button class="btn" onclick="fakeEmailSignup()">Get Access</button>
-  </div>
-</section>
-</main>
-<footer>
-  Capital Library — tools, books, calculators, and resources for builders, investors, and operators.
-</footer>
-<script>
-const money = value => "$" + Number(value || 0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-const num = id => Number(document.getElementById(id).value || 0);
+        <div class="tool-panel" id="tax-tracker">
+          <h3>Tax Deduction Tracker</h3>
+          <div class="form-grid">
+            <label>Category<input id="txCategory" placeholder="Software"></label>
+            <label>Description<input id="txDescription" placeholder="Monthly tool"></label>
+            <label>Amount<input id="txAmount" type="number" value="0"></label>
+          </div>
+          <div class="buttons">
+            <button class="btn small" onclick="addDeduction()">Add Deduction</button>
+            <button class="btn secondary small" onclick="clearDeductions()">Clear</button>
+            <button class="btn secondary small" onclick="exportDeductions()">Export CSV</button>
+          </div>
+          <div class="result" id="txTotal">Total deductions: $0.00</div>
+          <div class="table-wrap">
+            <table id="taxTable">
+              <thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
 
-function positionSize(){
-  const account = num("psAccount");
-  const riskPct = num("psRisk") / 100;
-  const entry = num("psEntry");
-  const stop = num("psStop");
-  const riskDollars = account * riskPct;
-  const perShareRisk = Math.abs(entry - stop);
-  const qty = perShareRisk > 0 ? Math.floor(riskDollars / perShareRisk) : 0;
-  const value = qty * entry;
-  document.getElementById("psResult").innerHTML =
-    `Risk amount: ${money(riskDollars)}<br>Risk per share/contract: ${money(perShareRisk)}<br>Suggested size: ${qty}<br>Position value: ${money(value)}`;
-}
+        <div class="grid">
+          <article class="card business">
+            <div class="preview"><div class="small">Tax • Accounting</div><div class="big">Small Business Owner Guide</div></div>
+            <h3>The Taxes, Accounting, Bookkeeping Bible</h3>
+            <p>Small-business guide covering taxes, bookkeeping, accounting, savings tips and IRS penalty avoidance.</p>
+            <a class="btn" href="https://amzn.to/4ecDZu6" target="_blank" rel="noopener">Access Now</a>
+          </article>
+          <article class="card business">
+            <div class="preview"><div class="small">Bookkeeping</div><div class="big">All-in-One For Dummies</div></div>
+            <h3>Bookkeeping All-in-One For Dummies</h3>
+            <p>A reference for learning bookkeeping, financial tracking and business recordkeeping basics.</p>
+            <a class="btn" href="https://amzn.to/4wVM65T" target="_blank" rel="noopener">Access Now</a>
+          </article>
+          <article class="card business">
+            <div class="preview"><div class="small">Taxes</div><div class="big">Deductions & Tax Breaks 2026</div></div>
+            <h3>Deductions and Tax Breaks 2026</h3>
+            <p>A tax reference for deductions, tax breaks, planning opportunities and filing preparation.</p>
+            <a class="btn" href="https://amzn.to/3RAB59T" target="_blank" rel="noopener">Access Now</a>
+          </article>
+        </div>
+      </div>
+    </details>
 
-function riskReward(){
-  const entry = num("rrEntry");
-  const stop = num("rrStop");
-  const target = num("rrTarget");
-  const risk = Math.abs(entry - stop);
-  const reward = Math.abs(target - entry);
-  const ratio = risk > 0 ? reward / risk : 0;
-  document.getElementById("rrResult").innerHTML =
-    `Risk: ${money(risk)}<br>Reward: ${money(reward)}<br>Risk / Reward Ratio: 1:${ratio.toFixed(2)}`;
-}
+    <details class="accordion" id="wealth">
+      <summary>💰 Wealth Tools</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Net worth, FIRE planning, and long-term capital growth.</p>
 
-function compoundCalc(){
-  let balance = num("ciStart");
-  const monthly = num("ciMonthly");
-  const years = num("ciYears");
-  const monthlyRate = num("ciReturn") / 100 / 12;
-  for(let i=0;i<years*12;i++){
-    balance = balance * (1 + monthlyRate) + monthly;
-  }
-  const contributed = num("ciStart") + monthly * years * 12;
-  document.getElementById("ciResult").innerHTML =
-    `Future value: ${money(balance)}<br>Total contributed: ${money(contributed)}<br>Estimated growth: ${money(balance - contributed)}`;
-}
+        <div class="tool-panel" id="net-worth">
+          <h3>Net Worth Calculator</h3>
+          <div class="form-grid">
+            <label>Cash<input id="nwCash" type="number" value="5000"></label>
+            <label>Investments<input id="nwInvestments" type="number" value="25000"></label>
+            <label>Real Estate Equity<input id="nwRealEstate" type="number" value="50000"></label>
+            <label>Other Assets<input id="nwOther" type="number" value="0"></label>
+            <label>Mortgage<input id="nwMortgage" type="number" value="0"></label>
+            <label>Loans/Credit Cards<input id="nwDebt" type="number" value="5000"></label>
+          </div>
+          <button class="btn small" onclick="netWorthCalc()">Calculate</button>
+          <div class="result" id="nwResult">Enter values and calculate.</div>
+        </div>
 
-let trades = JSON.parse(localStorage.getItem("capitalTrades") || "[]");
+        <div class="tool-panel" id="fire">
+          <h3>FIRE Calculator</h3>
+          <div class="form-grid">
+            <label>Annual Spending<input id="fiSpend" type="number" value="50000"></label>
+            <label>Current Investments<input id="fiCurrent" type="number" value="25000"></label>
+            <label>Monthly Savings<input id="fiSavings" type="number" value="1000"></label>
+            <label>Annual Return %<input id="fiReturn" type="number" value="7"></label>
+          </div>
+          <button class="btn small" onclick="fireCalc()">Calculate</button>
+          <div class="result" id="fiResult">Enter values and calculate.</div>
+        </div>
+      </div>
+    </details>
 
-function renderTrades(){
-  const tbody = document.querySelector("#tradeTable tbody");
-  tbody.innerHTML = trades.map(t => `<tr><td>${t.ticker}</td><td>${t.entry}</td><td>${t.exit}</td><td>${t.qty}</td><td>${money(t.pl)}</td><td>${t.notes}</td></tr>`).join("");
-}
+    <details class="accordion" id="reading">
+      <summary>📚 Recommended Finance Reading</summary>
+      <div class="accordion-body">
+        <p class="section-intro">Curated books for wealth, business, economics, and personal growth.</p>
 
-function addTrade(){
-  const ticker = document.getElementById("tjTicker").value || "N/A";
-  const entry = num("tjEntry");
-  const exit = num("tjExit");
-  const qty = num("tjQty");
-  const notes = document.getElementById("tjNotes").value || "";
-  trades.push({ticker,entry,exit,qty,pl:(exit-entry)*qty,notes});
-  localStorage.setItem("capitalTrades", JSON.stringify(trades));
-  renderTrades();
-}
+        <div class="grid">
+          <article class="card wealth">
+            <div class="preview"><div class="small">Wealth</div><div class="big">The Richest Man in Babylon</div></div>
+            <h3>The Richest Man in Babylon</h3>
+            <p>A classic personal finance book about saving, discipline, and building wealth.</p>
+            <div class="buttons"><a class="btn" href="https://www.gutenberg.org/ebooks/72170" target="_blank" rel="noopener">Read Free</a></div>
+          </article>
+          <article class="card wealth">
+            <div class="preview"><div class="small">Business Classic</div><div class="big">The Art of Money Getting</div></div>
+            <h3>The Art of Money Getting</h3>
+            <p>P.T. Barnum’s classic book on business habits, money discipline, and practical success.</p>
+            <div class="buttons">
+              <a class="btn" href="https://www.gutenberg.org/cache/epub/8581/pg8581-images.html" target="_blank" rel="noopener">Read Online</a>
+              <a class="btn light" href="https://www.gutenberg.org/ebooks/8581.epub.images" target="_blank" rel="noopener">Download EPUB</a>
+            </div>
+          </article>
+          <article class="card wealth">
+            <div class="preview"><div class="small">Economics</div><div class="big">The Wealth of Nations</div></div>
+            <h3>The Wealth of Nations</h3>
+            <p>Adam Smith’s foundational work on markets, labor, productivity, trade, and economic systems.</p>
+            <div class="buttons">
+              <a class="btn" href="https://www.gutenberg.org/cache/epub/3300/pg3300-images.html" target="_blank" rel="noopener">Read Online</a>
+              <a class="btn light" href="https://www.gutenberg.org/ebooks/3300.epub.images" target="_blank" rel="noopener">Download EPUB</a>
+            </div>
+          </article>
+          <article class="card relationship">
+            <div class="kicker">Self Development</div>
+            <h3>Oops, I Dated a Narcissist: How to Heal</h3>
+            <p>A personal-growth book for healing, rebuilding confidence, and moving forward with clarity.</p>
+            <div class="buttons">
+              <a class="btn" href="https://www.amazon.com/Oops-Dated-Narcissist-Won-Heal-ebook/dp/B0GYSM6PK9" target="_blank" rel="noopener">Access Now</a>
+              <a class="btn light" href="https://danidoono.gumroad.com/l/hklbsx" target="_blank" rel="noopener">Direct Copy</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </details>
 
-function clearTrades(){
-  trades = [];
-  localStorage.removeItem("capitalTrades");
-  renderTrades();
-}
+    <section class="email-capture">
+      <div class="kicker">Free Updates</div>
+      <h2>Get Weekly Market & Business Tools</h2>
+      <div class="email-row">
+        <input id="emailInput" type="email" placeholder="Enter your email">
+        <button class="btn" onclick="fakeEmailSignup()">Get Access</button>
+      </div>
+      <div class="result" id="emailResult">Connect this form to an email service before publishing.</div>
+    </section>
+  </main>
 
-function exportCSV(filename, rows){
-  const csv = rows.map(row => row.map(item => `"${String(item).replaceAll('"','""')}"`).join(",")).join("\n");
-  const blob = new Blob([csv], {type:"text/csv"});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-}
+  <footer>
+    Capital Library — tools, books, calculators, and resources for builders, investors, and operators.<br>
+    Educational content only. Not financial advice.
+  </footer>
 
-function exportTrades(){
-  exportCSV("trade-journal.csv", [["Ticker","Entry","Exit","Qty","P/L","Notes"], ...trades.map(t => [t.ticker,t.entry,t.exit,t.qty,t.pl,t.notes])]);
-}
+  <script>
+    const money = value => "$" + Number(value || 0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+    const byId = id => document.getElementById(id);
+    const num = id => Number(byId(id)?.value || 0);
 
-function updateSessions(){
-  const now = new Date();
-  const utc = now.getUTCHours() + now.getUTCMinutes()/60;
-  const open = (start,end) => start < end ? utc >= start && utc < end : utc >= start || utc < end;
-  document.getElementById("sessionClock").innerHTML =
-    `UTC Time: ${now.toUTCString()}<br>` +
-    `New York: ${open(14.5,21) ? "Open" : "Closed"}<br>` +
-    `London: ${open(8,16.5) ? "Open" : "Closed"}<br>` +
-    `Tokyo: ${open(0,6) ? "Open" : "Closed"}<br>` +
-    `Sydney: ${open(22,5) ? "Open" : "Closed"}`;
-}
+    function setHTML(id, html){
+      const el = byId(id);
+      if(el) el.innerHTML = html;
+    }
 
-function pineRequest(){
-  const market = document.getElementById("pgMarket").value;
-  const time = document.getElementById("pgTime").value;
-  const style = document.getElementById("pgStyle").value;
-  const strat = document.getElementById("pgStrategy").value;
-  document.getElementById("pgResult").innerHTML =
-    `Build a Pine Script v6 ${strat} strategy for ${market} on the ${time} timeframe for ${style}. Include entries, exits, ATR stop loss, take profit, position sizing, alerts, and backtest metrics.`;
-}
+    function positionSize(){
+      const account = num("psAccount");
+      const riskPct = num("psRisk") / 100;
+      const entry = num("psEntry");
+      const stop = num("psStop");
+      const riskDollars = account * riskPct;
+      const perShareRisk = Math.abs(entry - stop);
+      const qty = perShareRisk > 0 ? Math.floor(riskDollars / perShareRisk) : 0;
+      const value = qty * entry;
+      setHTML("psResult", `Risk amount: ${money(riskDollars)}<br>Risk per share/contract: ${money(perShareRisk)}<br>Suggested size: ${qty}<br>Position value: ${money(value)}`);
+    }
 
-function rentalCalc(){
-  const price = num("rpPrice");
-  const rent = num("rpRent");
-  const expenses = num("rpExpenses");
-  const down = num("rpDown");
-  const cashFlow = rent - expenses;
-  const annualCashFlow = cashFlow * 12;
-  const capRate = price > 0 ? annualCashFlow / price * 100 : 0;
-  const cashOnCash = down > 0 ? annualCashFlow / down * 100 : 0;
-  document.getElementById("rpResult").innerHTML =
-    `Monthly cash flow: ${money(cashFlow)}<br>Annual cash flow: ${money(annualCashFlow)}<br>Cap rate: ${capRate.toFixed(2)}%<br>Cash-on-cash return: ${cashOnCash.toFixed(2)}%`;
-}
+    function riskReward(){
+      const entry = num("rrEntry");
+      const stop = num("rrStop");
+      const target = num("rrTarget");
+      const risk = Math.abs(entry - stop);
+      const reward = Math.abs(target - entry);
+      const ratio = risk > 0 ? reward / risk : 0;
+      setHTML("rrResult", `Risk: ${money(risk)}<br>Reward: ${money(reward)}<br>Risk / Reward Ratio: 1:${ratio.toFixed(2)}`);
+    }
 
-function brrrrCalc(){
-  const buy = num("brBuy");
-  const rehab = num("brRehab");
-  const arv = num("brArv");
-  const ltv = num("brLtv") / 100;
-  const allIn = buy + rehab;
-  const refi = arv * ltv;
-  const cashLeft = allIn - refi;
-  document.getElementById("brResult").innerHTML =
-    `All-in cost: ${money(allIn)}<br>Estimated refinance amount: ${money(refi)}<br>Cash left in deal: ${money(cashLeft)}`;
-}
+    function compoundCalc(){
+      let balance = num("ciStart");
+      const monthly = num("ciMonthly");
+      const years = num("ciYears");
+      const monthlyRate = num("ciReturn") / 100 / 12;
+      for(let i=0;i<years*12;i++){
+        balance = balance * (1 + monthlyRate) + monthly;
+      }
+      const contributed = num("ciStart") + monthly * years * 12;
+      setHTML("ciResult", `Future value: ${money(balance)}<br>Total contributed: ${money(contributed)}<br>Estimated growth: ${money(balance - contributed)}`);
+    }
 
-function startupCalc(){
-  const total = num("scEquip") + num("scMarketing") + num("scSoftware") + num("scInventory");
-  document.getElementById("scResult").innerHTML = `Estimated startup capital needed: ${money(total)}`;
-}
+    let trades = JSON.parse(localStorage.getItem("capitalTrades") || "[]");
 
-let deductions = JSON.parse(localStorage.getItem("capitalDeductions") || "[]");
+    function renderTrades(){
+      const tbody = document.querySelector("#tradeTable tbody");
+      if(!tbody) return;
+      tbody.innerHTML = trades.map(t => `<tr><td>${escapeHTML(t.ticker)}</td><td>${t.entry}</td><td>${t.exit}</td><td>${t.qty}</td><td>${money(t.pl)}</td><td>${escapeHTML(t.notes)}</td></tr>`).join("");
+    }
 
-function renderDeductions(){
-  const tbody = document.querySelector("#taxTable tbody");
-  tbody.innerHTML = deductions.map(d => `<tr><td>${d.category}</td><td>${d.description}</td><td>${money(d.amount)}</td></tr>`).join("");
-  const total = deductions.reduce((sum,d) => sum + Number(d.amount), 0);
-  document.getElementById("txTotal").innerHTML = `Total deductions: ${money(total)}`;
-}
+    function addTrade(){
+      const ticker = byId("tjTicker").value || "N/A";
+      const entry = num("tjEntry");
+      const exit = num("tjExit");
+      const qty = num("tjQty");
+      const notes = byId("tjNotes").value || "";
+      trades.push({ticker,entry,exit,qty,pl:(exit-entry)*qty,notes});
+      localStorage.setItem("capitalTrades", JSON.stringify(trades));
+      renderTrades();
+    }
 
-function addDeduction(){
-  deductions.push({
-    category: document.getElementById("txCategory").value || "General",
-    description: document.getElementById("txDescription").value || "",
-    amount: num("txAmount")
-  });
-  localStorage.setItem("capitalDeductions", JSON.stringify(deductions));
-  renderDeductions();
-}
+    function clearTrades(){
+      trades = [];
+      localStorage.removeItem("capitalTrades");
+      renderTrades();
+    }
 
-function clearDeductions(){
-  deductions = [];
-  localStorage.removeItem("capitalDeductions");
-  renderDeductions();
-}
+    function exportCSV(filename, rows){
+      const csv = rows.map(row => row.map(item => `"${String(item).replaceAll('"','""')}"`).join(",")).join("\n");
+      const blob = new Blob([csv], {type:"text/csv"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
 
-function exportDeductions(){
-  exportCSV("tax-deductions.csv", [["Category","Description","Amount"], ...deductions.map(d => [d.category,d.description,d.amount])]);
-}
+    function exportTrades(){
+      exportCSV("trade-journal.csv", [["Ticker","Entry","Exit","Qty","P/L","Notes"], ...trades.map(t => [t.ticker,t.entry,t.exit,t.qty,t.pl,t.notes])]);
+    }
 
-function netWorthCalc(){
-  const assets = num("nwCash") + num("nwInvestments") + num("nwRealEstate") + num("nwOther");
-  const liabilities = num("nwMortgage") + num("nwDebt");
-  document.getElementById("nwResult").innerHTML =
-    `Assets: ${money(assets)}<br>Liabilities: ${money(liabilities)}<br>Net worth: ${money(assets - liabilities)}`;
-}
+    function updateSessions(){
+      const now = new Date();
+      const utc = now.getUTCHours() + now.getUTCMinutes()/60;
+      const open = (start,end) => start < end ? utc >= start && utc < end : utc >= start || utc < end;
+      setHTML("sessionClock",
+        `UTC Time: ${now.toUTCString()}<br>` +
+        `New York: ${open(14.5,21) ? "Open" : "Closed"}<br>` +
+        `London: ${open(8,16.5) ? "Open" : "Closed"}<br>` +
+        `Tokyo: ${open(0,6) ? "Open" : "Closed"}<br>` +
+        `Sydney: ${open(22,5) ? "Open" : "Closed"}`
+      );
+    }
 
-function fireCalc(){
-  const fireNumber = num("fiSpend") * 25;
-  let current = num("fiCurrent");
-  const monthly = num("fiSavings");
-  const rate = num("fiReturn") / 100 / 12;
-  let months = 0;
-  while(current < fireNumber && months < 1200){
-    current = current * (1 + rate) + monthly;
-    months++;
-  }
-  document.getElementById("fiResult").innerHTML =
-    `Estimated FIRE number: ${money(fireNumber)}<br>Estimated time: ${Math.floor(months/12)} years and ${months%12} months`;
-}
+    function pineRequest(){
+      const market = byId("pgMarket").value;
+      const time = byId("pgTime").value;
+      const style = byId("pgStyle").value;
+      const strat = byId("pgStrategy").value;
+      setHTML("pgResult", `Build a Pine Script v6 ${strat} strategy for ${market} on the ${time} timeframe for ${style}. Include entries, exits, ATR stop loss, take profit, position sizing, alerts, and backtest metrics.`);
+    }
 
-const vaultItems = [
-  "TradingView Pine Script Strategy Package",
-  "Position Size Calculator",
-  "Risk Reward Calculator",
-  "Rental Property Calculator",
-  "BRRRR Calculator",
-  "Bookkeeping Tools",
-  "Business Startup Calculator",
-  "Tax Deduction Tracker",
-  "The Richest Man in Babylon",
-  "Market Session Clock",
-  "Trade Journal",
-  "FIRE Calculator"
-];
+    function rentalCalc(){
+      const price = num("rpPrice");
+      const rent = num("rpRent");
+      const expenses = num("rpExpenses");
+      const down = num("rpDown");
+      const cashFlow = rent - expenses;
+      const annualCashFlow = cashFlow * 12;
+      const capRate = price > 0 ? annualCashFlow / price * 100 : 0;
+      const cashOnCash = down > 0 ? annualCashFlow / down * 100 : 0;
+      setHTML("rpResult", `Monthly cash flow: ${money(cashFlow)}<br>Annual cash flow: ${money(annualCashFlow)}<br>Cap rate: ${capRate.toFixed(2)}%<br>Cash-on-cash return: ${cashOnCash.toFixed(2)}%`);
+    }
 
-function vaultSearch(){
-  const q = document.getElementById("vsSearch").value.toLowerCase();
-  const matches = vaultItems.filter(item => item.toLowerCase().includes(q));
-  document.getElementById("vsResult").innerHTML = q ? (matches.length ? matches.join("<br>") : "No matches found.") : "Start typing to search.";
-}
+    function brrrrCalc(){
+      const buy = num("brBuy");
+      const rehab = num("brRehab");
+      const arv = num("brArv");
+      const ltv = num("brLtv") / 100;
+      const allIn = buy + rehab;
+      const refi = arv * ltv;
+      const cashLeft = allIn - refi;
+      setHTML("brResult", `All-in cost: ${money(allIn)}<br>Estimated refinance amount: ${money(refi)}<br>Cash left in deal: ${money(cashLeft)}`);
+    }
 
-function dailyOpportunity(){
-  const ideas = [
-    "Review one high-volume stock near VWAP and define risk before entry.",
-    "Audit one recurring business expense and decide whether to keep or cancel it.",
-    "Analyze one rental deal using cap rate, cash flow, and cash-on-cash return.",
-    "Read 10 pages from a finance or business classic and write one action step.",
-    "Backtest one TradingView strategy mode on three different timeframes.",
-    "Update your trade journal and identify your most common mistake.",
-    "Calculate your current net worth and set one 30-day improvement target."
-  ];
-  const idea = ideas[Math.floor(Math.random() * ideas.length)];
-  document.getElementById("opResult").innerHTML = idea;
-}
+    function startupCalc(){
+      const total = num("scEquip") + num("scMarketing") + num("scSoftware") + num("scInventory");
+      setHTML("scResult", `Estimated startup capital needed: ${money(total)}`);
+    }
 
-renderTrades();
-renderDeductions();
-updateSessions();
-setInterval(updateSessions, 1000);
+    let deductions = JSON.parse(localStorage.getItem("capitalDeductions") || "[]");
 
-const capitalResourceSearchItems = [
-  {name:"TradingView Pine Script Strategy Package", type:"Free Tool", link:"capital-library-tradingview-strategy-package-github.pine"},
-  {name:"Position Size Calculator", type:"Trading Tool", link:"#position-size"},
-  {name:"Risk / Reward Calculator", type:"Trading Tool", link:"#risk-reward"},
-  {name:"Compound Interest Calculator", type:"Wealth Tool", link:"#compound"},
-  {name:"Trade Journal", type:"Trading Tool", link:"#journal"},
-  {name:"Market Session Clock", type:"Trading Tool", link:"#sessions"},
-  {name:"Rental Property Calculator", type:"Real Estate Tool", link:"#rental"},
-  {name:"BRRRR Calculator", type:"Real Estate Tool", link:"#brrrr"},
-  {name:"Startup Cost Calculator", type:"Business Tool", link:"#startup"},
-  {name:"Tax Deduction Tracker", type:"Business Tool", link:"#tax-tracker"},
-  {name:"Net Worth Calculator", type:"Wealth Tool", link:"#net-worth"},
-  {name:"FIRE Calculator", type:"Wealth Tool", link:"#fire"},
-  {name:"CNC Academy Membership", type:"Resource", link:"https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299"},
-  {name:"Real Estate Investment Starter Guide", type:"Resource", link:"https://danidoono.gumroad.com/l/rfhxr"},
-  {name:"The Taxes, Accounting, Bookkeeping Bible", type:"Resource", link:"https://amzn.to/4ecDZu6"},
-  {name:"Bookkeeping All-in-One For Dummies", type:"Resource", link:"https://amzn.to/4wVM65T"}
-];
+    function renderDeductions(){
+      const tbody = document.querySelector("#taxTable tbody");
+      if(!tbody) return;
+      tbody.innerHTML = deductions.map(d => `<tr><td>${escapeHTML(d.category)}</td><td>${escapeHTML(d.description)}</td><td>${money(d.amount)}</td></tr>`).join("");
+      const total = deductions.reduce((sum,d) => sum + Number(d.amount), 0);
+      setHTML("txTotal", `Total deductions: ${money(total)}`);
+    }
 
-function siteSearchResources(){
-  const q = document.getElementById("siteSearch").value.trim().toLowerCase();
-  const result = document.getElementById("siteSearchResult");
-  if(!q){
-    result.innerHTML = "Start typing to find matching tools and resources.";
-    return;
-  }
+    function addDeduction(){
+      deductions.push({
+        category: byId("txCategory").value || "General",
+        description: byId("txDescription").value || "",
+        amount: num("txAmount")
+      });
+      localStorage.setItem("capitalDeductions", JSON.stringify(deductions));
+      renderDeductions();
+    }
 
-  const matches = capitalResourceSearchItems.filter(item =>
-    item.name.toLowerCase().includes(q) || item.type.toLowerCase().includes(q)
-  );
+    function clearDeductions(){
+      deductions = [];
+      localStorage.removeItem("capitalDeductions");
+      renderDeductions();
+    }
 
-  result.innerHTML = matches.length
-    ? matches.map(item => `<a class="btn small secondary" href="${item.link}" ${item.link.startsWith("http") ? 'target="_blank"' : ""}>${item.name} — ${item.type}</a>`).join(" ")
-    : "No match found. Try trading, tax, real estate, business, Pine Script, or wealth.";
-}
+    function exportDeductions(){
+      exportCSV("tax-deductions.csv", [["Category","Description","Amount"], ...deductions.map(d => [d.category,d.description,d.amount])]);
+    }
 
-function showPath(path){
-  const paths = {
-    trading: `Start with the <a href="capital-library-tradingview-strategy-package-github.pine" download>Pine Script Package</a>, then use the <a href="#position-size">Position Size Calculator</a>, <a href="#risk-reward">Risk / Reward Calculator</a>, and <a href="https://tallguytycoon.gumroad.com/l/Pxkij?a=812339299" target="_blank">CNC Academy</a>.`,
-    business: `Start with the <a href="#startup">Startup Cost Calculator</a>, then review <a href="https://amzn.to/4ecDZu6" target="_blank">The Taxes, Accounting, Bookkeeping Bible</a> and <a href="#business-resources">Business Resources</a>.`,
-    realestate: `Start with the <a href="#rental">Rental Property Calculator</a>, then use the <a href="#brrrr">BRRRR Calculator</a> and <a href="https://danidoono.gumroad.com/l/rfhxr" target="_blank">Real Estate Investment Starter Guide</a>.`,
-    wealth: `Start with the <a href="#compound">Compound Interest Calculator</a>, <a href="#net-worth">Net Worth Calculator</a>, <a href="#fire">FIRE Calculator</a>, and <a href="#reading">Finance Reading</a>.`,
-    taxes: `Start with the <a href="#tax-tracker">Tax Deduction Tracker</a>, then review <a href="https://amzn.to/4ecDZu6" target="_blank">The Taxes, Accounting, Bookkeeping Bible</a> and <a href="https://amzn.to/3RAB59T" target="_blank">Deductions and Tax Breaks 2026</a>.`,
-    books: `Start with <a href="#reading">Recommended Finance Reading</a>, then explore business classics and wealth-building resources.`
-  };
+    function netWorthCalc(){
+      const assets = num("nwCash") + num("nwInvestments") + num("nwRealEstate") + num("nwOther");
+      const liabilities = num("nwMortgage") + num("nwDebt");
+      setHTML("nwResult", `Assets: ${money(assets)}<br>Liabilities: ${money(liabilities)}<br>Net worth: ${money(assets - liabilities)}`);
+    }
 
-  document.getElementById("pathResult").innerHTML = paths[path] || "Pick a category to see the best next step.";
-}
+    function fireCalc(){
+      const fireNumber = num("fiSpend") * 25;
+      let current = num("fiCurrent");
+      const monthly = num("fiSavings");
+      const rate = num("fiReturn") / 100 / 12;
+      let months = 0;
+      while(current < fireNumber && months < 1200){
+        current = current * (1 + rate) + monthly;
+        months++;
+      }
+      setHTML("fiResult", `Estimated FIRE number: ${money(fireNumber)}<br>Estimated time: ${Math.floor(months/12)} years and ${months%12} months`);
+    }
 
-function fakeEmailSignup(){
-  const email = document.getElementById("emailInput").value.trim();
-  document.getElementById("emailResult").innerHTML = email
-    ? `Preview saved for: ${email}. Connect this form to an email service before publishing.`
-    : "Enter an email to preview the signup message.";
-}
+    function fakeEmailSignup(){
+      const email = byId("emailInput").value.trim();
+      setHTML("emailResult", email
+        ? `Preview saved for: ${escapeHTML(email)}. Connect this form to Mailchimp, ConvertKit, Beehiiv, or another email service before publishing.`
+        : "Enter an email to preview the signup message."
+      );
+    }
 
-</script>
+    function filterIdeas(){
+      const q = byId("ideaSearch").value.trim().toLowerCase();
+      const cards = document.querySelectorAll(".idea-item");
+      let shown = 0;
+      cards.forEach(card => {
+        const match = !q || card.innerText.toLowerCase().includes(q);
+        card.style.display = match ? "" : "none";
+        if(match) shown++;
+      });
+      setHTML("ideaSearchResult", q ? `${shown} matching idea section(s).` : "Showing all trading ideas.");
+    }
+
+    function escapeHTML(str){
+      return String(str).replace(/[&<>"']/g, char => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+      }[char]));
+    }
+
+    renderTrades();
+    renderDeductions();
+    updateSessions();
+    setInterval(updateSessions, 1000);
+  </script>
 </body>
 </html>
