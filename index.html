@@ -133,6 +133,20 @@ footer{padding:34px;text-align:center;color:var(--muted);border-top:1px solid va
   .widget-box.short,.tv-large{height:360px}
   .panel-head{align-items:flex-start;flex-direction:column}
 }
+
+.technical-analysis-panel{min-height:520px}
+.tv-technical-widget{height:450px;min-height:450px;overflow:hidden}
+.technical-widget-container,
+.technical-widget-target{width:100%;height:450px;min-height:450px}
+.technical-widget-container iframe{width:100%!important;height:450px!important;border:0!important;display:block!important}
+@media(max-width:720px){
+  .technical-analysis-panel{min-height:520px}
+  .tv-technical-widget,
+  .technical-widget-container,
+  .technical-widget-target,
+  .technical-widget-container iframe{height:460px!important;min-height:460px}
+}
+
 </style>
 </head>
 <body>
@@ -464,22 +478,22 @@ footer{padding:34px;text-align:center;color:var(--muted);border-top:1px solid va
       <span class="live-chip">Live</span>
     </div>
     <div class="market-layout">
-      <article class="panel">
+      <article class="panel technical-analysis-panel">
         <div class="panel-head"><h3>Technical Analysis</h3><span class="pill">SPX</span></div>
-        <div class="tv-large">
-          <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
+        <div class="tv-large tv-technical-widget">
+          <div class="tradingview-widget-container technical-widget-container">
+            <div class="tradingview-widget-container__widget technical-widget-target"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
             {
-              "interval":"1D",
-              "width":"100%",
-              "isTransparent":true,
-              "height":"100%",
-              "symbol":"FOREXCOM:SPXUSD",
-              "showIntervalTabs":true,
-              "displayMode":"single",
-              "locale":"en",
-              "colorTheme":"dark"
+              "interval": "1D",
+              "width": "100%",
+              "height": 450,
+              "symbol": "SP:SPX",
+              "showIntervalTabs": true,
+              "displayMode": "single",
+              "locale": "en",
+              "colorTheme": "dark",
+              "isTransparent": true
             }
             </script>
           </div>
